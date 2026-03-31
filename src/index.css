@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #ffffff;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-dark {
+    background: rgba(106, 27, 154, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(156, 39, 176, 0.2);
+  }
+
+  .glass-white {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-purple-800 to-purple-500 text-white font-semibold px-6 py-3 rounded-2xl transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/40 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply border-2 border-white text-white font-semibold px-6 py-3 rounded-2xl transition-all duration-300 hover:bg-white hover:text-purple-800;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold text-purple-900 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-gray-500 mb-12 max-w-2xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #6A1B9A, #9C27B0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-hero-gradient {
+    background: linear-gradient(135deg, #4a0072 0%, #6A1B9A 40%, #9C27B0 100%);
+  }
+
+  .bg-section-gradient {
+    background: linear-gradient(180deg, #faf5ff 0%, #f3e5f5 100%);
+  }
+}
+
+/* Swiper custom styles */
+.swiper-pagination-bullet {
+  background: #9C27B0 !important;
+}
+.swiper-pagination-bullet-active {
+  background: #6A1B9A !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f3e5f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #9C27B0;
+  border-radius: 999px;
+}
+
+/* WhatsApp pulse */
+@keyframes wa-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+.wa-pulse {
+  animation: wa-pulse 2s infinite;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://t:eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvcmNoaWRzIiwic3ViIjoiQHBpZXJyZS9zdG9yYWdlIiwicmVwbyI6Ijg5ODRkNGE2LTMyNmQtNDI4Ny1iY2IyLWM1NWFiZDJkZjE1OSIsInNjb3BlcyI6WyJnaXQ6cmVhZCIsImdpdDp3cml0ZSJdLCJpYXQiOjE3NzQ4NjE3OTksImV4cCI6MTgwNTk2NTc5OX0.XXyW-xUZk2Rrs160hqf9mg7hfe5zEPnd8iEIDkKxopvdfxFu8Pg1ObZ7E-_CLDdDHA68nKrO2VDSXZI9mvfl5Q@orchids.code.storage/8984d4a6-326d-4287-bcb2-c55abd2df159.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.11",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.4.27",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.7.0",
+    "postcss": "^8.5.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.13.2",
+    "swiper": "^12.1.3",
+    "tailwindcss": "^3.4.19",
+    "vite": "^8.0.3"
+  }
+}

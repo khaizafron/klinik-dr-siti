@@ -1,5 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Heart, Users, Award, Clock } from 'lucide-react'
+import React from 'react'
+import { Heart, Users, Award, Clock, CheckCircle2 } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const stats = [
   { icon: Users, value: '5,000+', label: 'Pesakit Puas Hati' },
@@ -8,84 +9,150 @@ const stats = [
   { icon: Clock, value: '7 Hari', label: 'Beroperasi Seminggu' },
 ]
 
-function useInView(ref) {
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setInView(true)
-    }, { threshold: 0.2 })
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [ref])
-  return inView
-}
+const features = [
+  'Doktor Bertauliah & Berpengalaman',
+  'Peralatan Perubatan Moden',
+  'Persekitaran Bersih & Selesa',
+  'Waktu Operasi Fleksibel',
+  'Menerima Panel Insurans Utama',
+]
 
 export default function About() {
-  const ref = useRef(null)
-  const inView = useInView(ref)
-
   return (
-    <section id="about" className="py-28 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Text */}
-          <div className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <p className="text-purple-500 font-semibold text-sm tracking-widest uppercase mb-4">Tentang Kami</p>
-            <h2 className="text-4xl md:text-5xl font-black text-purple-900 leading-tight mb-6">
-              Kesihatan Keluarga Anda,<br />
-              <span className="text-gradient">Keutamaan Kami</span>
-            </h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Klinik Dr Siti & Rakan-Rakan merupakan klinik swasta yang menyediakan rawatan menyeluruh untuk ibu, kanak-kanak dan keluarga.
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed mb-10">
-              Dengan dua cawangan di Puchong, kami komited memberikan rawatan profesional, cepat dan selesa kepada setiap pesakit. Pasukan doktor kami yang berpengalaman bersedia membantu anda dan keluarga.
-            </p>
+    <section id="about" className="relative py-32 bg-white overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-neutral-50 -z-10" />
+      <div className="absolute top-1/4 -left-20 w-64 h-64 bg-purple-100/50 rounded-full blur-3xl -z-10" />
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map(({ icon: Icon, value, label }) => (
-                <div key={label} className="bg-gradient-to-br from-purple-50 to-lavender rounded-3xl p-5 border border-purple-100 card-hover">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-800 to-purple-500 rounded-2xl flex items-center justify-center mb-3">
-                    <Icon size={20} className="text-white" />
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          
+          {/* Left: Text Content */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
+              <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+              <span className="text-purple-600 font-bold text-xs tracking-widest uppercase">Tentang Kami</span>
+            </div>
+
+            <h2 className="text-4xl md:text-6xl font-serif font-medium text-neutral-900 leading-[1.1] mb-8">
+              Kesihatan Keluarga Anda, <br />
+              <span className="italic text-purple-600">Keutamaan Kami</span>
+            </h2>
+
+            <div className="space-y-6 text-neutral-500 text-lg leading-relaxed mb-12">
+              <p>
+                Klinik Dr Siti & Rakan-Rakan merupakan klinik swasta yang menyediakan rawatan menyeluruh untuk ibu, kanak-kanak dan keluarga.
+              </p>
+              <p>
+                Dengan dua cawangan di Puchong, kami komited memberikan rawatan profesional, cepat dan selesa kepada setiap pesakit. Pasukan doktor kami yang berpengalaman bersedia membantu anda dan keluarga.
+              </p>
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 gap-6">
+              {stats.map(({ icon: Icon, value, label }, index) => (
+                <motion.div 
+                  key={label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.3 }}
+                  className="group p-6 rounded-3xl bg-white border border-neutral-100 hover:border-purple-200 hover:shadow-xl hover:shadow-purple-500/5 transition-all duration-500"
+                >
+                  <div className="w-12 h-12 bg-neutral-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-purple-500 group-hover:text-white transition-colors duration-500">
+                    <Icon size={24} className="text-purple-600 group-hover:text-white transition-colors" />
                   </div>
-                  <div className="text-2xl font-black text-purple-900">{value}</div>
-                  <div className="text-sm text-gray-500 font-medium">{label}</div>
-                </div>
+                  <div className="text-3xl font-bold text-neutral-900 mb-1">{value}</div>
+                  <div className="text-sm text-neutral-400 font-medium uppercase tracking-wider">{label}</div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right: Visual */}
-          <div className={`transition-all duration-1000 delay-200 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-            <div className="relative">
-              {/* Background blob */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-purple-200 rounded-5xl transform rotate-3" />
-              {/* Main card */}
-              <div className="relative bg-gradient-to-br from-purple-800 to-purple-600 rounded-5xl p-10 text-white overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
-
-                <div className="relative z-10 text-center">
-                  <img src="/logo.PNG" alt="Klinik Dr Siti" className="h-32 w-32 object-contain mx-auto mb-8 drop-shadow-2xl animate-float" />
-                  <h3 className="text-2xl font-black mb-2">KLINIK DR SITI</h3>
-                  <p className="text-purple-200 font-semibold mb-8">& RAKAN-RAKAN</p>
-
-                  <div className="space-y-3">
-                    {[
-                      '✓ Doktor Bertauliah & Berpengalaman',
-                      '✓ Peralatan Perubatan Moden',
-                      '✓ Persekitaran Bersih & Selesa',
-                      '✓ Waktu Operasi Fleksibel',
-                      '✓ Menerima Panel Insurans Utama',
-                    ].map(item => (
-                      <p key={item} className="text-purple-100 text-sm font-medium glass rounded-2xl px-4 py-2">{item}</p>
-                    ))}
+          {/* Right: Visual Composition */}
+          <div className="relative">
+            {/* Main Image Container */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/5]"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800&h=1000" 
+                alt="Suasana Klinik Profesional" 
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+              {/* Image Overlay Gradient */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+              
+              {/* Floating Features Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="absolute bottom-8 left-8 right-8 p-8 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl text-white"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 bg-white rounded-2xl">
+                    <img src="/logo.png" alt="Logo" className="h-8 w-8 object-contain" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl leading-none">KLINIK DR SITI</h3>
+                    <p className="text-white/60 text-xs uppercase tracking-widest mt-1">& Rakan-Rakan</p>
                   </div>
                 </div>
+                
+                <div className="space-y-3">
+                  {features.map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-sm font-medium">
+                      <CheckCircle2 size={16} className="text-purple-400" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Secondary Decorative Image */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              className="absolute -top-12 -right-12 w-48 h-48 rounded-3xl overflow-hidden border-8 border-white shadow-2xl z-20 hidden xl:block"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&q=80&w=400&h=400" 
+                alt="Konsultasi Doktor" 
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+
+            {/* Experience Badge */}
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-600 rounded-full flex items-center justify-center z-20 shadow-2xl shadow-purple-500/40"
+            >
+              <div className="text-center text-white">
+                <div className="text-3xl font-bold">10+</div>
+                <div className="text-[10px] uppercase tracking-widest font-medium">Tahun<br/>Pengalaman</div>
               </div>
-            </div>
+              {/* Circular Text (SVG path would be better but keeping it simple) */}
+              <div className="absolute inset-2 border-2 border-white/20 border-dashed rounded-full" />
+            </motion.div>
           </div>
+
         </div>
       </div>
     </section>

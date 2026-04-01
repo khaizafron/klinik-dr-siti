@@ -1,85 +1,166 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Play } from 'lucide-react'
+import React from 'react'
+import { Play, ShieldCheck, Award, FlaskConical, Pill } from 'lucide-react'
+import { motion } from 'framer-motion'
 
-function useInView(ref) {
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setInView(true)
-    }, { threshold: 0.2 })
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [ref])
-  return inView
-}
+const trustBadges = [
+  { 
+    icon: ShieldCheck, 
+    title: 'Klinik Berlesen', 
+    desc: 'Berdaftar dengan KKM',
+    img: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=600&h=800'
+  },
+  { 
+    icon: Award, 
+    title: 'Doktor Bertauliah', 
+    desc: 'MMC registered',
+    img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=600&h=800'
+  },
+  { 
+    icon: FlaskConical, 
+    title: 'Makmal In-house', 
+    desc: 'Keputusan pantas',
+    img: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=600&h=800'
+  },
+  { 
+    icon: Pill, 
+    title: 'Ubatan Berkualiti', 
+    desc: 'Farmasi berlesen',
+    img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=600&h=800'
+  },
+]
 
 export default function Trust() {
-  const ref = useRef(null)
-  const inView = useInView(ref)
+  const [isPlaying, setIsPlaying] = React.useState(false)
 
   return (
-    <section className="py-28 bg-section-gradient overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="text-center mb-16">
-            <p className="text-purple-500 font-semibold text-sm tracking-widest uppercase mb-4">Kepercayaan Komuniti</p>
-            <h2 className="section-title">Dipercayai Oleh<br /><span className="text-gradient">Komuniti Setempat</span></h2>
-            <p className="section-subtitle">Bergabung bersama ribuan keluarga di Puchong yang mempercayai penjagaan kesihatan kami</p>
-          </div>
+    <section id="trust" className="relative py-32 bg-neutral-50 overflow-hidden">
+      {/* Background patterns */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }} />
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <p className="text-purple-600 font-bold text-xs tracking-[0.3em] uppercase mb-4">Kepercayaan Komuniti</p>
+          <h2 className="text-4xl md:text-6xl font-black text-purple-900 leading-tight mb-6">
+            Dipercayai Oleh<br />
+            <span className="text-purple-600">Komuniti Setempat</span>
+          </h2>
+          <p className="text-neutral-500 text-lg max-w-2xl mx-auto">
+            Bergabung bersama ribuan keluarga di Puchong yang mempercayai penjagaan kesihatan kami untuk generasi masa kini dan akan datang.
+          </p>
+        </motion.div>
 
-          {/* Video embed placeholder */}
-          <div className="relative max-w-4xl mx-auto rounded-4xl overflow-hidden shadow-2xl shadow-purple-200/50">
-            <div className="bg-gradient-to-br from-purple-900 to-purple-700 aspect-video flex items-center justify-center relative">
-              {/* Decorative background */}
-              <div className="absolute inset-0 opacity-20" style={{
-                backgroundImage: 'radial-gradient(circle at 30% 50%, rgba(255,255,255,0.3) 0%, transparent 60%), radial-gradient(circle at 70% 50%, rgba(255,255,255,0.2) 0%, transparent 60%)'
-              }} />
-
-              <div className="relative z-10 text-center">
-                <button
-                  aria-label="Play video"
-                  className="w-20 h-20 bg-white/20 backdrop-blur-sm border-2 border-white/50 rounded-full flex items-center justify-center mx-auto mb-6 hover:bg-white/30 hover:scale-110 transition-all duration-300 group"
-                >
-                  <Play size={32} className="text-white ml-1 group-hover:scale-110 transition-transform" />
-                </button>
-                <h3 className="text-white text-2xl font-bold mb-2">Kenali Klinik Kami</h3>
-                <p className="text-purple-200 text-lg">Lawatan Maya & Pengenalan Doktor</p>
-              </div>
-
-              {/* Corner decorations */}
-              <img src="/logo.PNG" alt="" className="absolute bottom-6 right-6 h-16 w-16 object-contain opacity-30" />
-            </div>
-
-            {/* Video overlay bottom */}
-            <div className="bg-gradient-to-r from-purple-900 to-purple-700 px-8 py-5 flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <p className="text-white font-bold text-lg">"Dipercayai oleh komuniti setempat"</p>
-                <p className="text-purple-200 text-sm">Klinik Dr Siti & Rakan-Rakan, Puchong</p>
-              </div>
-              <a
-                href="#contact"
-                className="bg-white text-purple-900 font-bold px-6 py-3 rounded-2xl hover:bg-purple-50 hover:-translate-y-0.5 transition-all duration-300 text-sm"
+        {/* Video Section */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="relative max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl shadow-purple-900/20 group"
+        >
+          <div className="relative aspect-video bg-neutral-900 overflow-hidden">
+            {!isPlaying ? (
+              <div 
+                className="absolute inset-0 w-full h-full cursor-pointer group"
+                onClick={() => setIsPlaying(true)}
               >
-                Buat Temujanji
-              </a>
-            </div>
+                {/* Custom Thumbnail Image */}
+                <img 
+                  src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200" 
+                  alt="Klinik Dr Siti Thumbnail" 
+                  className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"
+                  referrerPolicy="no-referrer"
+                />
+                
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-linear-to-t from-purple-950/80 via-transparent to-transparent" />
+
+                {/* Play Button UI */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="w-24 h-24 bg-white/10 backdrop-blur-xl border border-white/30 rounded-full flex items-center justify-center mb-8 shadow-2xl relative"
+                  >
+                    <Play size={32} className="text-white fill-white ml-1" />
+                    <div className="absolute -inset-4 border border-white/20 rounded-full animate-ping opacity-20" />
+                  </motion.div>
+                  <h3 className="text-white text-3xl md:text-4xl font-bold mb-2 tracking-tight drop-shadow-lg">Kenali Klinik Kami</h3>
+                  <p className="text-purple-200 text-lg font-light tracking-wide drop-shadow-md">Lawatan Maya & Pengenalan Doktor</p>
+                </div>
+
+                {/* Logo Watermark */}
+                <img src="/logo.png" alt="" className="absolute bottom-8 right-8 h-20 w-20 object-contain opacity-30 brightness-0 invert" referrerPolicy="no-referrer" />
+              </div>
+            ) : (
+              <iframe 
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/rl2xsVe8cNw?autoplay=1&rel=0" 
+                title="Kenali Klinik Kami" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowFullScreen
+              ></iframe>
+            )}
           </div>
 
-          {/* Trust badges */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-            {[
-              { icon: '🏥', title: 'Klinik Berlesen', desc: 'Berdaftar dengan KKM' },
-              { icon: '👨‍⚕️', title: 'Doktor Bertauliah', desc: 'MMC registered' },
-              { icon: '🧪', title: 'Makmal In-house', desc: 'Keputusan pantas' },
-              { icon: '💊', title: 'Ubatan Berkualiti', desc: 'Farmasi berlesen' },
-            ].map(item => (
-              <div key={item.title} className="bg-white rounded-4xl p-6 text-center border border-purple-100 card-hover shadow-sm">
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <h4 className="font-bold text-purple-900 mb-1">{item.title}</h4>
-                <p className="text-sm text-gray-500">{item.desc}</p>
+          {/* Video Bottom Bar */}
+          <div className="bg-neutral-900 px-10 py-8 flex flex-wrap items-center justify-between gap-6 border-t border-white/10">
+            <div className="flex items-center gap-4">
+              <div className="w-1 h-12 bg-purple-500 rounded-full" />
+              <div>
+                <p className="text-white font-bold text-xl">"Dipercayai oleh komuniti setempat"</p>
+                <p className="text-purple-400/80 text-sm uppercase tracking-widest font-medium">Klinik Dr Siti & Rakan-Rakan, Puchong</p>
               </div>
-            ))}
+            </div>
+            <motion.a
+              href="https://klinikdrsiti.yezza.co/appointment"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-white text-black font-bold px-8 py-4 rounded-2xl hover:bg-neutral-200 transition-all text-sm tracking-tighter"
+            >
+              BUAT TEMUJANJI SEKARANG
+            </motion.a>
           </div>
+        </motion.div>
+
+        {/* Trust Badges Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+          {trustBadges.map((item, index) => (
+            <motion.div 
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="relative group h-80 rounded-[2.5rem] overflow-hidden shadow-xl border border-white/10"
+            >
+              {/* Background Image */}
+              <img 
+                src={item.img} 
+                alt={item.title} 
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                referrerPolicy="no-referrer"
+              />
+              
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+              {/* Content */}
+              <div className="absolute inset-0 p-8 flex flex-col justify-end items-center text-center">
+                <div className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-purple-600 group-hover:border-purple-500 transition-all duration-500">
+                  <item.icon size={28} className="text-white" />
+                </div>
+                <h4 className="text-xl font-bold text-white mb-2 tracking-tight">{item.title}</h4>
+                <p className="text-white/60 text-sm font-medium uppercase tracking-widest">{item.desc}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

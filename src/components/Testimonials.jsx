@@ -1,95 +1,97 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Quote, Star, ChevronLeft, ChevronRight } from 'lucide-react'
+import React from 'react'
+import { motion } from 'framer-motion'
+import { Star, ExternalLink } from 'lucide-react'
+
+const GOOGLE_MAPS_LINK = 'https://maps.app.goo.gl/B7tT98wH4qeywhM5A'
 
 const reviews = [
-  { name: 'Siti Rahayu', location: 'Puchong Permai', rating: 5, text: 'Doktor sangat mesra dan profesional. Anak saya selalu dibawa ke sini untuk vaksin. Klinik bersih dan suasana selesa.' },
-  { name: 'Ahmad Hazwan', location: 'Puchong Utama', rating: 5, text: 'Servis yang cepat dan efisyen. Tak perlu tunggu lama. Doktor terangkan dengan detail tentang keadaan kesihatan saya.' },
-  { name: 'Nurul Farhana', location: 'Puchong Permai', rating: 5, text: 'Sangat puas dengan pemeriksaan kandungan di sini. Dr. Siti sangat sabar dan teliti. Harga pun berpatutan.' },
-  { name: 'Rauf Adlan', location: 'Puchong Utama', rating: 5, text: 'Klinik yang sangat recommended! Mudah nak buat temujanji via WhatsApp. Staff ramah dan membantu.' },
-  { name: 'Maisarah Azlan', location: 'Puchong Permai', rating: 5, text: 'Panel Prudential saya diterima di sini. Prosedur claim mudah dan pantas. Akan datang lagi!' },
-  { name: 'Zul Hamizan', location: 'Puchong Utama', rating: 4, text: 'Scan ultrasound yang professional. Doktor tunjuk dan terangkan dengan jelas. Ruang tunggu selesa untuk anak-anak.' },
+  { avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Siti' },
+  { avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ahmad' },
+  { avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Nurul' },
+  { avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rauf' },
 ]
 
-function StarRating({ rating }) {
-  return (
-    <div className="flex gap-0.5">
-      {[1,2,3,4,5].map(i => (
-        <Star key={i} size={14} className={i <= rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'} />
-      ))}
-    </div>
-  )
-}
-
-function useInView(ref) {
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setInView(true)
-    }, { threshold: 0.2 })
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [ref])
-  return inView
-}
-
 export default function Testimonials() {
-  const ref = useRef(null)
-  const inView = useInView(ref)
-  const [current, setCurrent] = useState(0)
-  const perPage = 3
-  const totalPages = Math.ceil(reviews.length / perPage)
-
-  const prev = () => setCurrent(c => (c - 1 + totalPages) % totalPages)
-  const next = () => setCurrent(c => (c + 1) % totalPages)
-
-  const visible = reviews.slice(current * perPage, current * perPage + perPage)
-
   return (
-    <section className="py-28 bg-hero-gradient overflow-hidden relative">
-      {/* bg decorations */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-purple-400/10 rounded-full -translate-y-1/2 -translate-x-1/2 blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-300/10 rounded-full translate-y-1/2 translate-x-1/2 blur-3xl" />
+    <section id="testimonials" className="py-32 bg-white relative overflow-hidden">
+      {/* Abstract Background Elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 opacity-50" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-purple-200 font-semibold text-sm tracking-widest uppercase mb-4">Kata-kata Mereka</p>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Testimoni <span className="text-purple-300">Pesakit</span></h2>
-          <p className="text-purple-200 text-lg max-w-2xl mx-auto">Kepercayaan pesakit adalah keutamaan kami</p>
-        </div>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
+              <Star size={12} className="fill-purple-700" />
+              4.9/5 Rating Google
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black text-purple-900 leading-tight mb-6">
+              Apa Kata <br />
+              <span className="text-purple-600">Pesakit Kami?</span>
+            </h2>
+            <p className="text-neutral-500 text-lg font-medium">
+              Kepercayaan anda adalah inspirasi kami untuk terus memberikan perkhidmatan kesihatan yang terbaik.
+            </p>
+          </motion.div>
 
-        {/* Cards */}
-        <div className={`grid md:grid-cols-3 gap-6 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {visible.map((r, i) => (
-            <div key={`${current}-${i}`} className="glass rounded-4xl p-7 hover:-translate-y-1 transition-transform duration-300">
-              <Quote size={28} className="text-purple-300 mb-4 opacity-60" />
-              <p className="text-white/90 leading-relaxed mb-6 text-sm italic">"{r.text}"</p>
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-white font-bold">{r.name}</p>
-                  <p className="text-purple-300 text-xs">{r.location}</p>
-                </div>
-                <StarRating rating={r.rating} />
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-4"
+          >
+            <div className="flex -space-x-3">
+              {reviews.slice(0, 4).map((r, i) => (
+                <img 
+                  key={i} 
+                  src={r.avatar} 
+                  alt="" 
+                  className="w-12 h-12 rounded-full border-4 border-white bg-purple-50"
+                />
+              ))}
+              <div className="w-12 h-12 rounded-full border-4 border-white bg-purple-900 flex items-center justify-center text-white text-xs font-black">
+                +500
               </div>
             </div>
-          ))}
+            <div className="text-sm">
+              <p className="font-black text-purple-900">500+ Review</p>
+              <p className="text-neutral-400 font-bold">Pesakit Puas Hati</p>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Pagination */}
-        <div className="flex items-center justify-center gap-4 mt-10">
-          <button onClick={prev} className="glass rounded-full p-2.5 text-white hover:bg-white/20 transition-colors">
-            <ChevronLeft size={20} />
-          </button>
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === current ? 'bg-white w-8' : 'bg-white/40'}`}
-            />
-          ))}
-          <button onClick={next} className="glass rounded-full p-2.5 text-white hover:bg-white/20 transition-colors">
-            <ChevronRight size={20} />
-          </button>
-        </div>
+        {/* Elfsight Google Reviews Widget */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-[3rem] overflow-hidden shadow-2xl shadow-purple-900/5 border border-neutral-100 bg-white p-4"
+        >
+          <div className="elfsight-app-ccd766b8-77fc-4b80-a399-274a0705f21a" data-elfsight-app-lazy></div>
+        </motion.div>
+
+        {/* Google Review CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 text-center"
+        >
+          <a 
+            href={GOOGLE_MAPS_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 text-purple-900 font-black text-xs tracking-[0.2em] uppercase hover:text-purple-600 transition-colors group"
+          >
+            Lihat Semua Review di Google Maps
+            <ExternalLink size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </a>
+        </motion.div>
       </div>
     </section>
   )

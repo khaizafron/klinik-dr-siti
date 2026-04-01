@@ -1,5 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { GraduationCap, Briefcase, Star } from 'lucide-react'
+import React from 'react'
+import { motion } from 'framer-motion'
+import { GraduationCap, Briefcase, Star, Award, MapPin, CheckCircle2 } from 'lucide-react'
 
 const doctors = [
   {
@@ -7,99 +8,166 @@ const doctors = [
     qualification: 'MBBS (UM), MMed Family Medicine',
     specialty: 'Perubatan Keluarga & Ibu Hamil',
     experience: '12 Tahun',
-    avatar: '👩‍⚕️',
+    avatar: 'https://ui-avatars.com/api/?name=Siti+Nurfaizah&background=6B21A8&color=fff&size=256&bold=true',
     branch: 'Puchong Permai',
+    tags: ['Pakar Perubatan', 'Ibu & Anak']
   },
   {
     name: 'Dr. Ahmad Faris',
     qualification: 'MBBS (UKM), Dip. Obstetrics',
     specialty: 'Kesihatan Kanak-kanak & Vaksinasi',
     experience: '9 Tahun',
-    avatar: '👨‍⚕️',
+    avatar: 'https://ui-avatars.com/api/?name=Ahmad+Faris&background=4C1D95&color=fff&size=256&bold=true',
     branch: 'Puchong Utama',
+    tags: ['Pediatrik', 'Vaksinasi']
   },
   {
     name: 'Dr. Nurul Ain',
     qualification: 'MBBS (IIUM), Dip. Dermatology',
     specialty: 'Penyakit Kulit & Estetika',
     experience: '7 Tahun',
-    avatar: '👩‍⚕️',
+    avatar: 'https://ui-avatars.com/api/?name=Nurul+Ain&background=7E22CE&color=fff&size=256&bold=true',
     branch: 'Puchong Permai',
+    tags: ['Dermatologi', 'Estetika']
   },
   {
     name: 'Dr. Rizwan Hakim',
     qualification: 'MBBS (UM), MMed Internal Medicine',
     specialty: 'Perubatan Am & Diagnostik',
     experience: '10 Tahun',
-    avatar: '👨‍⚕️',
+    avatar: 'https://ui-avatars.com/api/?name=Rizwan+Hakim&background=581C87&color=fff&size=256&bold=true',
     branch: 'Puchong Utama',
+    tags: ['Diagnostik', 'Kesihatan Am']
   },
 ]
 
-function useInView(ref) {
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setInView(true)
-    }, { threshold: 0.2 })
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [ref])
-  return inView
-}
-
 export default function Doctors() {
-  const ref = useRef(null)
-  const inView = useInView(ref)
-
   return (
-    <section className="py-28 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-purple-500 font-semibold text-sm tracking-widest uppercase mb-4">Pasukan Kami</p>
-          <h2 className="section-title">Doktor <span className="text-gradient">Berpengalaman</span></h2>
-          <p className="section-subtitle">Pasukan doktor terlatih kami sedia membantu kesihatan anda dan keluarga</p>
-        </div>
+    <section id="doctors" className="py-32 bg-neutral-50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <p className="text-purple-600 font-bold text-xs tracking-[0.3em] uppercase mb-4">Pakar Perubatan</p>
+          <h2 className="text-4xl md:text-5xl font-black text-purple-900 leading-tight mb-6">
+            Pasukan Doktor <br className="md:hidden" />
+            <span className="text-purple-600">Berpengalaman</span>
+          </h2>
+          <p className="text-neutral-500 text-lg max-w-2xl mx-auto">
+            Kenali barisan doktor bertauliah kami yang komited dalam memberikan rawatan terbaik untuk kesihatan anda sekeluarga.
+          </p>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {doctors.map((doc, i) => (
-            <div
+            <motion.div
               key={doc.name}
-              className={`group bg-gradient-to-b from-purple-50 to-white rounded-4xl p-6 text-center border border-purple-100 card-hover shadow-sm hover:shadow-purple-200/60 transition-all duration-500 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-              style={{ transitionDelay: `${i * 100}ms` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="group bg-white rounded-[3rem] p-8 text-center border border-neutral-100 shadow-sm hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-500 relative overflow-hidden"
             >
-              {/* Avatar */}
-              <div className="relative mb-5">
-                <div className="w-24 h-24 bg-gradient-to-br from-purple-800 to-purple-500 rounded-full flex items-center justify-center text-5xl mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  {doc.avatar}
+              {/* Decorative Background Element */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
+
+              {/* Avatar Container */}
+              <div className="relative mb-8 inline-block">
+                <div className="w-32 h-32 rounded-[2.5rem] overflow-hidden shadow-xl shadow-purple-900/10 border-4 border-white group-hover:rotate-3 transition-transform duration-500">
+                  <img 
+                    src={doc.avatar} 
+                    alt={doc.name} 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
-                <div className="absolute -bottom-1 -right-1 left-1/2 translate-x-4 w-8 h-8 bg-green-400 rounded-full border-2 border-white flex items-center justify-center">
-                  <Star size={12} className="text-white fill-white" />
+                <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-emerald-500 rounded-2xl border-4 border-white flex items-center justify-center shadow-lg">
+                  <CheckCircle2 size={18} className="text-white" />
                 </div>
               </div>
 
               {/* Info */}
-              <h3 className="font-black text-purple-900 text-lg mb-1 group-hover:text-purple-600 transition-colors">{doc.name}</h3>
-
-              <div className="flex items-center justify-center gap-1 mb-3">
-                <GraduationCap size={13} className="text-purple-400" />
-                <p className="text-xs text-purple-500 font-medium">{doc.qualification}</p>
-              </div>
-
-              <div className="bg-gradient-to-r from-purple-800 to-purple-500 text-white text-xs font-semibold px-3 py-1.5 rounded-full inline-block mb-3">
-                {doc.specialty}
-              </div>
-
-              <div className="flex items-center justify-between text-xs text-gray-500 border-t border-purple-100 pt-3 mt-3">
-                <div className="flex items-center gap-1">
-                  <Briefcase size={12} className="text-purple-400" />
-                  <span>{doc.experience}</span>
+              <div className="relative z-10">
+                <h3 className="font-black text-purple-900 text-xl mb-2 group-hover:text-purple-600 transition-colors tracking-tight">
+                  {doc.name}
+                </h3>
+                
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <GraduationCap size={14} className="text-purple-400" />
+                  <p className="text-[11px] text-neutral-400 font-bold uppercase tracking-wider leading-tight">
+                    {doc.qualification}
+                  </p>
                 </div>
-                <span className="text-purple-600 font-medium">{doc.branch}</span>
+
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-50 text-purple-700 rounded-xl text-xs font-black mb-6 border border-purple-100">
+                  <Star size={12} className="fill-purple-700" />
+                  {doc.specialty}
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-2 mb-8">
+                  {doc.tags.map(tag => (
+                    <span key={tag} className="text-[10px] font-bold text-neutral-400 bg-neutral-50 px-2 py-1 rounded-md border border-neutral-100">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between pt-6 border-t border-neutral-100">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-neutral-50 rounded-lg flex items-center justify-center text-purple-500">
+                      <Briefcase size={14} />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[10px] text-neutral-400 font-bold uppercase leading-none mb-1">Pengalaman</p>
+                      <p className="text-xs font-black text-purple-900">{doc.experience}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="text-right">
+                    <div className="flex items-center gap-1 justify-end text-purple-600 mb-1">
+                      <MapPin size={12} />
+                      <span className="text-[10px] font-black uppercase tracking-tighter">Cawangan</span>
+                    </div>
+                    <p className="text-[11px] font-bold text-neutral-500">{doc.branch}</p>
+                  </div>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="mt-20 flex flex-col md:flex-row items-center justify-center gap-6 p-8 bg-white rounded-[2.5rem] border border-neutral-100 shadow-sm"
+        >
+          <div className="flex -space-x-4">
+            {[1,2,3,4].map(i => (
+              <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-purple-100 flex items-center justify-center overflow-hidden">
+                <img src={`https://ui-avatars.com/api/?background=random&size=128&name=Doctor+${i}`} alt="doc" />
+              </div>
+            ))}
+          </div>
+          <div className="text-center md:text-left">
+            <h4 className="text-purple-900 font-black text-lg">Sedia Berkhidmat Untuk Anda</h4>
+            <p className="text-neutral-500 text-sm">Pasukan kami sentiasa bersedia memberikan konsultasi perubatan terbaik.</p>
+          </div>
+          <motion.a 
+            href="https://klinikdrsiti.yezza.co/appointment"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-purple-600 text-white px-8 py-4 rounded-2xl font-black text-sm tracking-widest shadow-lg shadow-purple-600/20"
+          >
+            HUBUNGI KAMI
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   )

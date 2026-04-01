@@ -1,140 +1,204 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { MapPin, Phone, Clock, ExternalLink, Calendar, MessageCircle } from 'lucide-react'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { MapPin, Phone, Clock, ExternalLink, Calendar, MessageCircle, Navigation } from 'lucide-react'
 
 const WA_NUMBER = '60166914270'
 
 const branches = [
   {
+    id: 'permai',
     name: 'Puchong Permai',
     tagline: 'Cawangan Utama',
     address: 'No. 12, Jalan Permai 1, Taman Puchong Permai, 47100 Puchong, Selangor',
     phone: '+603-8070 XXXX',
     mobile: '+60166914270',
-    hours: 'Isnin - Jumaat: 8:30am – 6:00pm\nSabtu: 8:30am – 1:00pm\nAhad: Tutup',
-    mapEmbed: 'https://maps.google.com/maps?q=Puchong+Permai+Selangor&output=embed',
-    mapLink: 'https://maps.google.com/?q=Puchong+Permai+Selangor',
+    hours: [
+      { day: 'Isnin - Jumaat', time: '8:30am – 6:00pm' },
+      { day: 'Sabtu', time: '8:30am – 1:00pm' },
+      { day: 'Ahad', time: 'Tutup' }
+    ],
+    thumbnail: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800',
+    mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31874.582248434464!2d101.56319571083985!3d3.0075724000000252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb36e80a150a9%3A0xd422f8497d009bd7!2sKlinik%20Dr%20Siti%20dan%20Rakan%20Rakan!5e0!3m2!1sen!2smy!4v1775012564781!5m2!1sen!2smy',
+    mapLink: 'https://maps.app.goo.gl/vY9xJvX9xJvX9xJvX',
     waLink: `https://wa.me/${WA_NUMBER}?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20Cawangan%20Puchong%20Permai`,
   },
   {
+    id: 'utama',
     name: 'Puchong Utama',
     tagline: 'Cawangan Kedua',
     address: 'No. 5, Jalan Utama 2, Taman Puchong Utama, 47150 Puchong, Selangor',
     phone: '+603-8071 XXXX',
     mobile: '+60166914270',
-    hours: 'Isnin - Jumaat: 8:30am – 6:00pm\nSabtu: 8:30am – 1:00pm\nAhad: Tutup',
-    mapEmbed: 'https://maps.google.com/maps?q=Puchong+Utama+Selangor&output=embed',
-    mapLink: 'https://maps.google.com/?q=Puchong+Utama+Selangor',
+    hours: [
+      { day: 'Isnin - Jumaat', time: '8:30am – 6:00pm' },
+      { day: 'Sabtu', time: '8:30am – 1:00pm' },
+      { day: 'Ahad', time: 'Tutup' }
+    ],
+    thumbnail: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800',
+    mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31874.582248434464!2d101.56319571083985!3d3.0075724000000252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb50d2456b0cf%3A0xf76c0e2c30d17952!2sKlinik%20Dr%20Siti%20dan%20Rakan%20rakan!5e0!3m2!1sen!2smy!4v1775012619200!5m2!1sen!2smy',
+    mapLink: 'https://maps.app.goo.gl/vY9xJvX9xJvX9xJvX',
     waLink: `https://wa.me/${WA_NUMBER}?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20Cawangan%20Puchong%20Utama`,
   },
 ]
 
-function useInView(ref) {
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setInView(true)
-    }, { threshold: 0.1 })
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [ref])
-  return inView
-}
-
 export default function Branches() {
-  const ref = useRef(null)
-  const inView = useInView(ref)
+  const [hoveredBranch, setHoveredBranch] = useState(null)
 
   return (
-    <section id="branches" className="py-28 bg-section-gradient overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-purple-500 font-semibold text-sm tracking-widest uppercase mb-4">Lokasi Kami</p>
-          <h2 className="section-title">Dua Cawangan di <span className="text-gradient">Puchong</span></h2>
-          <p className="section-subtitle">Mudah diakses, dekat dengan komuniti anda</p>
-        </div>
+    <section id="branches" className="py-32 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <p className="text-purple-600 font-bold text-xs tracking-[0.3em] uppercase mb-4">Lokasi Strategik</p>
+          <h2 className="text-4xl md:text-5xl font-black text-purple-900 leading-tight mb-6">
+            Cawangan <br className="md:hidden" />
+            <span className="text-purple-600">Klinik Kami</span>
+          </h2>
+          <p className="text-neutral-500 text-lg max-w-2xl mx-auto">
+            Kami hadir di dua lokasi utama di Puchong untuk memastikan anda mendapat akses perubatan yang pantas dan berkualiti.
+          </p>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-12">
           {branches.map((branch, i) => (
-            <div
-              key={branch.name}
-              className={`bg-white rounded-4xl overflow-hidden border border-purple-100 shadow-lg hover:shadow-purple-200/60 transition-all duration-500 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-              style={{ transitionDelay: `${i * 150}ms` }}
+            <motion.div
+              key={branch.id}
+              initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.2 }}
+              className="group bg-neutral-50 rounded-[3.5rem] overflow-hidden border border-neutral-100 shadow-sm hover:shadow-2xl hover:shadow-purple-900/5 transition-all duration-500"
             >
-              {/* Header */}
-              <div className="bg-gradient-to-r from-purple-800 to-purple-600 p-6 text-white">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <span className="text-xs text-purple-200 font-semibold uppercase tracking-wider">{branch.tagline}</span>
-                    <h3 className="text-2xl font-black mt-1">{branch.name}</h3>
-                  </div>
-                  <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
-                    <MapPin size={22} className="text-white" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Map */}
-              <div className="h-48 bg-purple-50 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-100 to-purple-200">
-                  <div className="text-center">
-                    <div className="text-4xl mb-2">📍</div>
-                    <p className="text-purple-700 font-bold text-sm">{branch.name}</p>
-                    <p className="text-purple-500 text-xs">Puchong, Selangor</p>
-                    <a
-                      href={branch.mapLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 mt-3 bg-purple-800 text-white text-xs font-semibold px-4 py-2 rounded-xl hover:bg-purple-700 transition-colors"
+              {/* Interactive Map/Thumbnail Area */}
+              <div 
+                className="relative h-80 overflow-hidden cursor-crosshair"
+                onMouseEnter={() => setHoveredBranch(branch.id)}
+                onMouseLeave={() => setHoveredBranch(null)}
+              >
+                <AnimatePresence mode="wait">
+                  {hoveredBranch === branch.id ? (
+                    <motion.div
+                      key="map"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute inset-0 w-full h-full"
                     >
-                      <ExternalLink size={12} />
-                      Buka Google Maps
-                    </a>
-                  </div>
-                </div>
+                      <iframe 
+                        src={branch.mapEmbed}
+                        width="100%" 
+                        height="100%" 
+                        style={{ border: 0 }} 
+                        allowFullScreen="" 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title={`Map ${branch.name}`}
+                      />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="thumbnail"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute inset-0 w-full h-full"
+                    >
+                      <img 
+                        src={branch.thumbnail} 
+                        alt={branch.name} 
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-purple-900/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-white/20 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/30 flex items-center gap-3 text-white font-black text-xs tracking-widest">
+                          <Navigation size={16} className="animate-pulse" />
+                          SENTUH UNTUK LIHAT PETA
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
-              {/* Details */}
-              <div className="p-6 space-y-4">
-                <div className="flex gap-3">
-                  <MapPin size={18} className="text-purple-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-gray-600 text-sm leading-relaxed">{branch.address}</p>
-                </div>
-                <div className="flex gap-3">
-                  <Phone size={18} className="text-purple-500 flex-shrink-0" />
+              {/* Content Area */}
+              <div className="p-10">
+                <div className="flex items-start justify-between mb-8">
                   <div>
-                    <p className="text-gray-700 text-sm font-medium">{branch.phone}</p>
-                    <p className="text-gray-500 text-sm">{branch.mobile}</p>
+                    <span className="inline-block px-4 py-1.5 bg-purple-100 text-purple-700 rounded-full text-[10px] font-black uppercase tracking-widest mb-3">
+                      {branch.tagline}
+                    </span>
+                    <h3 className="text-3xl font-black text-purple-900 tracking-tight">{branch.name}</h3>
+                  </div>
+                  <div className="w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-purple-600">
+                    <MapPin size={24} />
                   </div>
                 </div>
-                <div className="flex gap-3">
-                  <Clock size={18} className="text-purple-500 flex-shrink-0 mt-0.5" />
-                  <div>
-                    {branch.hours.split('\n').map(line => (
-                      <p key={line} className="text-gray-600 text-sm">{line}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
 
-              {/* CTA buttons */}
-              <div className="px-6 pb-6 flex gap-3">
-                <a
-                  href={branch.mapLink}
-                  target="_blank" rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 border-2 border-purple-200 text-purple-700 font-semibold py-3 rounded-2xl hover:bg-purple-50 hover:border-purple-400 transition-all text-sm"
-                >
-                  <ExternalLink size={16} />
-                  Lihat Peta
-                </a>
-                <a
-                  href="#contact"
-                  className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-800 to-purple-500 text-white font-semibold py-3 rounded-2xl hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-0.5 transition-all text-sm"
-                >
-                  <Calendar size={16} />
-                  Buat Temujanji
-                </a>
+                <div className="grid md:grid-cols-2 gap-8 mb-10">
+                  <div className="space-y-6">
+                    <div className="flex gap-4">
+                      <div className="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 shrink-0">
+                        <MapPin size={18} />
+                      </div>
+                      <p className="text-neutral-500 text-sm leading-relaxed font-medium">{branch.address}</p>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 shrink-0">
+                        <Phone size={18} />
+                      </div>
+                      <div>
+                        <p className="text-purple-900 font-black text-sm">{branch.phone}</p>
+                        <p className="text-neutral-400 text-xs font-bold">{branch.mobile}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Clock size={16} className="text-purple-500" />
+                      <h4 className="text-xs font-black text-purple-900 uppercase tracking-widest">Waktu Operasi</h4>
+                    </div>
+                    <div className="space-y-2">
+                      {branch.hours.map((h, idx) => (
+                        <div key={idx} className="flex justify-between items-center text-xs">
+                          <span className="text-neutral-400 font-bold">{h.day}</span>
+                          <span className={`font-black ${h.time === 'Tutup' ? 'text-red-400' : 'text-purple-700'}`}>{h.time}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.a 
+                    href={branch.waLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-black px-8 py-5 rounded-2xl text-center flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/20 transition-all text-xs tracking-widest"
+                  >
+                    <MessageCircle size={18} />
+                    WHATSAPP CAWANGAN
+                  </motion.a>
+                  <motion.a 
+                    href="https://klinikdrsiti.yezza.co/appointment"
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex-1 bg-purple-900 hover:bg-purple-950 text-white font-black px-8 py-5 rounded-2xl text-center flex items-center justify-center gap-3 shadow-lg shadow-purple-900/20 transition-all text-xs tracking-widest"
+                  >
+                    <Calendar size={18} />
+                    TEMPAH TEMUJANJI
+                  </motion.a>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

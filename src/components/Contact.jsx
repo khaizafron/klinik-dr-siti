@@ -1,67 +1,74 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { MapPin, Phone, Mail, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { 
+  MapPin, 
+  Phone, 
+  Clock, 
+  Send, 
+  CheckCircle2, 
+  AlertCircle, 
+  ArrowRight,
+  MessageCircle,
+  Calendar
+} from 'lucide-react'
 
-function useInView(ref) {
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setInView(true)
-    }, { threshold: 0.1 })
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [ref])
-  return inView
-}
+const INITIAL_FORM = { name: '', phone: '', message: '', branch: '' }
 
-const INITIAL = { name: '', phone: '', message: '', branch: '' }
+const BRANCHES = [
+  {
+    id: 'puchong-permai',
+    name: 'Puchong Permai',
+    address: 'No. 12, Jalan Permai 1, Taman Puchong Permai, 47100 Puchong, Selangor',
+    phone: '+603-8070 1234',
+    mobile: '+6016-691 4270',
+    mapUrl: 'https://maps.app.goo.gl/B7tT98wH4qeywhM5A'
+  },
+  {
+    id: 'puchong-utama',
+    name: 'Puchong Utama',
+    address: 'No. 5, Jalan Utama 2, Taman Puchong Utama, 47150 Puchong, Selangor',
+    phone: '+603-8071 5678',
+    mobile: '+6016-691 4270',
+    mapUrl: 'https://maps.app.goo.gl/B7tT98wH4qeywhM5A'
+  }
+]
 
 function sanitize(str) {
   return str.replace(/[<>"'&]/g, c => ({'<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;','&':'&amp;'}[c]))
 }
 
 export default function Contact() {
-  const ref = useRef(null)
-  const inView = useInView(ref)
-  const [form, setForm] = useState(INITIAL)
+  const [form, setForm] = useState(INITIAL_FORM)
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState(null) // 'success' | 'error' | null
+  const [status, setStatus] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [activeBranch, setActiveBranch] = useState(BRANCHES[0].id)
 
   const validate = () => {
     const e = {}
-    if (!form.name.trim() || form.name.length < 2) e.name = 'Nama diperlukan (sekurang-kurangnya 2 aksara)'
+    if (!form.name.trim() || form.name.length < 2) e.name = 'Sila masukkan nama penuh anda'
     if (!form.phone.trim() || !/^[0-9+\s\-]{8,15}$/.test(form.phone)) e.phone = 'Nombor telefon tidak sah'
-    if (!form.message.trim() || form.message.length < 10) e.message = 'Mesej diperlukan (sekurang-kurangnya 10 aksara)'
-    if (!form.branch) e.branch = 'Sila pilih cawangan'
+    if (!form.message.trim() || form.message.length < 5) e.message = 'Sila kongsikan sedikit butiran pertanyaan anda'
+    if (!form.branch) e.branch = 'Sila pilih cawangan pilihan anda'
     return e
   }
 
-  const handleChange = e => {
-    const { name, value } = e.target
-    setForm(f => ({ ...f, [name]: value }))
-    if (errors[name]) setErrors(er => ({ ...er, [name]: '' }))
-  }
-
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const e2 = validate()
-    if (Object.keys(e2).length) { setErrors(e2); return }
+    const validationErrors = validate()
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors)
+      return
+    }
 
     setLoading(true)
     try {
-      // Sanitize inputs before sending to backend
-      const sanitized = {
-        name: sanitize(form.name.trim()),
-        phone: sanitize(form.phone.trim()),
-        message: sanitize(form.message.trim()),
-        branch: sanitize(form.branch),
-      }
-      // In production: POST to /api/contact with sanitized data
-      // const res = await fetch('/api/contact', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(sanitized) })
-      await new Promise(r => setTimeout(r, 1200)) // simulate API
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000))
       setStatus('success')
-      setForm(INITIAL)
-    } catch {
+      setForm(INITIAL_FORM)
+      setTimeout(() => setStatus(null), 5000)
+    } catch (err) {
       setStatus('error')
     } finally {
       setLoading(false)
@@ -69,162 +76,249 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-28 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-purple-500 font-semibold text-sm tracking-widest uppercase mb-4">Hubungi Kami</p>
-          <h2 className="section-title">Kami Sedia <span className="text-gradient">Membantu</span></h2>
-          <p className="section-subtitle">Hubungi kami atau isi borang di bawah untuk membuat temujanji</p>
-        </div>
+    <section id="contact" className="relative py-32 bg-[#fafafa] overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-purple-100/40 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[100px]" />
+      </div>
 
-        <div className={`grid lg:grid-cols-2 gap-12 items-start transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {/* Left: Branch Info */}
-          <div className="space-y-6">
-            {[
-              {
-                name: 'Cawangan Puchong Permai',
-                address: 'No. 12, Jalan Permai 1, Taman Puchong Permai, 47100 Puchong',
-                phone: '+603-8070 XXXX',
-                mobile: '+6016- 691 4270',
-              },
-              {
-                name: 'Cawangan Puchong Utama',
-                address: 'No. 5, Jalan Utama 2, Taman Puchong Utama, 47150 Puchong',
-                phone: '+603-8071 XXXX',
-                mobile: '+6016- 691 4270',
-              },
-            ].map(b => (
-              <div key={b.name} className="bg-gradient-to-br from-purple-50 to-white rounded-4xl p-6 border border-purple-100">
-                <h3 className="font-black text-purple-900 text-lg mb-4">{b.name}</h3>
-                <div className="space-y-3">
-                  <div className="flex gap-3">
-                    <MapPin size={18} className="text-purple-500 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-600 text-sm leading-relaxed">{b.address}</p>
-                  </div>
-                  <div className="flex gap-3">
-                    <Phone size={18} className="text-purple-500 flex-shrink-0" />
-                    <div>
-                      <a href={`tel:${b.phone.replace(/\s/g,'')}`} className="text-gray-700 text-sm font-medium hover:text-purple-700 transition-colors block">{b.phone}</a>
-                      <a href={`tel:${b.mobile.replace(/\s/g,'')}`} className="text-gray-500 text-sm hover:text-purple-700 transition-colors block">{b.mobile}</a>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          
+          {/* Left Column: Content & Info */}
+          <div className="lg:col-span-5 space-y-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-900 text-white rounded-full text-[10px] font-black uppercase tracking-widest">
+                <MessageCircle size={12} />
+                Hubungi Kami
+              </div>
+              <h2 className="text-5xl md:text-7xl font-black text-purple-950 leading-[0.9] tracking-tighter">
+                Mari Bicara <br />
+                <span className="text-purple-600 italic font-serif font-light">Kesihatan.</span>
+              </h2>
+              <p className="text-neutral-500 text-lg max-w-md font-medium leading-relaxed">
+                Ada pertanyaan tentang rawatan atau ingin buat temujanji? Kami sedia mendengar dan membantu anda.
+              </p>
+            </motion.div>
+
+            {/* Branch Selector & Info */}
+            <div className="space-y-8">
+              <div className="flex gap-2 p-1 bg-neutral-200/50 rounded-2xl w-fit">
+                {BRANCHES.map((branch) => (
+                  <button
+                    key={branch.id}
+                    onClick={() => setActiveBranch(branch.id)}
+                    className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+                      activeBranch === branch.id 
+                        ? 'bg-white text-purple-900 shadow-sm' 
+                        : 'text-neutral-500 hover:text-purple-900'
+                    }`}
+                  >
+                    {branch.name}
+                  </button>
+                ))}
+              </div>
+
+              <AnimatePresence mode="wait">
+                {BRANCHES.filter(b => b.id === activeBranch).map((branch) => (
+                  <motion.div
+                    key={branch.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="space-y-6"
+                  >
+                    <div className="flex gap-4 group cursor-pointer">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <MapPin size={20} />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-[10px] font-black text-neutral-400 uppercase tracking-widest mb-1">Lokasi Kami</p>
+                        <p className="text-neutral-700 font-medium leading-snug">{branch.address}</p>
+                        <a 
+                          href={branch.mapUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-purple-600 text-xs font-bold mt-2 hover:underline"
+                        >
+                          Buka Google Maps <ArrowRight size={12} />
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            ))}
 
-            {/* Hours */}
-            <div className="bg-gradient-to-br from-purple-800 to-purple-600 rounded-4xl p-6 text-white">
-              <h3 className="font-black text-lg mb-4">Waktu Operasi</h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between"><span className="text-purple-200">Isnin – Jumaat</span><span className="font-semibold">8:30am – 6:00pm</span></div>
-                <div className="flex justify-between"><span className="text-purple-200">Sabtu</span><span className="font-semibold">8:30am – 1:00pm</span></div>
-                <div className="flex justify-between"><span className="text-purple-200">Ahad & Cuti Am</span><span className="text-red-300 font-semibold">Tutup</span></div>
-              </div>
+                    <div className="flex gap-4 group cursor-pointer">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <Phone size={20} />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-black text-neutral-400 uppercase tracking-widest mb-1">Talian Terus</p>
+                        <p className="text-neutral-700 font-bold">{branch.phone}</p>
+                        <p className="text-neutral-500 font-medium">{branch.mobile}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4 group cursor-pointer">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <Clock size={20} />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-black text-neutral-400 uppercase tracking-widest mb-1">Waktu Operasi</p>
+                        <p className="text-neutral-700 font-bold">Isnin – Jumaat: 8:30am – 6:00pm</p>
+                        <p className="text-neutral-500 font-medium">Sabtu: 8:30am – 1:00pm</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
           </div>
 
-          {/* Right: Contact Form */}
-          <div className="bg-gradient-to-br from-purple-50 to-white rounded-4xl p-8 border border-purple-100 shadow-xl shadow-purple-100/50">
-            <h3 className="font-black text-purple-900 text-2xl mb-2">Hantar Mesej</h3>
-            <p className="text-gray-500 text-sm mb-6">Kami akan menghubungi anda dalam masa 24 jam</p>
-
-            {status === 'success' && (
-              <div className="flex items-center gap-3 bg-green-50 border border-green-200 text-green-800 rounded-2xl p-4 mb-6">
-                <CheckCircle size={20} className="flex-shrink-0" />
-                <p className="text-sm font-medium">Mesej anda berjaya dihantar! Kami akan menghubungi anda tidak lama lagi.</p>
-              </div>
-            )}
-            {status === 'error' && (
-              <div className="flex items-center gap-3 bg-red-50 border border-red-200 text-red-800 rounded-2xl p-4 mb-6">
-                <AlertCircle size={20} className="flex-shrink-0" />
-                <p className="text-sm font-medium">Maaf, terdapat ralat. Sila cuba lagi atau hubungi kami terus.</p>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} noValidate className="space-y-4">
-              {/* Name */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Nama Penuh *</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  maxLength={100}
-                  placeholder="Masukkan nama anda"
-                  className={`w-full px-4 py-3 rounded-2xl border text-sm bg-white focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all ${errors.name ? 'border-red-300 bg-red-50' : 'border-purple-200 focus:border-purple-400'}`}
-                />
-                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+          {/* Right Column: Form */}
+          <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-purple-900/5 border border-neutral-100 relative overflow-hidden"
+            >
+              {/* Form Header */}
+              <div className="mb-10">
+                <h3 className="text-3xl font-black text-purple-950 mb-2">Hantar Mesej</h3>
+                <p className="text-neutral-400 font-medium">Kami akan membalas pertanyaan anda secepat mungkin.</p>
               </div>
 
-              {/* Phone */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Nombor Telefon *</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  maxLength={20}
-                  placeholder="016-6914270"
-                  className={`w-full px-4 py-3 rounded-2xl border text-sm bg-white focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all ${errors.phone ? 'border-red-300 bg-red-50' : 'border-purple-200 focus:border-purple-400'}`}
-                />
-                {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
-              </div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] ml-1">Nama Penuh</label>
+                    <input
+                      type="text"
+                      placeholder="Contoh: Siti Aminah"
+                      value={form.name}
+                      onChange={(e) => setForm({...form, name: e.target.value})}
+                      className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border transition-all outline-none text-neutral-800 font-medium ${
+                        errors.name ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-purple-300 focus:bg-white'
+                      }`}
+                    />
+                    {errors.name && <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1">{errors.name}</p>}
+                  </div>
 
-              {/* Branch */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Pilih Cawangan *</label>
-                <select
-                  name="branch"
-                  value={form.branch}
-                  onChange={handleChange}
-                  className={`w-full px-4 py-3 rounded-2xl border text-sm bg-white focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all ${errors.branch ? 'border-red-300 bg-red-50' : 'border-purple-200 focus:border-purple-400'}`}
-                >
-                  <option value="">-- Pilih Cawangan --</option>
-                  <option value="puchong-permai">Puchong Permai</option>
-                  <option value="puchong-utama">Puchong Utama</option>
-                </select>
-                {errors.branch && <p className="text-red-500 text-xs mt-1">{errors.branch}</p>}
-              </div>
-
-              {/* Message */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Mesej *</label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  maxLength={500}
-                  rows={4}
-                  placeholder="Terangkan keperluan rawatan atau pertanyaan anda..."
-                  className={`w-full px-4 py-3 rounded-2xl border text-sm bg-white focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all resize-none ${errors.message ? 'border-red-300 bg-red-50' : 'border-purple-200 focus:border-purple-400'}`}
-                />
-                <div className="flex justify-between">
-                  {errors.message ? <p className="text-red-500 text-xs mt-1">{errors.message}</p> : <span />}
-                  <p className="text-xs text-gray-400 mt-1">{form.message.length}/500</p>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] ml-1">Nombor Telefon</label>
+                    <input
+                      type="tel"
+                      placeholder="012-3456789"
+                      value={form.phone}
+                      onChange={(e) => setForm({...form, phone: e.target.value})}
+                      className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border transition-all outline-none text-neutral-800 font-medium ${
+                        errors.phone ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-purple-300 focus:bg-white'
+                      }`}
+                    />
+                    {errors.phone && <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1">{errors.phone}</p>}
+                  </div>
                 </div>
-              </div>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-purple-800 to-purple-500 text-white font-bold py-4 rounded-2xl hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
-              >
-                {loading ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Menghantar...
-                  </>
-                ) : (
-                  <>
-                    <Send size={18} />
-                    Hantar
-                  </>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] ml-1">Cawangan Pilihan</label>
+                  <div className="grid grid-cols-2 gap-4">
+                    {BRANCHES.map((branch) => (
+                      <button
+                        key={branch.id}
+                        type="button"
+                        onClick={() => setForm({...form, branch: branch.id})}
+                        className={`px-4 py-4 rounded-2xl border text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+                          form.branch === branch.id 
+                            ? 'bg-purple-900 text-white border-purple-900 shadow-lg shadow-purple-900/20' 
+                            : 'bg-neutral-50 text-neutral-500 border-neutral-100 hover:border-purple-200'
+                        }`}
+                      >
+                        <Calendar size={14} />
+                        {branch.name}
+                      </button>
+                    ))}
+                  </div>
+                  {errors.branch && <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1">{errors.branch}</p>}
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] ml-1">Pertanyaan Anda</label>
+                  <textarea
+                    rows={4}
+                    placeholder="Bagaimana kami boleh membantu anda hari ini?"
+                    value={form.message}
+                    onChange={(e) => setForm({...form, message: e.target.value})}
+                    className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border transition-all outline-none text-neutral-800 font-medium resize-none ${
+                      errors.message ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-purple-300 focus:bg-white'
+                    }`}
+                  />
+                  {errors.message && <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1">{errors.message}</p>}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full relative group overflow-hidden bg-purple-950 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs transition-all hover:shadow-2xl hover:shadow-purple-900/40 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  <div className="relative z-10 flex items-center justify-center gap-3">
+                    {loading ? (
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        Hantar Mesej
+                        <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </>
+                    )}
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-purple-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                </button>
+              </form>
+
+              {/* Status Messages */}
+              <AnimatePresence>
+                {status === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="absolute inset-0 z-20 bg-white flex flex-col items-center justify-center p-12 text-center"
+                  >
+                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+                      <CheckCircle2 size={40} />
+                    </div>
+                    <h4 className="text-2xl font-black text-purple-950 mb-2">Terima Kasih!</h4>
+                    <p className="text-neutral-500 font-medium mb-8">
+                      Mesej anda telah berjaya dihantar. Pasukan kami akan menghubungi anda dalam masa terdekat.
+                    </p>
+                    <button 
+                      onClick={() => setStatus(null)}
+                      className="text-purple-600 font-black text-[10px] uppercase tracking-widest hover:underline"
+                    >
+                      Hantar Mesej Lain
+                    </button>
+                  </motion.div>
                 )}
-              </button>
-            </form>
+
+                {status === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="mt-6 flex items-center gap-3 p-4 bg-red-50 text-red-600 rounded-2xl border border-red-100"
+                  >
+                    <AlertCircle size={20} />
+                    <p className="text-xs font-bold uppercase tracking-wider">Maaf, ralat berlaku. Sila cuba lagi.</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           </div>
+
         </div>
       </div>
     </section>

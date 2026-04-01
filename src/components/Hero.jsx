@@ -3,7 +3,7 @@ import { MessageCircle, Calendar, ChevronDown, Heart, Shield, Clock } from 'luci
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 
 const WA_NUMBER = '60166914270'
-const BOOKING_URL = '#contact'
+const BOOKING_URL = 'https://klinikdrsiti.yezza.co/appointment'
 
 export default function Hero() {
   const sectionRef = useRef(null)

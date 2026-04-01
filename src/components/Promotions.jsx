@@ -1,122 +1,185 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Calendar, Tag } from 'lucide-react'
+import React from 'react'
+import { motion } from 'framer-motion'
+import { Calendar, Tag, ArrowRight, Sparkles, Clock, Percent } from 'lucide-react'
 
 const promos = [
   {
     title: 'Pakej Pemeriksaan Lengkap',
     subtitle: 'Full Body Check-Up',
-    price: 'RM 180',
-    originalPrice: 'RM 350',
-    tag: '🔥 HOT DEAL',
-    color: 'from-purple-700 to-purple-500',
-    desc: 'Ujian darah lengkap, ECG, ultrasound abdomen & konsultasi doktor',
-    expiry: 'Sehingga 31 Mei 2026',
+    price: '180',
+    originalPrice: '350',
+    tag: 'HOT DEAL',
+    color: 'from-purple-600 to-purple-800',
+    desc: 'Ujian darah lengkap, ECG, ultrasound abdomen & konsultasi doktor.',
+    expiry: '31 Mei 2026',
+    icon: Sparkles
   },
   {
     title: 'Pakej Ibu Hamil',
     subtitle: 'Antenatal Package',
-    price: 'RM 250',
-    originalPrice: 'RM 450',
-    tag: '💖 MOM\'S SPECIAL',
-    color: 'from-pink-600 to-purple-500',
-    desc: '5 kali pemeriksaan + ultrasound + ujian darah lengkap',
-    expiry: 'Pakej bulanan',
+    price: '250',
+    originalPrice: '450',
+    tag: 'MOM\'S SPECIAL',
+    color: 'from-pink-500 to-purple-600',
+    desc: '5 kali pemeriksaan + ultrasound + ujian darah lengkap.',
+    expiry: 'Pakej Bulanan',
+    icon: Calendar
   },
   {
     title: 'Vaksin Kanak-Kanak',
     subtitle: 'Childhood Immunization',
-    price: 'RM 80',
-    originalPrice: 'RM 120',
-    tag: '👶 KIDS CARE',
-    color: 'from-blue-600 to-purple-500',
-    desc: 'Vaksin swasta pilihan termasuk rotavirus, pneumococcal & varicella',
-    expiry: 'Tawaran berterusan',
+    price: '80',
+    originalPrice: '120',
+    tag: 'KIDS CARE',
+    color: 'from-blue-500 to-purple-600',
+    desc: 'Vaksin swasta pilihan termasuk rotavirus & pneumococcal.',
+    expiry: 'Tawaran Berterusan',
+    icon: Tag
   },
   {
     title: 'Saringan Diabetes',
     subtitle: 'Diabetes Screening',
-    price: 'RM 30',
-    originalPrice: 'RM 60',
-    tag: '⚡ QUICK CHECK',
-    color: 'from-orange-500 to-purple-500',
-    desc: 'HbA1c + gula darah puasa + kaunseling diet percuma',
+    price: '30',
+    originalPrice: '60',
+    tag: 'QUICK CHECK',
+    color: 'from-orange-500 to-purple-600',
+    desc: 'HbA1c + gula darah puasa + kaunseling diet percuma.',
     expiry: 'Setiap Sabtu',
+    icon: Clock
   },
 ]
 
-function useInView(ref) {
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setInView(true)
-    }, { threshold: 0.1 })
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [ref])
-  return inView
-}
-
 export default function Promotions() {
-  const ref = useRef(null)
-  const inView = useInView(ref)
-
   return (
-    <section className="py-28 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-purple-500 font-semibold text-sm tracking-widest uppercase mb-4">Tawaran Istimewa</p>
-          <h2 className="section-title">Promosi & <span className="text-gradient">Pakej Kesihatan</span></h2>
-          <p className="section-subtitle">Rawatan berkualiti pada harga yang berpatutan</p>
+    <section id="promotions" className="py-32 bg-neutral-50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+            <Percent size={12} />
+            Tawaran Terhad
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black text-purple-900 leading-tight mb-6">
+            Promosi & <br className="md:hidden" />
+            <span className="text-purple-600">Pakej Kesihatan</span>
+          </h2>
+          <p className="text-neutral-500 text-lg max-w-2xl mx-auto">
+            Nikmati rawatan berkualiti tinggi dengan harga istimewa. Kami komited memberikan nilai terbaik untuk kesihatan anda.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {promos.map((promo, i) => {
+            const Icon = promo.icon
+            return (
+              <motion.div
+                key={promo.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="group relative flex flex-col h-full"
+              >
+                {/* Ticket Top */}
+                <div className={`relative bg-gradient-to-br ${promo.color} p-8 rounded-t-[2.5rem] overflow-hidden`}>
+                  {/* Decorative Circles */}
+                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+                  <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-black/10 rounded-full blur-xl" />
+                  
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-black px-3 py-1 rounded-lg border border-white/20 tracking-widest">
+                        {promo.tag}
+                      </span>
+                      <Icon size={20} className="text-white/60" />
+                    </div>
+                    
+                    <h3 className="text-white font-black text-xl leading-tight mb-1 group-hover:translate-x-1 transition-transform duration-300">
+                      {promo.title}
+                    </h3>
+                    <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-6">
+                      {promo.subtitle}
+                    </p>
+
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-white text-xs font-bold">RM</span>
+                      <span className="text-4xl font-black text-white tracking-tighter">{promo.price}</span>
+                      <span className="text-white/40 text-sm line-through font-medium">RM{promo.originalPrice}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Ticket Divider (The "Tear" Effect) */}
+                <div className="relative h-6 bg-white flex items-center justify-between px-[-1px]">
+                  <div className="absolute left-0 top-0 bottom-0 w-3 h-6 bg-neutral-50 rounded-r-full -ml-[1px]" />
+                  <div className="w-full border-t-2 border-dashed border-neutral-100 mx-4" />
+                  <div className="absolute right-0 top-0 bottom-0 w-3 h-6 bg-neutral-50 rounded-l-full -mr-[1px]" />
+                </div>
+
+                {/* Ticket Bottom */}
+                <div className="bg-white p-8 rounded-b-[2.5rem] border border-t-0 border-neutral-100 flex flex-col flex-1 shadow-sm group-hover:shadow-xl group-hover:shadow-purple-900/5 transition-all duration-500">
+                  <p className="text-neutral-500 text-sm leading-relaxed mb-8 flex-1">
+                    {promo.desc}
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-6 border-t border-neutral-50">
+                    <div className="flex items-center gap-2 text-purple-600">
+                      <Clock size={14} />
+                      <span className="text-[10px] font-black uppercase tracking-widest">{promo.expiry}</span>
+                    </div>
+                    <motion.button 
+                      whileHover={{ x: 3 }}
+                      className="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all duration-300"
+                    >
+                      <ArrowRight size={18} />
+                    </motion.button>
+                  </div>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {promos.map((promo, i) => (
-            <div
-              key={promo.title}
-              className={`group rounded-4xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-purple-200/50 hover:-translate-y-3 transition-all duration-500 cursor-pointer ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              {/* Poster top */}
-              <div className={`bg-gradient-to-br ${promo.color} p-6 relative overflow-hidden`}>
-                <div className="absolute inset-0 opacity-10" style={{
-                  backgroundImage: 'radial-gradient(circle at 80% 20%, white 0%, transparent 50%)'
-                }} />
-                {/* Tag */}
-                <span className="relative z-10 inline-block bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full mb-4">
-                  {promo.tag}
-                </span>
-                <h3 className="relative z-10 text-white font-black text-xl leading-tight">{promo.title}</h3>
-                <p className="relative z-10 text-white/70 text-sm font-medium mt-1">{promo.subtitle}</p>
-
-                {/* Price */}
-                <div className="relative z-10 mt-4 flex items-end gap-2">
-                  <span className="text-3xl font-black text-white">{promo.price}</span>
-                  <span className="text-white/50 text-sm line-through mb-1">{promo.originalPrice}</span>
-                </div>
-
-                {/* CTA Overlay on hover */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                  <a
-                    href="#contact"
-                    className="bg-white text-purple-900 font-bold px-6 py-3 rounded-2xl text-sm hover:bg-purple-50 transition-colors"
-                    onClick={e => e.stopPropagation()}
-                  >
-                    Buat Temujanji
-                  </a>
-                </div>
-              </div>
-
-              {/* Body */}
-              <div className="bg-white p-5 border border-purple-100 border-t-0">
-                <p className="text-gray-600 text-sm leading-relaxed mb-3">{promo.desc}</p>
-                <div className="flex items-center gap-2 text-xs text-purple-500">
-                  <Calendar size={12} />
-                  <span>{promo.expiry}</span>
-                </div>
-              </div>
+        {/* Bottom Banner */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="mt-20 p-1 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 rounded-[3rem] shadow-2xl shadow-purple-600/20"
+        >
+          <div className="bg-white rounded-[2.9rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-center md:text-left">
+              <h4 className="text-2xl md:text-3xl font-black text-purple-900 mb-2">Inginkan Pakej Khas?</h4>
+              <p className="text-neutral-500 font-medium">Hubungi kami untuk konsultasi dan pakej yang disesuaikan mengikut keperluan anda.</p>
             </div>
-          ))}
-        </div>
+            <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+              <motion.a 
+                href="https://wa.me/60166914270"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-emerald-500 text-white px-10 py-5 rounded-2xl font-black text-xs tracking-[0.2em] shadow-lg shadow-emerald-500/20 text-center"
+              >
+                WHATSAPP SEKARANG
+              </motion.a>
+              <motion.a 
+                href="https://klinikdrsiti.yezza.co/appointment"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-purple-900 text-white px-10 py-5 rounded-2xl font-black text-xs tracking-[0.2em] shadow-lg shadow-purple-900/20 text-center"
+              >
+                LIHAT SEMUA PAKEJ
+              </motion.a>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

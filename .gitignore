@@ -1,6 +1,6 @@
-node_modules/
-dist/
-ffmpeg/
+node_modules
+dist
+ffmpeg
 .env
 .DS_Store
 *.log

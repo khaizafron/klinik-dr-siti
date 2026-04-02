@@ -300,7 +300,7 @@ export default function Hero() {
           style={{ opacity: useTransform(scrollYProgress, [0, 0.05], [1, 0]) }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] text-white/30 uppercase tracking-[0.4em] font-medium">Scroll to explore</span>
+          <span className="text-[10px] text-black uppercase tracking-[0.4em] font-medium">Scroll to explore</span>
           <motion.div 
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}

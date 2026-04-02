@@ -91,95 +91,136 @@ const categories = [
 
 function ServiceModal({ service, onClose }) {
   if (!service) return null
+
   return (
     <AnimatePresence>
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-purple-950/40 backdrop-blur-md" 
+
+        className="
+          fixed inset-0 z-50 
+          flex items-start justify-center 
+          pt-28 md:pt-32 px-4
+          bg-purple-950/50 backdrop-blur-lg
+        "
+
         onClick={onClose}
       >
         <motion.div
-          initial={{ scale: 0.9, y: 20, opacity: 0 }}
+          initial={{ scale: 0.95, y: 30, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
-          exit={{ scale: 0.9, y: 20, opacity: 0 }}
-          className="bg-white rounded-[3rem] max-w-2xl w-full overflow-hidden shadow-2xl relative"
-          onClick={e => e.stopPropagation()}
+          exit={{ scale: 0.95, y: 30, opacity: 0 }}
+
+          className="
+            bg-white rounded-[2rem] 
+            w-full max-w-2xl
+            shadow-2xl 
+            overflow-hidden
+          "
+
+          onClick={(e) => e.stopPropagation()}
         >
+
+          {/* CLOSE */}
           <button 
             onClick={onClose}
-            className="absolute top-6 right-6 z-10 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-white/40 text-white rounded-full flex items-center justify-center transition-all"
+            className="absolute top-4 right-4 z-20 w-9 h-9 bg-black/20 hover:bg-black/40 text-white rounded-full flex items-center justify-center"
           >
-            <X size={24} />
+            <X size={18} />
           </button>
 
-          <div className="relative h-64">
+          {/* IMAGE */}
+          <div className="relative h-40 md:h-48">
             <img 
               src={service.image} 
-              alt={service.name} 
+              alt={service.name}
               className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-white via-white/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-10">
-              <h3 className="text-4xl font-black text-purple-900 tracking-tight">{service.name}</h3>
-              <p className="text-purple-600 font-bold uppercase tracking-widest text-sm mt-2">Untuk: {service.for}</p>
+
+            {/* WHITE FADE */}
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-transparent" />
+
+            <div className="absolute bottom-0 left-0 p-5 md:p-6">
+              <h3 className="text-2xl md:text-4xl font-black text-purple-900 leading-tight">
+                {service.name}
+              </h3>
+              <p className="text-purple-600 font-bold uppercase tracking-widest text-xs md:text-sm mt-1">
+                Untuk: {service.for}
+              </p>
             </div>
           </div>
 
-          <div className="p-10 pt-4">
-            <p className="text-neutral-500 text-lg leading-relaxed mb-8">{service.desc}</p>
-            
-            <div className="grid md:grid-cols-2 gap-8 mb-10">
+          {/* CONTENT */}
+          <div className="px-5 md:px-6 py-4">
+
+            <p className="text-neutral-500 text-sm md:text-base leading-relaxed leading-relaxed mb-5">
+              {service.desc}
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 mb-6">
+
+              {/* BENEFITS */}
               <div>
-                <h4 className="font-black text-purple-900 uppercase tracking-widest text-xs mb-4">Kelebihan Utama</h4>
-                <ul className="space-y-3">
-                  {service.benefits.map(b => (
-                    <li key={b} className="flex items-start gap-3 text-neutral-600 font-medium">
-                      <CheckCircle2 size={20} className="text-purple-500 shrink-0 mt-0.5" />
+                <h4 className="font-black text-purple-900 uppercase tracking-widest text-xs md:text-sm mb-2">
+                  Kelebihan
+                </h4>
+
+                <ul className="space-y-1.5">
+                  {service.benefits.map((b) => (
+                    <li key={b} className="flex gap-2 text-neutral-600 text-sm md:text-base font-medium">
+                      <CheckCircle2 size={14} className="text-purple-500 mt-[2px]" />
                       {b}
                     </li>
                   ))}
                 </ul>
               </div>
-              
+
+              {/* STEPS */}
               <div>
-                <h4 className="font-black text-purple-900 uppercase tracking-widest text-xs mb-4">Proses Rawatan</h4>
-                <div className="space-y-4">
-                  {['Pendaftaran & Konsultasi', 'Pemeriksaan Klinikal', 'Rawatan & Farmasi'].map((step, i) => (
-                    <div key={step} className="flex items-center gap-4">
-                      <div className="w-8 h-8 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center font-black text-sm">{i + 1}</div>
-                      <p className="text-neutral-600 text-sm font-semibold">{step}</p>
+                <h4 className="font-black text-purple-900 uppercase tracking-widest text-xs md:text-sm mb-2">
+                  Proses
+                </h4>
+
+                <div className="space-y-2">
+                  {['Pendaftaran', 'Pemeriksaan', 'Rawatan'].map((step, i) => (
+                    <div key={step} className="flex items-center gap-2">
+                      <div className="w-6 h-6 bg-purple-100 text-purple-600 rounded-md flex items-center justify-center text-[10px] font-black">
+                        {i + 1}
+                      </div>
+                      <p className="text-neutral-600 text-sm md:text-base font-semibold">
+                        {step}
+                      </p>
                     </div>
                   ))}
                 </div>
               </div>
+
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <motion.a 
-                href="https://klinikdrsiti.yezza.co/appointment" 
-                onClick={onClose}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold px-8 py-5 rounded-2xl text-center flex items-center justify-center gap-2 shadow-lg shadow-purple-600/20 transition-all"
+            {/* CTA */}
+            <div className="flex gap-3">
+              <a 
+                href="https://klinikdrsiti.yezza.co/appointment"
+                className="flex-1 bg-purple-600 text-white text-xs font-bold py-3 rounded-xl flex items-center justify-center gap-2"
               >
-                <Calendar size={20} />
-                TEMPAH TEMUJANJI
-              </motion.a>
-              <motion.a
-                href="https://wa.me/60166914270?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20perkhidmatan"
-                target="_blank" rel="noopener noreferrer"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-5 rounded-2xl text-center flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all"
+                <Calendar size={14} />
+                TEMPAH
+              </a>
+
+              <a
+                href="https://wa.me/60166914270"
+                target="_blank"
+                className="flex-1 bg-emerald-500 text-white text-xs font-bold py-3 rounded-xl flex items-center justify-center gap-2"
               >
-                <MessageCircle size={20} />
-                WHATSAPP KAMI
-              </motion.a>
+                <MessageCircle size={14} />
+                WHATSAPP
+              </a>
             </div>
+
           </div>
+
         </motion.div>
       </motion.div>
     </AnimatePresence>

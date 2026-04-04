@@ -686,8 +686,12 @@ function ServiceModal({ service, onClose }) {
   )
 }
 
-export default function Services() {
+export default function Services({ onModalToggle }) {
   const [selected, setSelected] = useState(null)
+
+  useEffect(() => {
+    onModalToggle?.(Boolean(selected))
+  }, [selected, onModalToggle])
 
   return (
     <section id="services" className="py-20 md:py-32 bg-white overflow-hidden">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -14,11 +14,20 @@ import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 
 export default function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    document.body.style.overflow = isModalOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isModalOpen])
+
   return (
     <div className="min-h-screen bg-white">
 
       {/* Navbar kekal */}
-      <Navbar />
+      <Navbar isModalOpen={isModalOpen} />
 
       <main>
 
@@ -35,7 +44,7 @@ export default function App() {
           <About />
           <Trust />
           <Panel />
-          <Services />
+          <Services onModalToggle={setIsModalOpen} />
           <Doctors />
           <Branches />
           <Promotions />

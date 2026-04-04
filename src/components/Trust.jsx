@@ -13,7 +13,7 @@ const trustBadges = [
     icon: Award, 
     title: 'Doktor Bertauliah', 
     desc: 'MMC registered',
-    img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=600&h=800'
+    img: 'https://images.unsplash.com/photo-1685022036532-ea7e3b114578?q=80&w=327&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   { 
     icon: FlaskConical, 
@@ -45,10 +45,10 @@ export default function Trust() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <p className="text-purple-600 font-bold text-xs tracking-[0.3em] uppercase mb-4">Kepercayaan Komuniti</p>
-          <h2 className="text-4xl md:text-6xl font-black text-purple-900 leading-tight mb-6">
+          <p className="text-red-600 font-bold text-xs tracking-[0.3em] uppercase mb-4">Kepercayaan Komuniti</p>
+          <h2 className="text-4xl md:text-6xl font-black text-blue-900 leading-tight mb-6">
             Dipercayai Oleh<br />
-            <span className="text-purple-600">Komuniti Setempat</span>
+            <span className="text-red-600">Komuniti Setempat</span>
           </h2>
           <p className="text-neutral-500 text-lg max-w-2xl mx-auto">
             Bergabung bersama ribuan keluarga di Puchong yang mempercayai penjagaan kesihatan kami untuk generasi masa kini dan akan datang.
@@ -61,7 +61,7 @@ export default function Trust() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="relative max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl shadow-purple-900/20 group"
+          className="relative max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-900/20 group"
         >
           <div className="relative aspect-video bg-neutral-900 overflow-hidden">
             {!isPlaying ? (
@@ -78,7 +78,7 @@ export default function Trust() {
                 />
                 
                 {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-purple-950/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-blue-950/80 via-transparent to-transparent" />
 
                 {/* Play Button UI */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
@@ -91,7 +91,7 @@ export default function Trust() {
                     <div className="absolute -inset-4 border border-white/20 rounded-full animate-ping opacity-20" />
                   </motion.div>
                   <h3 className="text-white text-3xl md:text-4xl font-bold mb-2 tracking-tight drop-shadow-lg">Kenali Klinik Kami</h3>
-                  <p className="text-purple-200 text-lg font-light tracking-wide drop-shadow-md">Lawatan Maya & Pengenalan Doktor</p>
+                  <p className="text-blue-200 text-lg font-light tracking-wide drop-shadow-md">Lawatan Maya & Pengenalan Doktor</p>
                 </div>
 
                 {/* Logo Watermark */}
@@ -112,14 +112,14 @@ export default function Trust() {
           {/* Video Bottom Bar */}
           <div className="bg-neutral-900 px-10 py-8 flex flex-wrap items-center justify-between gap-6 border-t border-white/10">
             <div className="flex items-center gap-4">
-              <div className="w-1 h-12 bg-purple-500 rounded-full" />
+              <div className="w-1 h-12 bg-red-500 rounded-full" />
               <div>
                 <p className="text-white font-bold text-xl">"Dipercayai oleh komuniti setempat"</p>
-                <p className="text-purple-400/80 text-sm uppercase tracking-widest font-medium">Klinik Dr Siti & Rakan-Rakan, Puchong</p>
+                <p className="text-red-400/80 text-sm uppercase tracking-widest font-medium">Klinik Dr Siti & Rakan-Rakan, Puchong</p>
               </div>
             </div>
             <motion.a
-              href="https://klinikdrsiti.yezza.co/appointment"
+              href="#contact"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
               className="bg-white text-black font-bold px-8 py-4 rounded-2xl hover:bg-neutral-200 transition-all text-sm tracking-tighter"
@@ -153,7 +153,7 @@ export default function Trust() {
 
               {/* Content */}
               <div className="absolute inset-0 p-8 flex flex-col justify-end items-center text-center">
-                <div className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-purple-600 group-hover:border-purple-500 transition-all duration-500">
+                <div className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-red-600 group-hover:border-red-500 transition-all duration-500">
                   <item.icon size={28} className="text-white" />
                 </div>
                 <h4 className="text-xl font-bold text-white mb-2 tracking-tight">{item.title}</h4>

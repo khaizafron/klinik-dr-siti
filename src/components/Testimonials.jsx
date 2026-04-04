@@ -26,13 +26,13 @@ export default function Testimonials() {
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
-              <Star size={12} className="fill-purple-700" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
+              <Star size={12} className="fill-red-700" />
               4.9/5 Rating Google
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-purple-900 leading-tight mb-6">
+            <h2 className="text-4xl md:text-6xl font-black text-blue-900 leading-tight mb-6">
               Apa Kata <br />
-              <span className="text-purple-600">Pesakit Kami?</span>
+              <span className="text-red-600">Pesakit Kami?</span>
             </h2>
             <p className="text-neutral-500 text-lg font-medium">
               Kepercayaan anda adalah inspirasi kami untuk terus memberikan perkhidmatan kesihatan yang terbaik.
@@ -54,12 +54,12 @@ export default function Testimonials() {
                   className="w-12 h-12 rounded-full border-4 border-white bg-purple-50"
                 />
               ))}
-              <div className="w-12 h-12 rounded-full border-4 border-white bg-purple-900 flex items-center justify-center text-white text-xs font-black">
+              <div className="w-12 h-12 rounded-full border-4 border-white bg-red-600 flex items-center justify-center text-white text-xs font-black">
                 +500
               </div>
             </div>
             <div className="text-sm">
-              <p className="font-black text-purple-900">500+ Review</p>
+              <p className="font-black text-blue-900">500+ Review</p>
               <p className="text-neutral-400 font-bold">Pesakit Puas Hati</p>
             </div>
           </motion.div>
@@ -86,7 +86,7 @@ export default function Testimonials() {
             href={GOOGLE_MAPS_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 text-purple-900 font-black text-xs tracking-[0.2em] uppercase hover:text-purple-600 transition-colors group"
+            className="inline-flex items-center gap-3 text-black-900 font-black text-xs tracking-[0.2em] uppercase hover:text-blue-600 transition-colors group"
           >
             Lihat Semua Review di Google Maps
             <ExternalLink size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

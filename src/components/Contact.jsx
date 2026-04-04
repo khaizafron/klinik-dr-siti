@@ -79,7 +79,7 @@ export default function Contact() {
     <section id="contact" className="relative py-32 bg-[#fafafa] overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-purple-100/40 rounded-full blur-[120px]" />
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-red-100/40 rounded-full blur-[120px]" />
         <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[100px]" />
       </div>
 
@@ -94,13 +94,13 @@ export default function Contact() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-900 text-white rounded-full text-[10px] font-black uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-900 text-white rounded-full text-[10px] font-black uppercase tracking-widest">
                 <MessageCircle size={12} />
                 Hubungi Kami
               </div>
-              <h2 className="text-5xl md:text-7xl font-black text-purple-950 leading-[0.9] tracking-tighter">
+              <h2 className="text-5xl md:text-7xl font-black text-blue-950 leading-[0.9] tracking-tighter">
                 Mari Bicara <br />
-                <span className="text-purple-600 italic font-serif font-light">Kesihatan.</span>
+                <span className="text-red-600 italic font-serif font-light">Kesihatan.</span>
               </h2>
               <p className="text-neutral-500 text-lg max-w-md font-medium leading-relaxed">
                 Ada pertanyaan tentang rawatan atau ingin buat temujanji? Kami sedia mendengar dan membantu anda.
@@ -116,8 +116,8 @@ export default function Contact() {
                     onClick={() => setActiveBranch(branch.id)}
                     className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
                       activeBranch === branch.id 
-                        ? 'bg-white text-purple-900 shadow-sm' 
-                        : 'text-neutral-500 hover:text-purple-900'
+                        ? 'bg-white text-blue-900 shadow-sm' 
+                        : 'text-neutral-500 hover:text-blue-900'
                     }`}
                   >
                     {branch.name}
@@ -135,7 +135,7 @@ export default function Contact() {
                     className="space-y-6"
                   >
                     <div className="flex gap-4 group cursor-pointer">
-                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm">
                         <MapPin size={20} />
                       </div>
                       <div className="flex-1">
@@ -145,7 +145,7 @@ export default function Contact() {
                           href={branch.mapUrl} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-purple-600 text-xs font-bold mt-2 hover:underline"
+                          className="inline-flex items-center gap-1 text-red-600 text-xs font-bold mt-2 hover:underline"
                         >
                           Buka Google Maps <ArrowRight size={12} />
                         </a>
@@ -153,7 +153,7 @@ export default function Contact() {
                     </div>
 
                     <div className="flex gap-4 group cursor-pointer">
-                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm">
                         <Phone size={20} />
                       </div>
                       <div>
@@ -164,7 +164,7 @@ export default function Contact() {
                     </div>
 
                     <div className="flex gap-4 group cursor-pointer">
-                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm">
                         <Clock size={20} />
                       </div>
                       <div>
@@ -185,11 +185,11 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-purple-900/5 border border-neutral-100 relative overflow-hidden"
+              className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-blue-900/5 border border-neutral-100 relative overflow-hidden"
             >
               {/* Form Header */}
               <div className="mb-10">
-                <h3 className="text-3xl font-black text-purple-950 mb-2">Hantar Mesej</h3>
+                <h3 className="text-3xl font-black text-blue-950 mb-2">Hantar Mesej</h3>
                 <p className="text-neutral-400 font-medium">Kami akan membalas pertanyaan anda secepat mungkin.</p>
               </div>
 
@@ -203,7 +203,7 @@ export default function Contact() {
                       value={form.name}
                       onChange={(e) => setForm({...form, name: e.target.value})}
                       className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border transition-all outline-none text-neutral-800 font-medium ${
-                        errors.name ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-purple-300 focus:bg-white'
+                        errors.name ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-red-300 focus:bg-white'
                       }`}
                     />
                     {errors.name && <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1">{errors.name}</p>}
@@ -217,7 +217,7 @@ export default function Contact() {
                       value={form.phone}
                       onChange={(e) => setForm({...form, phone: e.target.value})}
                       className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border transition-all outline-none text-neutral-800 font-medium ${
-                        errors.phone ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-purple-300 focus:bg-white'
+                        errors.phone ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-red-300 focus:bg-white'
                       }`}
                     />
                     {errors.phone && <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1">{errors.phone}</p>}
@@ -234,8 +234,8 @@ export default function Contact() {
                         onClick={() => setForm({...form, branch: branch.id})}
                         className={`px-4 py-4 rounded-2xl border text-xs font-bold transition-all flex items-center justify-center gap-2 ${
                           form.branch === branch.id 
-                            ? 'bg-purple-900 text-white border-purple-900 shadow-lg shadow-purple-900/20' 
-                            : 'bg-neutral-50 text-neutral-500 border-neutral-100 hover:border-purple-200'
+                            ? 'bg-blue-900 text-white border-blue-900 shadow-lg shadow-blue-900/20' 
+                            : 'bg-neutral-50 text-neutral-500 border-neutral-100 hover:border-red-200'
                         }`}
                       >
                         <Calendar size={14} />
@@ -254,7 +254,7 @@ export default function Contact() {
                     value={form.message}
                     onChange={(e) => setForm({...form, message: e.target.value})}
                     className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border transition-all outline-none text-neutral-800 font-medium resize-none ${
-                      errors.message ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-purple-300 focus:bg-white'
+                      errors.message ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-red-300 focus:bg-white'
                     }`}
                   />
                   {errors.message && <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1">{errors.message}</p>}
@@ -263,7 +263,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full relative group overflow-hidden bg-purple-950 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs transition-all hover:shadow-2xl hover:shadow-purple-900/40 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full relative group overflow-hidden bg-blue-950 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs transition-all hover:shadow-2xl hover:shadow-red-900/40 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <div className="relative z-10 flex items-center justify-center gap-3">
                     {loading ? (
@@ -275,7 +275,7 @@ export default function Contact() {
                       </>
                     )}
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-purple-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 </button>
               </form>
 
@@ -291,13 +291,13 @@ export default function Contact() {
                     <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
                       <CheckCircle2 size={40} />
                     </div>
-                    <h4 className="text-2xl font-black text-purple-950 mb-2">Terima Kasih!</h4>
+                    <h4 className="text-2xl font-black text-blue-950 mb-2">Terima Kasih!</h4>
                     <p className="text-neutral-500 font-medium mb-8">
                       Mesej anda telah berjaya dihantar. Pasukan kami akan menghubungi anda dalam masa terdekat.
                     </p>
                     <button 
                       onClick={() => setStatus(null)}
-                      className="text-purple-600 font-black text-[10px] uppercase tracking-widest hover:underline"
+                      className="text-red-600 font-black text-[10px] uppercase tracking-widest hover:underline"
                     >
                       Hantar Mesej Lain
                     </button>

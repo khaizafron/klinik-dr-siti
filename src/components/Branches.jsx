@@ -54,10 +54,10 @@ export default function Branches() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <p className="text-purple-600 font-bold text-xs tracking-[0.3em] uppercase mb-4">Lokasi Strategik</p>
-          <h2 className="text-4xl md:text-5xl font-black text-purple-900 leading-tight mb-6">
+          <p className="text-red-600 font-bold text-xs tracking-[0.3em] uppercase mb-4">Lokasi Strategik</p>
+          <h2 className="text-4xl md:text-5xl font-black text-blue-900 leading-tight mb-6">
             Cawangan <br className="md:hidden" />
-            <span className="text-purple-600">Klinik Kami</span>
+            <span className="text-red-600">Klinik Kami</span>
           </h2>
           <p className="text-neutral-500 text-lg max-w-2xl mx-auto">
             Kami hadir di dua lokasi utama di Puchong untuk memastikan anda mendapat akses perubatan yang pantas dan berkualiti.
@@ -72,7 +72,7 @@ export default function Branches() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
-              className="group bg-neutral-50 rounded-[3.5rem] overflow-hidden border border-neutral-100 shadow-sm hover:shadow-2xl hover:shadow-purple-900/5 transition-all duration-500"
+              className="group bg-neutral-50 rounded-[3.5rem] overflow-hidden border border-neutral-100 shadow-sm hover:shadow-2xl hover:shadow-red-900/5 transition-all duration-500"
             >
               {/* Interactive Map/Thumbnail Area */}
               <div 
@@ -114,7 +114,7 @@ export default function Branches() {
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                         referrerPolicy="no-referrer"
                       />
-                      <div className="absolute inset-0 bg-linear-to-t from-purple-900/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-blue-900/80 via-transparent to-transparent" />
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="bg-white/20 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/30 flex items-center gap-3 text-white font-black text-xs tracking-widest">
                           <Navigation size={16} className="animate-pulse" />
@@ -130,12 +130,12 @@ export default function Branches() {
               <div className="p-10">
                 <div className="flex items-start justify-between mb-8">
                   <div>
-                    <span className="inline-block px-4 py-1.5 bg-purple-100 text-purple-700 rounded-full text-[10px] font-black uppercase tracking-widest mb-3">
+                    <span className="inline-block px-4 py-1.5 bg-red-100 text-red-700 rounded-full text-[10px] font-black uppercase tracking-widest mb-3">
                       {branch.tagline}
                     </span>
-                    <h3 className="text-3xl font-black text-purple-900 tracking-tight">{branch.name}</h3>
+                    <h3 className="text-3xl font-black text-blue-900 tracking-tight">{branch.name}</h3>
                   </div>
-                  <div className="w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-purple-600">
+                  <div className="w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-red-600">
                     <MapPin size={24} />
                   </div>
                 </div>
@@ -143,17 +143,17 @@ export default function Branches() {
                 <div className="grid md:grid-cols-2 gap-8 mb-10">
                   <div className="space-y-6">
                     <div className="flex gap-4">
-                      <div className="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 shrink-0">
+                      <div className="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center text-red-500 shrink-0">
                         <MapPin size={18} />
                       </div>
                       <p className="text-neutral-500 text-sm leading-relaxed font-medium">{branch.address}</p>
                     </div>
                     <div className="flex gap-4">
-                      <div className="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 shrink-0">
+                      <div className="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center text-red-500 shrink-0">
                         <Phone size={18} />
                       </div>
                       <div>
-                        <p className="text-purple-900 font-black text-sm">{branch.phone}</p>
+                        <p className="text-blue-900 font-black text-sm">{branch.phone}</p>
                         <p className="text-neutral-400 text-xs font-bold">{branch.mobile}</p>
                       </div>
                     </div>
@@ -161,14 +161,14 @@ export default function Branches() {
 
                   <div className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
                     <div className="flex items-center gap-3 mb-4">
-                      <Clock size={16} className="text-purple-500" />
-                      <h4 className="text-xs font-black text-purple-900 uppercase tracking-widest">Waktu Operasi</h4>
+                      <Clock size={16} className="text-red-500" />
+                      <h4 className="text-xs font-black text-blue-900 uppercase tracking-widest">Waktu Operasi</h4>
                     </div>
                     <div className="space-y-2">
                       {branch.hours.map((h, idx) => (
                         <div key={idx} className="flex justify-between items-center text-xs">
                           <span className="text-neutral-400 font-bold">{h.day}</span>
-                          <span className={`font-black ${h.time === 'Tutup' ? 'text-red-400' : 'text-purple-700'}`}>{h.time}</span>
+                          <span className={`font-black ${h.time === 'Tutup' ? 'text-red-400' : 'text-blue-700'}`}>{h.time}</span>
                         </div>
                       ))}
                     </div>
@@ -182,16 +182,16 @@ export default function Branches() {
                     rel="noopener noreferrer"
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-black px-8 py-5 rounded-2xl text-center flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/20 transition-all text-xs tracking-widest"
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-black px-8 py-5 rounded-2xl text-center flex items-center justify-center gap-3 shadow-lg shadow-blue-500/20 transition-all text-xs tracking-widest"
                   >
                     <MessageCircle size={18} />
                     WHATSAPP CAWANGAN
                   </motion.a>
                   <motion.a 
-                    href="https://klinikdrsiti.yezza.co/appointment"
+                    href="#contact"
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex-1 bg-purple-900 hover:bg-purple-950 text-white font-black px-8 py-5 rounded-2xl text-center flex items-center justify-center gap-3 shadow-lg shadow-purple-900/20 transition-all text-xs tracking-widest"
+                    className="flex-1 bg-red-600 hover:bg-red-700 text-white font-black px-8 py-5 rounded-2xl text-center flex items-center justify-center gap-3 shadow-lg shadow-red-900/20 transition-all text-xs tracking-widest"
                   >
                     <Calendar size={18} />
                     TEMPAH TEMUJANJI

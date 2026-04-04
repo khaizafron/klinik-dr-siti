@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Menu, X, ChevronDown, Calendar, Phone, MapPin } from 'lucide-react'
+import { Menu, X, ChevronDown, Calendar } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const services = [
-  { label: 'Perubatan Am', href: '#services' },
-  { label: 'Pemeriksaan Mengandung', href: '#services' },
-  { label: 'Vaksinasi', href: '#services' },
-  { label: 'Diagnostik & Scan', href: '#services' },
-  { label: 'Penyakit Kulit', href: '#services' },
-  { label: 'Mini Lab', href: '#services' },
+  { label: 'Rawatan Umum', href: '#services' },
+  { label: 'Ibu & Anak', href: '#services' },
+  { label: 'Diagnostik', href: '#services' },
+  { label: 'Kesihatan Wanita', href: '#services' },
+  { label: 'Saringan Kesihatan', href: '#services' },
+  { label: 'Estetika', href: '#services' },
 ]
 
 const links = [
@@ -23,7 +23,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
-  // 🔥 PREMIUM SCROLL DETECTION (ikut hero)
   useEffect(() => {
     const handler = () => {
       const hero = document.getElementById('home')
@@ -38,29 +37,27 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className="fixed top-4 left-0 right-0 z-[100] transition-all duration-500">
+    <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div
-          className={`relative flex items-center justify-between px-6 rounded-3xl transition-all duration-500 border ${
+          className={`relative flex items-center justify-between px-6 rounded-none md:rounded-3xl transition-all duration-500 border ${
             scrolled
-              ? 'bg-white/10 backdrop-blur-2xl border-white/20 shadow-2xl shadow-black/20 h-16' 
-              : 'bg-transparent border-transparent h-20'
+              ? 'bg-white/10 backdrop-blur-xl border-white/20 shadow-xl shadow-black/10 h-16 mt-2'
+              : 'bg-transparent border-transparent h-20 mt-4'
           }`}
         >
 
           {/* LOGO */}
           <a href="#home" className="flex items-center gap-4 group">
-            <div className="relative">
-              <img
-                src="/logo.PNG"
-                alt="Logo"
-                className={`h-10 w-10 object-contain transition-all duration-500 ${
-                  scrolled ? 'brightness-100 invert-0' : 'brightness-0 invert'
-                }`}
-              />
-            </div>
+            <img
+              src="/logo.PNG"
+              alt="Logo"
+              className={`h-10 w-10 object-contain transition-all duration-500 ${
+                scrolled ? 'brightness-100 invert-0' : 'brightness-0 invert'
+              }`}
+            />
 
             <div className="flex flex-col">
               <span

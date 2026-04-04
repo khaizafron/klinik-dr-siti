@@ -35,8 +35,8 @@ export default function Panel() {
     <section className="py-28 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-purple-500 font-semibold text-sm tracking-widest uppercase mb-4">Jaringan Kami</p>
-          <h2 className="section-title">Panel Insurans & <span className="text-gradient">Rakan Klinik</span></h2>
+          <p className="text-red-600 font-semibold text-sm tracking-widest uppercase mb-4">Jaringan Kami</p>
+          <h2 className="section-title text-red-600">Panel Insurans & <span className="text-blue-900">Rakan Klinik</span></h2>
           <p className="section-subtitle">Menerima pelbagai panel insurans utama di Malaysia</p>
         </div>
 
@@ -44,7 +44,7 @@ export default function Panel() {
           {panels.map(p => (
             <div
               key={p.name}
-              className="group bg-gray-50 hover:bg-white rounded-3xl p-5 flex flex-col items-center justify-center gap-2 border border-gray-100 hover:border-purple-200 card-hover cursor-pointer shadow-sm hover:shadow-purple-100"
+              className="group bg-gray-50 hover:bg-white rounded-3xl p-5 flex flex-col items-center justify-center gap-2 border border-gray-100 hover:border-blue-900 card-hover cursor-pointer shadow-sm hover:shadow-blue-500"
               title={p.name}
             >
               {/* Logo placeholder with colored badge */}
@@ -54,7 +54,7 @@ export default function Panel() {
               >
                 {p.short}
               </div>
-              <p className="text-xs text-gray-500 group-hover:text-purple-700 text-center font-medium transition-colors leading-tight">{p.name}</p>
+              <p className="text-xs text-gray-500 group-hover:text-red-600 text-center font-medium transition-colors leading-tight">{p.name}</p>
             </div>
           ))}
         </div>

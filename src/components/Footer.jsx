@@ -1,120 +1,159 @@
 import React from 'react'
-import { MapPin, Phone, Clock, MessageCircle } from 'lucide-react'
+import { 
+  MapPin, 
+  Phone, 
+  Clock, 
+  MessageCircle, 
+  ArrowUpRight,
+  Heart,
+  ShieldCheck
+} from 'lucide-react'
+
+const BRANCHES = [
+  { 
+    name: 'Puchong Permai', 
+    addr: 'No. 12, Jalan Permai 1, 47100 Puchong', 
+    tel: '+603-8070 1234',
+  },
+  { 
+    name: 'Puchong Utama', 
+    addr: 'No. 5, Jalan Utama 2, 47150 Puchong', 
+    tel: '+603-8071 5678',
+  },
+]
+
+const QUICK_LINKS = [
+  { label: 'Home', href: '#home' },
+  { label: 'Tentang Kami', href: '#about' },
+  { label: 'Perkhidmatan', href: '#services' },
+  { label: 'Cawangan', href: '#branches' },
+  { label: 'Hubungi', href: '#contact' },
+]
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
-  const waUrl = 'https://wa.me/60166914270?text=Hi%2C%20saya%20ingin%20membuat%20temujanji'
+  const waUrl = 'https://wa.me/60166914270'
 
   return (
-    <footer className="relative bg-gradient-to-b from-white via-blue-500 to-blue-800 text-white overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-red-50 via-white to-white pt-24 pb-12 overflow-hidden border-t border-red-100/50">
 
-      {/* Soft Glow Background */}
+      {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-300/30 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/30 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-200/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-100/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
+        {/* TOP */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-20 pb-12 border-b border-red-100/50">
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
-
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-5">
-              <img src="/logo.PNG" alt="Logo" className="h-14 w-14 object-contain" />
-              <div>
-                <p className="font-black text-xl leading-tight text-white">Klinik Dr Siti</p>
-                <p className="text-blue-100 font-semibold text-sm">& Rakan-Rakan</p>
-              </div>
+          <div className="flex items-center gap-5 group">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-red-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              <img src="/logo.PNG" className="h-14 w-14 relative z-10" />
             </div>
 
-            <p className="text-blue-100/90 text-sm leading-relaxed mb-6 max-w-xs">
-              Menyediakan rawatan kesihatan menyeluruh untuk ibu, anak dan keluarga dengan pendekatan profesional, moden dan mesra pesakit.
-            </p>
-
-            {/* Social */}
-            <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 bg-white/20 backdrop-blur-md border border-white/20 hover:bg-white/30 rounded-xl flex items-center justify-center transition-all text-sm font-bold">
-                f
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/20 backdrop-blur-md border border-white/20 hover:bg-white/30 rounded-xl flex items-center justify-center transition-all text-sm font-bold">
-                ig
-              </a>
-              <a href={waUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-green-500 hover:bg-green-400 rounded-xl flex items-center justify-center transition-all">
-                <MessageCircle size={18} />
-              </a>
+            <div>
+              <h2 className="font-black text-2xl text-blue-950">KLINIK DR SITI</h2>
+              <p className="text-[10px] font-black tracking-[0.4em] text-red-500">& Rakan-Rakan</p>
             </div>
           </div>
 
-          {/* Cawangan */}
-          <div>
-            <h4 className="font-bold text-lg mb-5 text-white">Lokasi Cawangan</h4>
-            <div className="space-y-6">
-              {[
-                { name: 'Puchong Permai', addr: 'No. 12, Jalan Permai 1, 47100 Puchong', tel: '+603-8070 XXXX' },
-                { name: 'Puchong Utama', addr: 'No. 5, Jalan Utama 2, 47150 Puchong', tel: '+603-8071 XXXX' },
-              ].map(c => (
-                <div key={c.name} className="bg-white/10 backdrop-blur-md border border-white/10 p-4 rounded-xl">
-                  <p className="font-semibold text-white mb-2">{c.name}</p>
+          {/* 🔥 FIXED SOCIAL */}
+          <div className="flex items-center gap-2">
+            <a className="w-11 h-11 rounded-2xl bg-white border border-red-100 flex items-center justify-center text-red-400 hover:bg-red-600 hover:text-white transition">
+              f
+            </a>
+            <a className="w-11 h-11 rounded-2xl bg-white border border-red-100 flex items-center justify-center text-red-400 hover:bg-red-600 hover:text-white transition">
+              ig
+            </a>
+            <a href={waUrl} target="_blank" className="w-11 h-11 rounded-2xl bg-white border border-red-100 flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition">
+              <MessageCircle size={18} />
+            </a>
+          </div>
 
-                  <div className="flex gap-2 mb-1">
-                    <MapPin size={14} className="text-blue-100 mt-0.5" />
-                    <p className="text-blue-100/80 text-xs">{c.addr}</p>
+        </div>
+
+        {/* GRID */}
+        <div className="grid lg:grid-cols-12 gap-12 mb-20">
+          
+          <div className="lg:col-span-4">
+            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
+              Visi & Misi
+            </h4>
+
+            <p className="text-neutral-600 text-sm italic">
+              "Kami berdedikasi untuk memberikan rawatan perubatan berkualiti tinggi dengan empati."
+            </p>
+          </div>
+
+          <div className="lg:col-span-5">
+            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
+              Lokasi Cawangan
+            </h4>
+
+            <div className="grid sm:grid-cols-2 gap-5">
+              {BRANCHES.map((b, i) => (
+                <div key={i} className="p-6 rounded-[2rem] bg-white/60 backdrop-blur-sm border border-red-50">
+                  <div className="flex gap-3 mb-3">
+                    <MapPin size={14} className="text-red-600" />
+                    <span className="font-black text-[11px] text-blue-950">{b.name}</span>
                   </div>
 
-                  <div className="flex gap-2">
-                    <Phone size={14} className="text-blue-100" />
-                    <a href={`tel:${c.tel}`} className="text-blue-100/80 text-xs hover:text-white transition-colors">
-                      {c.tel}
-                    </a>
-                  </div>
+                  <p className="text-neutral-500 text-[10px] mb-3">{b.addr}</p>
+
+                  <a href={`tel:${b.tel}`} className="text-blue-900 text-[10px] font-black flex gap-2">
+                    <Phone size={10} />
+                    {b.tel}
+                  </a>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Links + Hours */}
-          <div>
-            <h4 className="font-bold text-lg mb-5 text-white">Maklumat</h4>
+          <div className="lg:col-span-3">
+            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
+              Waktu Operasi
+            </h4>
 
-            <ul className="space-y-2 mb-8">
-              {[
-                ['Home', '#home'],
-                ['Tentang Kami', '#about'],
-                ['Perkhidmatan', '#services'],
-                ['Cawangan', '#branches'],
-                ['Hubungi', '#contact'],
-              ].map(([label, href]) => (
-                <li key={label}>
-                  <a href={href} className="text-blue-100/80 text-sm hover:text-white transition-colors">
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="bg-white/40 backdrop-blur-md rounded-[2rem] border border-red-50 p-6">
+              <p className="text-sm">Isnin – Jumaat: 8:30am – 6pm</p>
+              <p className="text-sm">Sabtu: 8:30am – 1pm</p>
+              <p className="text-red-400 text-sm">Ahad Tutup</p>
 
-            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-4">
-              <h4 className="font-bold text-sm mb-3 flex items-center gap-2 text-white">
-                <Clock size={14} className="text-blue-100" />
-                Waktu Operasi
-              </h4>
-              <p className="text-blue-100/80 text-xs">Isnin – Jumaat: 8:30am – 6pm</p>
-              <p className="text-blue-100/80 text-xs">Sabtu: 8:30am – 1pm</p>
-              <p className="text-red-200 text-xs">Ahad & Cuti: Tutup</p>
+              <a href={waUrl} target="_blank" className="mt-4 w-full py-3 bg-blue-900 text-white rounded-xl flex items-center justify-center gap-2 text-xs font-bold">
+                <MessageCircle size={14} />
+                Hubungi Kami
+              </a>
             </div>
           </div>
+
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-white/20 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-blue-100 text-xs text-center sm:text-left">
-            © {currentYear} Klinik Dr Siti & Rakan-Rakan. Hak Cipta Terpelihara.
+        {/* BOTTOM */}
+        <div className="pt-10 border-t border-red-100 flex flex-col md:flex-row justify-between items-center gap-6">
+
+          <div className="flex flex-wrap gap-6">
+            {QUICK_LINKS.map((l, i) => (
+              <a key={i} href={l.href} className="text-xs font-black text-neutral-400 hover:text-red-600">
+                {l.label}
+              </a>
+            ))}
+          </div>
+
+          <p className="text-neutral-400 text-xs">
+            © {currentYear} Klinik Dr Siti & Rakan2
           </p>
 
-          <div className="flex gap-6">
-            <a href="#" className="text-blue-100 hover:text-white text-xs transition-colors">Dasar Privasi</a>
-            <a href="#" className="text-blue-100 hover:text-white text-xs transition-colors">Terma Penggunaan</a>
+          <div className="text-neutral-400 text-xs font-medium tracking-wide">
+  Powered by{' '}
+  <span className="font-bold bg-gradient-to-r from-blue-900 to-blue-500 bg-clip-text text-transparent">
+    Luxera Cognitive Resources
+  </span>
+
           </div>
+
         </div>
 
       </div>

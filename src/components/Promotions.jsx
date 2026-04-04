@@ -9,7 +9,7 @@ const promos = [
     price: '180',
     originalPrice: '350',
     tag: 'HOT DEAL',
-    color: 'from-purple-600 to-purple-800',
+    color: 'from-red-600 to-red-800',
     desc: 'Ujian darah lengkap, ECG, ultrasound abdomen & konsultasi doktor.',
     expiry: '31 Mei 2026',
     icon: Sparkles
@@ -20,7 +20,7 @@ const promos = [
     price: '250',
     originalPrice: '450',
     tag: 'MOM\'S SPECIAL',
-    color: 'from-pink-500 to-purple-600',
+    color: 'from-blue-500 to-blue-700',
     desc: '5 kali pemeriksaan + ultrasound + ujian darah lengkap.',
     expiry: 'Pakej Bulanan',
     icon: Calendar
@@ -31,7 +31,7 @@ const promos = [
     price: '80',
     originalPrice: '120',
     tag: 'KIDS CARE',
-    color: 'from-blue-500 to-purple-600',
+    color: 'from-blue-400 to-blue-600',
     desc: 'Vaksin swasta pilihan termasuk rotavirus & pneumococcal.',
     expiry: 'Tawaran Berterusan',
     icon: Tag
@@ -42,7 +42,7 @@ const promos = [
     price: '30',
     originalPrice: '60',
     tag: 'QUICK CHECK',
-    color: 'from-orange-500 to-purple-600',
+    color: 'from-red-500 to-red-700',
     desc: 'HbA1c + gula darah puasa + kaunseling diet percuma.',
     expiry: 'Setiap Sabtu',
     icon: Clock
@@ -60,13 +60,13 @@ export default function Promotions() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6">
             <Percent size={12} />
             Tawaran Terhad
           </div>
-          <h2 className="text-4xl md:text-6xl font-black text-purple-900 leading-tight mb-6">
+          <h2 className="text-4xl md:text-6xl font-black text-blue-900 leading-tight mb-6">
             Promosi & <br className="md:hidden" />
-            <span className="text-purple-600">Pakej Kesihatan</span>
+            <span className="text-red-600">Pakej Kesihatan</span>
           </h2>
           <p className="text-neutral-500 text-lg max-w-2xl mx-auto">
             Nikmati rawatan berkualiti tinggi dengan harga istimewa. Kami komited memberikan nilai terbaik untuk kesihatan anda.
@@ -123,19 +123,19 @@ export default function Promotions() {
                 </div>
 
                 {/* Ticket Bottom */}
-                <div className="bg-white p-8 rounded-b-[2.5rem] border border-t-0 border-neutral-100 flex flex-col flex-1 shadow-sm group-hover:shadow-xl group-hover:shadow-purple-900/5 transition-all duration-500">
+                <div className="bg-white p-8 rounded-b-[2.5rem] border border-t-0 border-neutral-100 flex flex-col flex-1 shadow-sm group-hover:shadow-xl group-hover:shadow-red-900/5 transition-all duration-500">
                   <p className="text-neutral-500 text-sm leading-relaxed mb-8 flex-1">
                     {promo.desc}
                   </p>
                   
                   <div className="flex items-center justify-between pt-6 border-t border-neutral-50">
-                    <div className="flex items-center gap-2 text-purple-600">
+                    <div className="flex items-center gap-2 text-red-600">
                       <Clock size={14} />
                       <span className="text-[10px] font-black uppercase tracking-widest">{promo.expiry}</span>
                     </div>
                     <motion.button 
                       whileHover={{ x: 3 }}
-                      className="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all duration-300"
+                      className="w-10 h-10 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-all duration-300"
                     >
                       <ArrowRight size={18} />
                     </motion.button>
@@ -151,11 +151,11 @@ export default function Promotions() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="mt-20 p-1 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 rounded-[3rem] shadow-2xl shadow-purple-600/20"
+          className="mt-20 p-1 bg-gradient-to-r from-red-600 via-blue-500 to-red-600 rounded-[3rem] shadow-2xl shadow-red-600/20"
         >
           <div className="bg-white rounded-[2.9rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
-              <h4 className="text-2xl md:text-3xl font-black text-purple-900 mb-2">Inginkan Pakej Khas?</h4>
+              <h4 className="text-2xl md:text-3xl font-black text-blue-900 mb-2">Inginkan Pakej Khas?</h4>
               <p className="text-neutral-500 font-medium">Hubungi kami untuk konsultasi dan pakej yang disesuaikan mengikut keperluan anda.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
@@ -165,15 +165,15 @@ export default function Promotions() {
                 rel="noopener noreferrer"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-emerald-500 text-white px-10 py-5 rounded-2xl font-black text-xs tracking-[0.2em] shadow-lg shadow-emerald-500/20 text-center"
+                className="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-xs tracking-[0.2em] shadow-lg shadow-blue-600/20 text-center"
               >
                 WHATSAPP SEKARANG
               </motion.a>
               <motion.a 
-                href="https://klinikdrsiti.yezza.co/appointment"
+                href="#contact"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-purple-900 text-white px-10 py-5 rounded-2xl font-black text-xs tracking-[0.2em] shadow-lg shadow-purple-900/20 text-center"
+                className="bg-red-600 text-white px-10 py-5 rounded-2xl font-black text-xs tracking-[0.2em] shadow-lg shadow-red-600/20 text-center"
               >
                 LIHAT SEMUA PAKEJ
               </motion.a>

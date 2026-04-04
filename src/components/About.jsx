@@ -22,7 +22,7 @@ export default function About() {
     <section id="about" className="relative py-32 bg-white overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-neutral-50 -z-10" />
-      <div className="absolute top-1/4 -left-20 w-64 h-64 bg-purple-100/50 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-1/4 -left-20 w-64 h-64 bg-red-100/50 rounded-full blur-3xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -34,14 +34,14 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
-              <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-              <span className="text-purple-600 font-bold text-xs tracking-widest uppercase">Tentang Kami</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-100 mb-6">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+              <span className="text-red-600 font-bold text-xs tracking-widest uppercase">Tentang Kami</span>
             </div>
 
             <h2 className="text-4xl md:text-6xl font-serif font-medium text-neutral-900 leading-[1.1] mb-8">
               Kesihatan Keluarga Anda, <br />
-              <span className="italic text-purple-600">Keutamaan Kami</span>
+              <span className="italic text-red-600">Keutamaan Kami</span>
             </h2>
 
             <div className="space-y-6 text-neutral-500 text-lg leading-relaxed mb-12">
@@ -62,10 +62,10 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 + 0.3 }}
-                  className="group p-6 rounded-3xl bg-white border border-neutral-100 hover:border-purple-200 hover:shadow-xl hover:shadow-purple-500/5 transition-all duration-500"
+                  className="group p-6 rounded-3xl bg-white border border-neutral-100 hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-500"
                 >
-                  <div className="w-12 h-12 bg-neutral-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-purple-500 group-hover:text-white transition-colors duration-500">
-                    <Icon size={24} className="text-purple-600 group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 bg-neutral-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-red-500 group-hover:text-white transition-colors duration-500">
+                    <Icon size={24} className="text-red-600 group-hover:text-white transition-colors" />
                   </div>
                   <div className="text-3xl font-bold text-neutral-900 mb-1">{value}</div>
                   <div className="text-sm text-neutral-400 font-medium uppercase tracking-wider">{label}</div>
@@ -114,7 +114,7 @@ export default function About() {
                 <div className="space-y-3">
                   {features.map((item) => (
                     <div key={item} className="flex items-center gap-3 text-sm font-medium">
-                      <CheckCircle2 size={16} className="text-purple-400" />
+                      <CheckCircle2 size={16} className="text-red-400" />
                       <span>{item}</span>
                     </div>
                   ))}
@@ -142,7 +142,7 @@ export default function About() {
             <motion.div 
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-600 rounded-full flex items-center justify-center z-20 shadow-2xl shadow-purple-500/40"
+              className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-600 rounded-full flex items-center justify-center z-20 shadow-2xl shadow-blue-500/40"
             >
               <div className="text-center text-white">
                 <div className="text-3xl font-bold">10+</div>

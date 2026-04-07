@@ -7,7 +7,7 @@ const trustBadges = [
     icon: ShieldCheck, 
     title: 'Klinik Berlesen', 
     desc: 'Berdaftar dengan KKM',
-    img: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=600&h=800'
+    img: 'kkm.JPG'
   },
   { 
     icon: Award, 
@@ -131,37 +131,48 @@ export default function Trust() {
 
         {/* Trust Badges Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
-          {trustBadges.map((item, index) => (
-            <motion.div 
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="relative group h-80 rounded-[2.5rem] overflow-hidden shadow-xl border border-white/10"
-            >
-              {/* Background Image */}
-              <img 
-                src={item.img} 
-                alt={item.title} 
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                referrerPolicy="no-referrer"
-              />
-              
-              {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+  {trustBadges.map((item, index) => (
+    <motion.div 
+      key={item.title}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="relative group h-80 rounded-[2.5rem] overflow-hidden shadow-xl border border-white/10"
+    >
+      {/* Background Image */}
+      <img 
+        src={item.img} 
+        alt={item.title} 
+        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        referrerPolicy="no-referrer"
+      />
+      
+      {/* Overlay Gradient */}
+      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
-              {/* Content */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-end items-center text-center">
-                <div className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-red-600 group-hover:border-red-500 transition-all duration-500">
-                  <item.icon size={28} className="text-white" />
-                </div>
-                <h4 className="text-xl font-bold text-white mb-2 tracking-tight">{item.title}</h4>
-                <p className="text-white/60 text-sm font-medium uppercase tracking-widest">{item.desc}</p>
-              </div>
-            </motion.div>
-          ))}
+      {/* Content */}
+      <div className="absolute inset-0 p-8 flex flex-col justify-end items-center text-center">
+        
+        {/* ICON */}
+        <div className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-500">
+          <item.icon size={28} className="text-white" />
         </div>
+
+        {/* 🔥 TITLE (INI YANG BERUBAH WARNA) */}
+        <h4 className="text-xl font-bold text-white mb-2 tracking-tight transition-colors duration-300 group-hover:text-blue-900">
+          {item.title}
+        </h4>
+
+        {/* DESC */}
+        <p className="text-white/60 text-sm font-medium uppercase tracking-widest group-hover:text-blue-600 transition-colors duration-300">
+          {item.desc}
+        </p>
+
+      </div>
+    </motion.div>
+  ))}
+</div>
       </div>
     </section>
   )

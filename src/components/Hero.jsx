@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { MessageCircle, Calendar, ChevronDown, Heart, Shield, Clock } from 'lucide-react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import GlassSurface from '../components/ui/GlassSurface'
 
 const WA_NUMBER = '60166914270'
 const BOOKING_URL = 'https://klinikdrsiti.yezza.co/appointment'
@@ -21,20 +22,22 @@ export default function Hero() {
   })
 
   // Frame count from user code
-  const frameCount = 78
+  const frameCount = window.innerWidth < 768 ? 252 : 305
 
   // Preload images
   useEffect(() => {
     let loadedCount = 0
     const loadedImages = []
 
-    const currentFrame = (i) => {
-      let num = i.toString()
-      while (num.length < 4) {
-        num = "0" + num
-      }
-      return "/frames/frame_" + num + ".webp"
-    }
+const currentFrame = (i) => {
+  let num = i.toString().padStart(4, "0")
+
+  if (window.innerWidth < 768) {
+    return "/frames-mobile/frame_" + num + ".webp"
+  } else {
+    return "/frames-desktop/frame_" + num + ".webp"
+  }
+}
 
     for (let i = 1; i <= frameCount; i++) {
       const img = new Image()
@@ -157,15 +160,15 @@ export default function Hero() {
 
   // Content visibility transforms
   // Keep the intro scenes shorter and let the final CTA take most of the scroll time.
-  const welcomeOpacity = useTransform(scrollYProgress, [0, 0.04, 0.1, 0.14], [0, 1, 1, 0])
-  const welcomeY = useTransform(scrollYProgress, [0, 0.04, 0.1, 0.14], [30, 0, 0, -30])
+const welcomeOpacity = useTransform(scrollYProgress, [0, 0.02, 0.06, 0.10], [0, 1, 1, 0])
+const welcomeY = useTransform(scrollYProgress, [0, 0.02, 0.06, 0.10], [30, 0, 0, -16])
 
-  const excellenceOpacity = useTransform(scrollYProgress, [0.12, 0.18, 0.26, 0.34], [0, 1, 1, 0])
-  const excellenceY = useTransform(scrollYProgress, [0.12, 0.18, 0.26, 0.34], [30, 0, 0, -30])
+const excellenceOpacity = useTransform(scrollYProgress, [0.08, 0.14, 0.18, 0.22], [0, 1, 1, 0])
+const excellenceY = useTransform(scrollYProgress, [0.08, 0.14, 0.18, 0.22], [30, 0, 0, -16])
 
-  const mainContentOpacity = useTransform(scrollYProgress, [0.28, 0.36, 1], [0, 1, 1])
-  const mainContentY = useTransform(scrollYProgress, [0.28, 0.36, 1], [140, 60, 60])
-  const mainContentScale = useTransform(scrollYProgress, [0.28, 0.36], [0.96, 1])
+const mainContentOpacity = useTransform(scrollYProgress, [0.20, 0.28, 0.40], [0, 1, 1])
+const mainContentY = useTransform(scrollYProgress, [0.20, 0.34, 0.48], [40, 10, 0])
+const mainContentScale = useTransform(scrollYProgress, [0.20, 1], [0.96, 1])
 
   return (
     <section id="home" ref={sectionRef} className="relative h-[1200vh] bg-black">
@@ -221,26 +224,34 @@ export default function Hero() {
           style={{ opacity: excellenceOpacity, y: excellenceY }}
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
         >
-          <div className="flex gap-8 mb-8">
-             <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                  <Heart className="text-white w-5 h-5" />
-                </div>
-                <span className="text-[10px] text-white/40 uppercase tracking-widest">Compassion</span>
-             </div>
-             <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                  <Shield className="text-white w-5 h-5" />
-                </div>
-                <span className="text-[10px] text-white/40 uppercase tracking-widest">Trust</span>
-             </div>
-             <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                  <Clock className="text-white w-5 h-5" />
-                </div>
-                <span className="text-[10px] text-white/40 uppercase tracking-widest">Care</span>
-             </div>
-          </div>
+          <div className="flex justify-center gap-12 mb-8">
+  <div className="flex flex-col items-center gap-2">
+    <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center border border-white/20">
+      <Clock className="text-white w-5 h-5" />
+    </div>
+    <span className="min-w-[100px] text-center text-black bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-[10px] uppercase tracking-widest">
+      Compassion
+    </span>
+  </div>
+
+  <div className="flex flex-col items-center gap-2">
+    <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center border border-white/20">
+      <Shield className="text-white w-5 h-5" />
+    </div>
+    <span className="min-w-[100px] text-center text-black bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-[10px] uppercase tracking-widest">
+      Trust
+    </span>
+  </div>
+
+  <div className="flex flex-col items-center gap-2">
+    <div className="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center border border-white/20">
+      <Heart className="text-white w-5 h-5" />
+    </div>
+    <span className="min-w-[100px] text-center text-black bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-[10px] uppercase tracking-widest">
+      Care
+    </span>
+  </div>
+</div>
           <h2 className="text-4xl md:text-6xl font-medium text-red-500 tracking-tight">
             Excellence in <span className="italic font-serif font-light text-red-500">Healthcare</span>
           </h2>
@@ -256,38 +267,55 @@ export default function Hero() {
               whileHover={{ scale: 1.05 }}
               className="relative p-6 rounded-full bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl"
             >
-              <img src="/logo.PNG" alt="Logo" className="h-16 w-16 md:h-24 md:w-24 object-contain brightness-0 invert" />
+              <img src="/logo.PNG" alt="Logo" className="h-16 w-16 md:h-24 md:w-24 object-contain " />
               <div className="absolute -inset-1 bg-white/5 rounded-full blur-xl -z-10" />
             </motion.div>
           </div>
 
 
           
-          <p className="text-black text-base md:text-xl max-w-2xl mx-auto mt-8 md:mt-20 mb-8 md:mb-12 font-light tracking-wide">
-            Your journey to wellness begins with a touch of professional care and modern expertise.
-          </p>
+          <p className="
+  text-black 
+  text-lg md:text-2xl 
+  max-w-2xl mx-auto 
+  mt-8 md:mt-20 mb-8 md:mb-12 
+  font-semibold 
+  tracking-wide 
+  leading-relaxed
+">
+  Your journey to wellness begins with a touch of 
+  <span className="font-bold"> professional care</span> 
+  and 
+  <span className="font-bold"> modern expertise</span>.
+</p>
 
           <div className="mt-6 md:mt-8 flex flex-col sm:flex-row justify-center items-center gap-6">
             <motion.a 
               href={BOOKING_URL} 
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative bg-white text-neutral-950 px-10 py-4 rounded-full font-semibold flex items-center gap-3 overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+              whileHover={{ scale: 1.04, y: -4 }}
+              whileTap={{ scale: 0.96 }}
+              className="relative px-8 py-3 rounded-full font-semibold flex items-center gap-3 overflow-hidden
+                bg-white/80 backdrop-blur-xl border border-white/40 text-neutral-950
+                shadow-lg
+                hover:bg-white/90 hover:border-white/50 hover:shadow-2xl hover:shadow-white/20
+                transition-all duration-300"
             >
               <Calendar size={18} />
               <span>Book Appointment</span>
-              <div className="absolute inset-0 bg-neutral-100 translate-y-full group-hover:translate-y-0 transition-transform duration-300 -z-10" />
             </motion.a>
 
             <motion.a 
               href={waUrl} 
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-full font-semibold flex items-center gap-3 overflow-hidden"
+              whileHover={{ scale: 1.04, y: -4 }}
+              whileTap={{ scale: 0.96 }}
+              className="relative px-8 py-3 rounded-full font-semibold flex items-center gap-3 overflow-hidden
+                bg-green-500/80 backdrop-blur-xl border border-white/40 text-white
+                shadow-lg
+                hover:bg-green-500/90 hover:border-white/50 hover:shadow-2xl hover:shadow-green-500/30
+                transition-all duration-300"
             >
               <MessageCircle size={18} />
               <span>WhatsApp Us</span>
-              <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 -z-10" />
             </motion.a>
           </div>
         </motion.div>

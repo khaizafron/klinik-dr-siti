@@ -103,7 +103,7 @@ export default function About() {
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 bg-white rounded-2xl">
-                    <img src="/logo.png" alt="Logo" className="h-8 w-8 object-contain" />
+                    <img src="/logo.PNG" alt="Logo" className="h-8 w-8 object-contain" />
                   </div>
                   <div>
                     <h3 className="font-bold text-xl leading-none">KLINIK DR SITI</h3>
@@ -122,21 +122,33 @@ export default function About() {
               </motion.div>
             </motion.div>
 
-            {/* Secondary Decorative Image */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="absolute -top-12 -right-12 w-48 h-48 rounded-3xl overflow-hidden border-8 border-white shadow-2xl z-20 hidden xl:block"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&q=80&w=400&h=400" 
-                alt="Konsultasi Doktor" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            </motion.div>
+{/* Secondary Decorative Image */}
+<motion.div 
+  initial={{ opacity: 0, x: -50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: 0.8, duration: 0.8 }}
+  className="
+    absolute 
+    -top-12 
+    -left-12 
+    rounded-3xl 
+    overflow-hidden 
+    border-8 border-white 
+    shadow-2xl 
+    z-20 
+    hidden xl:block
+    w-[420px] 
+    aspect-[16/9]
+  "
+>
+  <img 
+    src="staff.jpg" 
+    alt="Konsultasi Doktor" 
+    className="w-full h-full object-cover"
+    referrerPolicy="no-referrer"
+  />
+</motion.div>
 
             {/* Experience Badge */}
             <motion.div 

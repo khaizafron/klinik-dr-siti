@@ -130,15 +130,15 @@ export default function About() {
   transition={{ delay: 0.8, duration: 0.8 }}
   className="
     absolute 
-    -top-12 
-    -left-12 
+    top-4 
+    left-4 
+    md:-top-10 md:-left-10 
     rounded-3xl 
     overflow-hidden 
-    border-8 border-white 
+    border-4 md:border-8 border-white 
     shadow-2xl 
     z-20 
-    hidden xl:block
-    w-[420px] 
+    w-[180px] md:w-[300px] lg:w-[420px] 
     aspect-[16/9]
   "
 >

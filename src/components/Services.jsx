@@ -36,10 +36,10 @@ const categories = [
         for: 'Semua peringkat umur',
         benefits: ['Diagnosis cepat & tepat', 'Ubatan berkualiti', 'Kos berpatutan'],
         options: [
-          { name: 'Rawatan Perubatan Am', desc: 'Konsultasi untuk demam, batuk, selsema dan sakit kepala.', price: 'RM30 - RM80' },
-          { name: 'Rawatan Kecemasan', desc: 'Rawatan segera untuk kecederaan ringan atau sakit mengejut.', price: 'RM50 - RM150' },
-          { name: 'Rawatan Kulit', desc: 'Rawatan ekzema, jerawat, kulat dan alahan kulit.', price: 'RM50 - RM150' },
-          { name: 'Nebulizer', desc: 'Rawatan pernafasan untuk asma atau sesak nafas.', price: 'RM40 - RM70' }
+          { name: 'Rawatan Perubatan Am', desc: 'Konsultasi untuk demam, batuk, selsema dan sakit kepala.', price: 'RM30 - RM80', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/rawatan-perubatan-am-70344' },
+          { name: 'Rawatan Kecemasan', desc: 'Rawatan segera untuk kecederaan ringan atau sakit mengejut.', price: 'RM50 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/rawatan-kecemasan-70357' },
+          { name: 'Rawatan Kulit', desc: 'Rawatan ekzema, jerawat, kulat dan alahan kulit.', price: 'RM50 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/rawatan-kulit-70359' },
+          { name: 'Nebulizer', desc: 'Rawatan pernafasan untuk asma atau sesak nafas.', price: 'RM40 - RM70', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/nebulizer-70361' }
         ]
       },
       {
@@ -51,10 +51,10 @@ const categories = [
         for: 'Kanak-kanak & dewasa',
         benefits: ['Prosedur steril', 'Peralatan moden', 'Penjagaan rapi'],
         options: [
-          { name: 'Rawatan Bisul (I&D)', desc: 'Prosedur torehan dan saliran untuk bisul atau abses.', price: 'RM80 - RM200' },
-          { name: 'Dressing Luka', desc: 'Pencucian dan pembalutan luka selepas pembedahan atau kecederaan.', price: 'RM20 - RM60' },
-          { name: 'Nail Avulsion', desc: 'Prosedur mencabut kuku yang cengkam atau rosak.', price: 'RM100 - RM250' },
-          { name: 'Cuci Telinga (Ear Syringing)', desc: 'Membersihkan tahi telinga yang tersumbat dengan selamat.', price: 'RM50 - RM100' }
+          { name: 'Rawatan Bisul (I&D)', desc: 'Prosedur torehan dan saliran untuk bisul atau abses.', price: 'RM80 - RM200', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/rawatan-bisul(i&d)-70366' },
+          { name: 'Dressing Luka', desc: 'Pencucian dan pembalutan luka selepas pembedahan atau kecederaan.', price: 'RM20 - RM60', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/dressing-(basic)(gauze+plaster+flavine+ns)-70392' },
+          { name: 'Nail Avulsion', desc: 'Prosedur mencabut kuku yang cengkam atau rosak.', price: 'RM100 - RM250', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/nail-avulsion(full)-70395' },
+          { name: 'Cuci Telinga (Ear Syringing)', desc: 'Membersihkan tahi telinga yang tersumbat dengan selamat.', price: 'RM40 - RM60', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/cuci-telinga-(-ear-syringing-)-70360' }
         ]
       },
       {
@@ -66,8 +66,8 @@ const categories = [
         for: 'Dewasa & Ibu Hamil',
         benefits: ['Keputusan segera', 'Analisis tepat', 'Konsultasi doktor'],
         options: [
-          { name: 'Full Blood Count (FBC)', desc: 'Ujian darah lengkap untuk mengesan jangkitan atau anemia.', price: 'RM40 - RM80' },
-          { name: 'Urine Test', desc: 'Ujian air kencing untuk kencing manis atau jangkitan kuman.', price: 'RM15 - RM30' }
+          { name: 'Full Blood Count (FBC)', desc: 'Ujian darah lengkap untuk mengesan jangkitan atau anemia.', price: 'RM40 - RM80', bookingLink: '' },
+          { name: 'Urine Test', desc: 'Ujian air kencing untuk kencing manis atau jangkitan kuman.', price: 'RM15 - RM30', bookingLink: '' }
         ]
       }
     ],
@@ -86,11 +86,11 @@ const categories = [
         for: 'Pasangan Merancang Keluarga',
         benefits: ['Konsultasi peribadi', 'Scan rahim & ovari', 'Ujian hormon'],
         options: [
-          { name: 'AMH Test', desc: 'Ujian rizab ovari untuk menilai potensi kesuburan wanita.', price: 'RM180 - RM250' },
-          { name: 'Progesterone D21', desc: 'Ujian darah untuk mengesahkan ovulasi telah berlaku.', price: 'RM60 - RM100' },
-          { name: 'Seminal Analysis', desc: 'Ujian kualiti, kuantiti dan pergerakan sperma.', price: 'RM80 - RM150' },
-          { name: 'Infertility Consultation', desc: 'Sesi perbincangan mendalam mengenai masalah kesuburan.', price: 'RM100 - RM150' },
-          { name: 'Hormonal Evaluation', desc: 'Saringan hormon lengkap (FSH, LH, Prolactin).', price: 'RM150 - RM300' }
+          { name: 'AMH Test', desc: 'Ujian rizab ovari untuk menilai potensi kesuburan wanita.', price: 'RM180 - RM250', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/amh-226639' },
+          { name: 'Progesterone D21', desc: 'Ujian darah untuk mengesahkan ovulasi telah berlaku.', price: 'RM60 - RM100', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/progestrone-d21-226640' },
+          { name: 'Seminal Analysis', desc: 'Ujian kualiti, kuantiti dan pergerakan sperma.', price: 'RM80 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/seminal-assay-226641' },
+          { name: 'Infertility Consultation', desc: 'Sesi perbincangan mendalam mengenai masalah kesuburan.', price: 'RM100 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/mn02-infertility-226638' },
+          { name: 'Hormonal Evaluation', desc: 'Saringan hormon lengkap (FSH, LH, Prolactin).', price: 'RM150 - RM300', bookingLink: '' }
         ]
       },
       {
@@ -102,11 +102,11 @@ const categories = [
         for: 'Ibu Hamil',
         benefits: ['Pemeriksaan fizikal', 'Ujian makmal', 'Bimbingan kesihatan'],
         options: [
-          { name: 'Antenatal Checkup (Buku Pink)', desc: 'Pendaftaran dan pemeriksaan rutin kehamilan.', price: 'RM50 - RM80', suitable: 'Ibu Hamil' },
-          { name: 'Pregnancy Follow-up', desc: 'Pemeriksaan susulan berkala untuk memantau kesihatan.', price: 'RM40 - RM70', suitable: 'Setiap Bulan' },
-          { name: 'Routine Monitoring', desc: 'Pemeriksaan tekanan darah, berat badan dan ujian air kencing.', price: 'RM20 - RM40', suitable: 'Rutin' },
-          { name: 'MOGTT (Ujian Gula)', desc: 'Saringan kencing manis semasa hamil.', price: 'RM30 - RM50', suitable: 'Ibu Hamil' },
-          { name: 'Beta-HCG Test', desc: 'Ujian darah untuk pengesahan awal kehamilan yang tepat.', price: 'RM60 - RM100', suitable: 'Awal Hamil' }
+          { name: 'Antenatal Checkup (Buku Pink)', desc: 'Pendaftaran dan pemeriksaan rutin kehamilan.', price: 'RM50 - RM80', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/antenatal-checkup-buku-pink-70345', suitable: 'Ibu Hamil' },
+          { name: 'Pregnancy Follow-up', desc: 'Pemeriksaan susulan berkala untuk memantau kesihatan.', price: 'RM40 - RM70', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/follow-up-review-result-70970', suitable: 'Setiap Bulan' },
+          { name: 'Routine Monitoring', desc: 'Pemeriksaan tekanan darah, berat badan dan ujian air kencing.', price: 'RM20 - RM40', bookingLink: '', suitable: 'Rutin' },
+          { name: 'MOGTT (Ujian Gula)', desc: 'Saringan kencing manis semasa hamil.', price: 'RM30 - RM50', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/mogtt-flavoured-71651', suitable: 'Ibu Hamil' },
+          { name: 'Beta-HCG Test', desc: 'Ujian darah untuk pengesahan awal kehamilan yang tepat.', price: 'RM60 - RM100', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/beta--hcg-(blood-test)-201158', suitable: 'Awal Hamil' }
         ]
       },
       {
@@ -118,12 +118,12 @@ const categories = [
         for: 'Ibu Hamil',
         benefits: ['Mesin ultrasound 2D/4D/5D', 'Keputusan segera', 'Laporan bergambar'],
         options: [
-          { name: 'NT Scan', desc: 'Saringan awal risiko keabnormalan janin (11-13 minggu).', price: 'RM120 - RM180', suitable: '11-13 Minggu' },
-          { name: 'Detail Scan', desc: 'Pemeriksaan anatomi lengkap organ bayi secara terperinci.', price: 'RM150 - RM250', suitable: '18-24 Minggu' },
-          { name: '5D Scan', desc: 'Gambaran realistik wajah dan pergerakan bayi secara real-time.', price: 'RM180 - RM280', suitable: '24-32 Minggu' },
-          { name: 'Growth Scan', desc: 'Memantau tumbesaran, berat bayi dan air ketuban.', price: 'RM60 - RM100', suitable: 'Trimester 3' },
-          { name: 'Gynae Scan', desc: 'Scan rahim dan ovari untuk saringan kesihatan umum.', price: 'RM80 - RM150', suitable: 'Umum' },
-          { name: 'TVS (Scan Dalaman)', desc: 'Scan dalaman untuk gambaran yang lebih jelas dan tepat.', price: 'RM80 - RM120', suitable: 'Khusus' }
+          { name: 'NT Scan', desc: 'Saringan awal risiko keabnormalan janin (11-13 minggu).', price: 'RM120 - RM180', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/nt-scan-70386', suitable: '11-13 Minggu' },
+          { name: 'Detail Scan', desc: 'Pemeriksaan anatomi lengkap organ bayi secara terperinci.', price: 'RM150 - RM250', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/detail-anomaly-scan-70351', suitable: '18-24 Minggu' },
+          { name: '5D Scan', desc: 'Gambaran realistik wajah dan pergerakan bayi secara real-time.', price: 'RM180 - RM280', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/detail-scan-+-5d-70355', suitable: '24-32 Minggu' },
+          { name: 'Growth Scan', desc: 'Memantau tumbesaran, berat bayi dan air ketuban.', price: 'RM60 - RM100', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/2d-growth-scan-70356', suitable: 'Trimester 3' },
+          { name: 'Gynae Scan', desc: 'Scan rahim dan ovari untuk saringan kesihatan umum.', price: 'RM80 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/gynae-scan-72235', suitable: 'Umum' },
+          { name: 'TVS (Scan Dalaman)', desc: 'Scan dalaman untuk gambaran yang lebih jelas dan tepat.', price: 'RM80 - RM120', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/tvs-(tramsvagina--ultrasound)-174625', suitable: 'Khusus' }
         ]
       },
       {
@@ -135,10 +135,10 @@ const categories = [
         for: 'Ibu & Kanak-kanak',
         benefits: ['Vaksin KKM & swasta', 'Rekod vaksin digital', 'Penyimpanan suhu terkawal'],
         options: [
-          { name: 'Influenza Vaccine', desc: 'Vaksin selsema bermusim (disyorkan setiap tahun).', price: 'RM70 - RM90', suitable: 'Semua' },
-          { name: 'Typhoid Injection', desc: 'Wajib untuk pengendali makanan (sah 3 tahun).', price: 'RM60 - RM80', suitable: 'Pekerja Makanan' },
-          { name: 'Umrah Vaccine (Meningococcal)', desc: 'Vaksin wajib untuk jemaah Haji dan Umrah.', price: 'RM150 - RM180', suitable: 'Jemaah' },
-          { name: 'Child Immunization', desc: 'Vaksin tambahan seperti Rotavirus, Pneumococcal & Chickenpox.', price: 'RM120 - RM250', suitable: 'Kanak-kanak' }
+          { name: 'Influenza Vaccine', desc: 'Vaksin selsema bermusim (disyorkan setiap tahun).', price: 'RM70 - RM90', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/vaccine-influenza-70390', suitable: 'Semua' },
+          { name: 'Typhoid Injection', desc: 'Wajib untuk pengendali makanan (sah 3 tahun).', price: 'RM60 - RM80', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/injection-thypoid-70369', suitable: 'Pekerja Makanan' },
+          { name: 'Umrah Vaccine (Meningococcal)', desc: 'Vaksin wajib untuk jemaah Haji dan Umrah.', price: 'RM150 - RM180', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/imunisasi-umrah(menctra-meninggococcal)-70368', suitable: 'Jemaah' },
+          { name: 'Child Immunization', desc: 'Vaksin tambahan seperti Rotavirus, Pneumococcal & Chickenpox.', price: 'RM120 - RM250', bookingLink: '', suitable: 'Kanak-kanak' }
         ]
       },
       {
@@ -150,11 +150,11 @@ const categories = [
         for: 'Wanita Dewasa',
         benefits: ['Prosedur selamat', 'Doktor wanita', 'Privasi terjamin'],
         options: [
-          { name: 'General Women Consultation', desc: 'Rundingan masalah haid, keputihan, and kesihatan umum wanita.', price: 'RM50 - RM100', suitable: 'Umum' },
-          { name: 'Pap Smear', desc: 'Saringan tradisional untuk mengesan sel luar biasa pada serviks.', price: 'RM60 - RM100', suitable: 'Saringan' },
-          { name: 'HPV DNA Test', desc: 'Ujian saringan kanser serviks yang lebih sensitif.', price: 'RM250 - RM350', suitable: 'Saringan' },
-          { name: 'IUCD Insertion', desc: 'Prosedur pemasangan alat perancang keluarga dalam rahim.', price: 'RM150 - RM300', suitable: 'Perancang' },
-          { name: 'Depo Injection', desc: 'Suntikan perancang keluarga setiap 3 bulan.', price: 'RM40 - RM60', suitable: 'Perancang' }
+          { name: 'General Women Consultation', desc: 'Rundingan masalah haid, keputihan, and kesihatan umum wanita.', price: 'RM50 - RM100', bookingLink: '', suitable: 'Umum' },
+          { name: 'Pap Smear', desc: 'Saringan tradisional untuk mengesan sel luar biasa pada serviks.', price: 'RM60 - RM100', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/pap-smear(-lcb)-75680', suitable: 'Saringan' },
+          { name: 'HPV DNA Test', desc: 'Ujian saringan kanser serviks yang lebih sensitif.', price: 'RM250 - RM350', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/hpv-dna(full-genotyping)28-hpv-226589', suitable: 'Saringan' },
+          { name: 'IUCD Insertion', desc: 'Prosedur pemasangan alat perancang keluarga dalam rahim.', price: 'RM150 - RM300', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/iucd-70363', suitable: 'Perancang' },
+          { name: 'Depo Injection', desc: 'Suntikan perancang keluarga setiap 3 bulan.', price: 'RM40 - RM60', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/injection-depo(perancang)-70391', suitable: 'Perancang' }
         ]
       },
       {
@@ -166,9 +166,9 @@ const categories = [
         for: 'Bayi & Kanak-kanak',
         benefits: ['Rawatan pakar', 'Persekitaran mesra kanak-kanak', 'Pemantauan tumbesaran'],
         options: [
-          { name: 'Women & Child Consultation', desc: 'Rundingan kesihatan khusus untuk ibu dan anak.', price: 'RM50 - RM100', suitable: 'Ibu & Anak' },
-          { name: 'Baby Procedures', desc: 'Prosedur kecil seperti rawatan pusat, sedut kahak dan lain-lain.', price: 'RM30 - RM80', suitable: 'Bayi' },
-          { name: 'Child Health Monitoring', desc: 'Pemeriksaan tumbesaran, berat badan dan perkembangan motor.', price: 'RM40 - RM70', suitable: 'Kanak-kanak' }
+          { name: 'Women & Child Consultation', desc: 'Rundingan kesihatan khusus untuk ibu dan anak.', price: 'RM50 - RM100', bookingLink: '', suitable: 'Ibu & Anak' },
+          { name: 'Baby Procedures', desc: 'Prosedur kecil seperti rawatan pusat, sedut kahak dan lain-lain.', price: 'RM30 - RM80', bookingLink: '', suitable: 'Bayi' },
+          { name: 'Child Health Monitoring', desc: 'Pemeriksaan tumbesaran, berat badan dan perkembangan motor.', price: 'RM40 - RM70', bookingLink: '', suitable: 'Kanak-kanak' }
         ]
       }
     ],
@@ -190,21 +190,22 @@ const categories = [
           {
             title: 'Pemeriksaan Asas',
             items: [
-              { name: 'ECG', desc: 'Ujian saringan jantung untuk mengesan keabnormalan ritma.', price: 'RM40 - RM70' },
-              { name: 'Ujian Air Gula (MOGTT / GDL)', desc: 'Saringan kencing manis semasa hamil atau rutin.', price: 'RM30 - RM50' }
+              { name: 'ECG', desc: 'Ujian saringan jantung untuk mengesan keabnormalan ritma.', price: 'RM40 - RM70', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/ecg-70349' },
+              { name: 'Ujian Air Gula (MOGTT / GDL)', desc: 'Saringan kencing manis semasa hamil atau rutin.', price: 'RM30 - RM50', bookingLink: '' }
             ]
           },
           {
             title: 'Ujian Makmal',
             items: [
-              { name: 'Blood Test Package (Basic & Premium)', desc: 'Saringan darah lengkap untuk profil kesihatan menyeluruh.', price: 'RM100 - RM350' },
-              { name: 'Beta-HCG (Ujian Kehamilan)', desc: 'Ujian darah untuk pengesahan awal kehamilan yang tepat.', price: 'RM60 - RM100' }
+              { name: 'Blood Test Package (Basic)', desc: 'Saringan darah lengkap untuk profil kesihatan menyeluruh.', price: 'RM100 - RM200', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/standard-package-(blood-test)-bhs2+hba1c-71861' },
+               { name: 'Blood Test Package (Premium)', desc: 'Saringan darah lengkap untuk profil kesihatan menyeluruh.', price: 'RM200 - RM350', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/premium-package-(-blood-test-)-psra-71863' },
+              { name: 'Beta-HCG (Ujian Kehamilan)', desc: 'Ujian darah untuk pengesahan awal kehamilan yang tepat.', price: 'RM60 - RM100', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/beta--hcg-(blood-test)-201158' }
             ]
           },
           {
             title: 'Susulan',
             items: [
-              { name: 'Follow Up / Review Result', desc: 'Sesi konsultasi bersama doktor untuk ulasan keputusan ujian.', price: 'RM30 - RM50' }
+              { name: 'Follow Up / Review Result', desc: 'Sesi konsultasi bersama doktor untuk ulasan keputusan ujian.', price: 'RM30 - RM50', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/follow-up-review-result-70970' }
             ]
           }
         ]
@@ -221,17 +222,17 @@ const categories = [
           {
             title: 'Scan Umum',
             items: [
-              { name: 'Abdominal Scan', desc: 'Pemeriksaan organ dalaman abdomen seperti hati, buah pinggang dan pundi hempedu.', price: 'RM80 - RM150' },
-              { name: 'KUB Scan', desc: 'Pemeriksaan buah pinggang, ureter dan pundi kencing.', price: 'RM80 - RM150' },
-              { name: 'Breast Scan', desc: 'Ultrasound payudara untuk saringan ketulan atau perubahan tisu.', price: 'RM80 - RM150' }
+              { name: 'Abdominal Scan', desc: 'Pemeriksaan organ dalaman abdomen seperti hati, buah pinggang dan pundi hempedu.', price: 'RM80 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/abdormal-scan-116413' },
+              { name: 'KUB Scan', desc: 'Pemeriksaan buah pinggang, ureter dan pundi kencing.', price: 'RM80 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/kub-scan-151771' },
+              { name: 'Breast Scan', desc: 'Ultrasound payudara untuk saringan ketulan atau perubahan tisu.', price: 'RM80 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/breast-scan-218676' }
             ]
           },
           {
             title: 'Scan Khusus',
             items: [
-              { name: 'Thyroid Scan', desc: 'Pemeriksaan kelenjar tiroid untuk mengesan ketumbuhan atau masalah hormon.', price: 'RM80 - RM150' },
-              { name: 'Prostate Scan', desc: 'Pemeriksaan prostat bagi lelaki.', price: 'RM100 - RM180' },
-              { name: 'Muscle / Tendon Scan', desc: 'Scan untuk kecederaan otot dan tendon.', price: 'RM80 - RM150' }
+              { name: 'Thyroid Scan', desc: 'Pemeriksaan kelenjar tiroid untuk mengesan ketumbuhan atau masalah hormon.', price: 'RM80 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/thyroid-scan-218677' },
+              { name: 'Prostate Scan', desc: 'Pemeriksaan prostat bagi lelaki.', price: 'RM100 - RM180', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/prostate-scan-218680' },
+              { name: 'Muscle / Tendon Scan', desc: 'Scan untuk kecederaan otot dan tendon.', price: 'RM80 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/muscle-tendon-scan-218679' }
             ]
           }
         ]
@@ -248,10 +249,10 @@ const categories = [
           {
             title: 'Profil Hormon',
             items: [
-              { name: 'Female Hormone Profile (FSH, LH, Prolactin, Estradiol)', desc: 'Penilaian asas hormon kesuburan wanita.', price: 'RM150 - RM250' },
-              { name: 'Progesterone Test (Day 21)', desc: 'Ujian untuk mengesan ovulasi.', price: 'RM60 - RM100' },
-              { name: 'Thyroid Profile (T3, T4, TSH)', desc: 'Saringan fungsi tiroid yang mempengaruhi kesuburan.', price: 'RM80 - RM150' },
-              { name: 'AMH Test (Anti-Mullerian Hormone)', desc: 'Penilaian baki simpanan telur (ovarian reserve).', price: 'RM250 - RM350' }
+              { name: 'Female Hormone Profile (FSH, LH, Prolactin, Estradiol)', desc: 'Penilaian asas hormon kesuburan wanita.', price: 'RM150 - RM250', bookingLink: '' },
+              { name: 'Progesterone Test (Day 21)', desc: 'Ujian untuk mengesan ovulasi.', price: 'RM60 - RM100', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/progestrone-d21-226640' },
+              { name: 'Thyroid Profile (T3, T4, TSH)', desc: 'Saringan fungsi tiroid yang mempengaruhi kesuburan.', price: 'RM80 - RM150', bookingLink: '' },
+              { name: 'AMH Test (Anti-Mullerian Hormone)', desc: 'Penilaian baki simpanan telur (ovarian reserve).', price: 'RM250 - RM350', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/amh-226639' }
             ]
           }
         ]
@@ -275,9 +276,9 @@ const categories = [
           {
             title: 'Kaedah Perancang',
             items: [
-              { name: 'IUCD', desc: 'Alat perancang keluarga dalam rahim jangka panjang (3-5 tahun).', price: 'RM150 - RM300' },
-              { name: 'Injection Depo', desc: 'Suntikan perancang keluarga setiap 3 bulan.', price: 'RM40 - RM60' },
-              { name: 'Konsultasi Perancang Keluarga', desc: 'Sesi perbincangan untuk memilih kaedah yang paling sesuai.', price: 'RM50 - RM80' }
+              { name: 'IUCD', desc: 'Alat perancang keluarga dalam rahim jangka panjang (3-5 tahun).', price: 'RM150 - RM300', bookingLink: '' },
+              { name: 'Injection Depo', desc: 'Suntikan perancang keluarga setiap 3 bulan.', price: 'RM40 - RM60', bookingLink: '' },
+              { name: 'Konsultasi Perancang Keluarga', desc: 'Sesi perbincangan untuk memilih kaedah yang paling sesuai.', price: 'RM50 - RM80', bookingLink: '' }
             ]
           }
         ]
@@ -294,9 +295,9 @@ const categories = [
           {
             title: 'Rawatan Wanita',
             items: [
-              { name: 'General Women Consultation', desc: 'Rundingan masalah haid, keputihan dan kesihatan wanita umum.', price: 'RM50 - RM100' },
-              { name: 'Rawatan Sakit Puan', desc: 'Rawatan jangkitan dan masalah dalaman wanita.', price: 'RM50 - RM150' },
-              { name: 'Konsultasi Hormon Wanita', desc: 'Penilaian simptom berkaitan hormon seperti PMS atau irregular cycle.', price: 'RM80 - RM150' }
+              { name: 'General Women Consultation', desc: 'Rundingan masalah haid, keputihan dan kesihatan wanita umum.', price: 'RM50 - RM100', bookingLink: '' },
+              { name: 'Rawatan Sakit Puan', desc: 'Rawatan jangkitan dan masalah dalaman wanita.', price: 'RM50 - RM150', bookingLink: '' },
+              { name: 'Konsultasi Hormon Wanita', desc: 'Penilaian simptom berkaitan hormon seperti PMS atau irregular cycle.', price: 'RM80 - RM150', bookingLink: '' }
             ]
           }
         ]
@@ -313,9 +314,9 @@ const categories = [
           {
             title: 'Ultrasound Ginekologi',
             items: [
-              { name: 'Gynae Scan', desc: 'Scan rahim dan ovari untuk saringan kesihatan umum.', price: 'RM80 - RM150' },
-              { name: 'TVS (Transvaginal Scan)', desc: 'Scan dalaman untuk gambaran yang lebih jelas dan tepat.', price: 'RM80 - RM120' },
-              { name: 'Pelvic Scan', desc: 'Pemeriksaan ultrasound kawasan pelvis.', price: 'RM80 - RM150' }
+              { name: 'Gynae Scan', desc: 'Scan rahim dan ovari untuk saringan kesihatan umum.', price: 'RM80 - RM150', bookingLink: '' },
+              { name: 'TVS (Transvaginal Scan)', desc: 'Scan dalaman untuk gambaran yang lebih jelas dan tepat.', price: 'RM80 - RM120', bookingLink: '' },
+              { name: 'Pelvic Scan', desc: 'Pemeriksaan ultrasound kawasan pelvis.', price: 'RM80 - RM150', bookingLink: '' }
             ]
           }
         ]
@@ -339,17 +340,17 @@ const categories = [
           {
             title: 'Pemeriksaan Rasmi',
             items: [
-              { name: 'General Medical Checkup', desc: 'Pemeriksaan kesihatan rutin untuk pemantauan kendiri.', price: 'RM80 - RM150' },
-              { name: 'Student Medical Checkup', desc: 'Saringan kesihatan untuk kemasukan sekolah atau universiti.', price: 'RM50 - RM80' },
-              { name: 'Pre-employment Checkup', desc: 'Pemeriksaan kesihatan sebelum memulakan pekerjaan baru.', price: 'RM80 - RM150' }
+              { name: 'General Medical Checkup', desc: 'Pemeriksaan kesihatan rutin untuk pemantauan kendiri.', price: 'RM80 - RM150', bookingLink: '' },
+              { name: 'Student Medical Checkup', desc: 'Saringan kesihatan untuk kemasukan sekolah atau universiti.', price: 'RM50 - RM80', bookingLink: '' },
+              { name: 'Pre-employment Checkup', desc: 'Pemeriksaan kesihatan sebelum memulakan pekerjaan baru.', price: 'RM80 - RM150', bookingLink: '' }
             ]
           },
           {
             title: 'Pemeriksaan Khas',
             items: [
-              { name: 'GDL Medical Checkup', desc: 'Pemeriksaan kesihatan untuk lesen GDL (kenderaan berat).', price: 'RM60 - RM120' },
-              { name: 'Grab Medical Checkup', desc: 'Pemeriksaan kesihatan untuk pendaftaran pemandu Grab / e-hailing.', price: 'RM60 - RM120' },
-              { name: 'Socso Medical Checkup', desc: 'Pemeriksaan kesihatan berkaitan tuntutan atau keperluan SOCSO.', price: 'RM80 - RM150' }
+              { name: 'GDL Medical Checkup', desc: 'Pemeriksaan kesihatan untuk lesen GDL (kenderaan berat).', price: 'RM60 - RM120', bookingLink: '' },
+              { name: 'Grab Medical Checkup', desc: 'Pemeriksaan kesihatan untuk pendaftaran pemandu Grab / e-hailing.', price: 'RM60 - RM120', bookingLink: '' },
+              { name: 'Socso Medical Checkup', desc: 'Pemeriksaan kesihatan berkaitan tuntutan atau keperluan SOCSO.', price: 'RM80 - RM150', bookingLink: '' }
             ]
           }
         ]
@@ -366,7 +367,7 @@ const categories = [
           {
             title: 'Saringan FOMEMA',
             items: [
-              { name: 'FOMEMA Medical Checkup', desc: 'Pemeriksaan kesihatan lengkap mengikut piawaian FOMEMA.', price: 'RM180 - RM200' }
+              { name: 'FOMEMA Medical Checkup', desc: 'Pemeriksaan kesihatan lengkap mengikut piawaian FOMEMA.', price: 'RM180 - RM200', bookingLink: '' }
             ]
           }
         ]
@@ -383,8 +384,8 @@ const categories = [
           {
             title: 'Pakej Darah',
             items: [
-              { name: 'Standard Blood Test Package', desc: 'Saringan darah asas merangkumi kolesterol, gula, dan fungsi organ.', price: 'RM100 - RM180' },
-              { name: 'Premium Package', desc: 'Saringan darah menyeluruh termasuk penanda kanser dan profil hormon.', price: 'RM250 - RM350' }
+              { name: 'Standard Blood Test Package', desc: 'Saringan darah asas merangkumi kolesterol, gula, dan fungsi organ.', price: 'RM100 - RM180', bookingLink: '' },
+              { name: 'Premium Package', desc: 'Saringan darah menyeluruh termasuk penanda kanser dan profil hormon.', price: 'RM250 - RM350', bookingLink: '' }
             ]
           }
         ]
@@ -405,7 +406,7 @@ const categories = [
         for: 'Semua yang mementingkan kecantikan',
         benefits: ['Coming Soon', 'Rawatan Moden', 'Pakar Estetika'],
         steps: ['Akan Datang'],
-        price: 'Coming Soon',
+        price: 'Coming Soon', bookingLink: '',
         isComingSoon: true
       }
     ]
@@ -561,7 +562,7 @@ function ServiceModal({ service, onClose }) {
                                         TANYA
                                       </a>
                                       <a 
-                                        href={BOOKING_URL}
+                                        href={opt.bookingLink || BOOKING_URL}
                                         className="flex-1 sm:flex-none px-4 md:px-5 py-2 md:py-2.5 bg-red-600 text-white text-[9px] md:text-[10px] font-black rounded-xl hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/20 transition-all flex items-center justify-center gap-2 uppercase tracking-widest"
                                       >
                                         TEMPAH
@@ -611,7 +612,7 @@ function ServiceModal({ service, onClose }) {
                                     TANYA
                                   </a>
                                   <a 
-                                    href={BOOKING_URL}
+                                    href={opt.bookingLink || BOOKING_URL}
                                     className="flex-1 sm:flex-none px-4 md:px-5 py-2 md:py-2.5 bg-red-600 text-white text-[9px] md:text-[10px] font-black rounded-xl hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/20 transition-all flex items-center justify-center gap-2 uppercase tracking-widest"
                                   >
                                     TEMPAH
@@ -645,7 +646,7 @@ function ServiceModal({ service, onClose }) {
                       <h5 className="hidden lg:block text-blue-950 font-black text-sm uppercase tracking-widest mb-4">Tindakan Pantas</h5>
                       <div className="flex flex-row lg:flex-col gap-2 lg:gap-3">
                         <a 
-                          href={BOOKING_URL}
+                          href={service.bookingLink || BOOKING_URL}
                           className="flex-1 lg:w-full bg-red-600 hover:bg-red-700 text-white font-black py-3 md:py-3.5 lg:py-4 rounded-xl lg:rounded-2xl flex items-center justify-center gap-2 lg:gap-3 shadow-lg lg:shadow-xl shadow-red-900/10 lg:shadow-red-900/20 transition-all active:scale-95 text-[8px] md:text-[10px] lg:text-xs tracking-widest"
                         >
                           <Calendar size={14} className="md:size-4 lg:size-[18px]" />

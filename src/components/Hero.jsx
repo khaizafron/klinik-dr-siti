@@ -132,9 +132,8 @@ const currentFrame = (i) => {
     if (!canvas) return
 
     const resize = () => {
-      const viewport = window.visualViewport
-      const width = Math.round(viewport?.width || window.innerWidth)
-      const height = Math.round(viewport?.height || window.innerHeight)
+      const width = window.innerWidth
+      const height = window.innerHeight
 
       canvas.width = width
       canvas.height = height
@@ -147,12 +146,10 @@ const currentFrame = (i) => {
     resize()
     window.addEventListener("resize", resize)
     window.addEventListener("orientationchange", resize)
-    window.visualViewport?.addEventListener("resize", resize)
 
     return () => {
       window.removeEventListener("resize", resize)
       window.removeEventListener("orientationchange", resize)
-      window.visualViewport?.removeEventListener("resize", resize)
     }
   }, [])
 
@@ -198,7 +195,7 @@ const mainContentScale = useTransform(scrollYProgress, [0.20, 1], [0.96, 1])
         )}
       </AnimatePresence>
 
-      <div className="sticky top-0 h-[100svh] md:h-screen w-full flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-[100dvh] w-full flex items-center justify-center overflow-hidden">
         {/* Background Canvas */}
         <canvas
           ref={canvasRef}
@@ -284,7 +281,7 @@ const mainContentScale = useTransform(scrollYProgress, [0.20, 1], [0.96, 1])
   leading-relaxed
 ">
   Your journey to wellness begins with a touch of 
-  <span className="font-bold"> professional care</span> 
+  <span className="font-bold"> professional care</span>{' '} 
   and 
   <span className="font-bold"> modern expertise</span>.
 </p>

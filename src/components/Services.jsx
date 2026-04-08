@@ -358,7 +358,7 @@ const categories = [
       {
         id: 'fomema-pekerja-asing',
         type: 'grouped',
-        name: 'FOMEMA & Pekerja Asing',
+        name: 'FOMEMA (Foreign Workers Screening)',
         image: 'https://images.unsplash.com/photo-1679000265956-3bd0f356b2b3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         desc: 'Pemeriksaan kesihatan rasmi untuk pekerja asing.',
         for: 'Pekerja Asing',

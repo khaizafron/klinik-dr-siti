@@ -4,40 +4,22 @@ import { GraduationCap, Briefcase, Star, Award, MapPin, CheckCircle2 } from 'luc
 
 const doctors = [
   {
-    name: 'Dr. Siti Nurfaizah',
-    qualification: 'MBBS (UM), MMed Family Medicine',
-    specialty: 'Perubatan Keluarga & Ibu Hamil',
-    experience: '12 Tahun',
-    avatar: 'https://ui-avatars.com/api/?name=Siti+Nurfaizah&background=DC2626&color=fff&size=256&bold=true',
-    branch: 'Puchong Permai',
-    tags: ['Pakar Perubatan', 'Ibu & Anak']
+    name: 'Dr Sumaya Bibi bt Md Ali',
+    qualification: 'MBBS (IMU) | MMC 38615',
+    specialty: 'Women Health, Antenatal Care, Child Health, Ultrasound',
+    experience: '24 Tahun',
+    avatar: '/drsumaiya.JPG',
+    branch: 'Medical Director',
+    tags: ['Women Health', 'Antenatal', 'Ultrasound']
   },
   {
-    name: 'Dr. Ahmad Faris',
-    qualification: 'MBBS (UKM), Dip. Obstetrics',
-    specialty: 'Kesihatan Kanak-kanak & Vaksinasi',
-    experience: '9 Tahun',
-    avatar: 'https://ui-avatars.com/api/?name=Ahmad+Faris&background=1E3A8A&color=fff&size=256&bold=true',
-    branch: 'Puchong Utama',
-    tags: ['Pediatrik', 'Vaksinasi']
-  },
-  {
-    name: 'Dr. Nurul Ain',
-    qualification: 'MBBS (IIUM), Dip. Dermatology',
-    specialty: 'Penyakit Kulit & Estetika',
-    experience: '7 Tahun',
-    avatar: 'https://ui-avatars.com/api/?name=Nurul+Ain&background=DC2626&color=fff&size=256&bold=true',
-    branch: 'Puchong Permai',
-    tags: ['Dermatologi', 'Estetika']
-  },
-  {
-    name: 'Dr. Rizwan Hakim',
-    qualification: 'MBBS (UM), MMed Internal Medicine',
-    specialty: 'Perubatan Am & Diagnostik',
+    name: 'Dr Nursalia Hanum Binti Md Sidek',
+    qualification: 'MBBS (UniKL RCMP) | MMC 80081',
+    specialty: 'Antenatal Care, Women Health, Ultrasound',
     experience: '10 Tahun',
-    avatar: 'https://ui-avatars.com/api/?name=Rizwan+Hakim&background=1E3A8A&color=fff&size=256&bold=true',
-    branch: 'Puchong Utama',
-    tags: ['Diagnostik', 'Kesihatan Am']
+    avatar: '/drsalia.PNG',
+    branch: 'General Practitioner',
+    tags: ['Women Health', 'Ultrasound']
   },
 ]
 
@@ -45,6 +27,8 @@ export default function Doctors() {
   return (
     <section id="doctors" className="py-32 bg-neutral-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
+        {/* HEADER */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +46,8 @@ export default function Doctors() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* DOCTORS GRID */}
+        <div className="grid sm:grid-cols-2 gap-8 lg:gap-12">
           {doctors.map((doc, i) => (
             <motion.div
               key={doc.name}
@@ -70,70 +55,70 @@ export default function Doctors() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="group bg-white rounded-[3rem] p-8 text-center border border-neutral-100 shadow-sm hover:shadow-2xl hover:shadow-red-900/10 transition-all duration-500 relative overflow-hidden"
+              className="group relative h-[500px] md:h-[600px] rounded-[3rem] overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-red-900/20 transition-all duration-700"
             >
-              {/* Decorative Background Element */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
+              {/* FULL IMAGE */}
+              <img 
+                src={doc.avatar} 
+                alt={doc.name} 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
 
-              {/* Avatar Container */}
-              <div className="relative mb-8 inline-block">
-                <div className="w-32 h-32 rounded-[2.5rem] overflow-hidden shadow-xl shadow-red-900/10 border-4 border-white group-hover:rotate-3 transition-transform duration-500">
-                  <img 
-                    src={doc.avatar} 
-                    alt={doc.name} 
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-emerald-500 rounded-2xl border-4 border-white flex items-center justify-center shadow-lg">
-                  <CheckCircle2 size={18} className="text-white" />
-                </div>
+              {/* GRADIENT OVERLAY */}
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/60 md:via-blue-950/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* VERIFIED BADGE */}
+              <div className="absolute top-6 right-6 w-12 h-12 bg-emerald-500 rounded-2xl border-4 border-white/20 backdrop-blur-md flex items-center justify-center shadow-lg z-20">
+                <CheckCircle2 size={24} className="text-white" />
               </div>
 
-              {/* Info */}
-              <div className="relative z-10">
-                <h3 className="font-black text-blue-900 text-xl mb-2 group-hover:text-red-600 transition-colors tracking-tight">
-                  {doc.name}
-                </h3>
-                
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <GraduationCap size={14} className="text-red-400" />
-                  <p className="text-[11px] text-neutral-400 font-bold uppercase tracking-wider leading-tight">
-                    {doc.qualification}
-                  </p>
-                </div>
-
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-700 rounded-xl text-xs font-black mb-6 border border-red-100">
-                  <Star size={12} className="fill-red-700" />
-                  {doc.specialty}
-                </div>
-
-                <div className="flex flex-wrap justify-center gap-2 mb-8">
-                  {doc.tags.map(tag => (
-                    <span key={tag} className="text-[10px] font-bold text-neutral-400 bg-neutral-50 px-2 py-1 rounded-md border border-neutral-100">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between pt-6 border-t border-neutral-100">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-neutral-50 rounded-lg flex items-center justify-center text-red-500">
-                      <Briefcase size={14} />
-                    </div>
-                    <div className="text-left">
-                      <p className="text-[10px] text-neutral-400 font-bold uppercase leading-none mb-1">Pengalaman</p>
-                      <p className="text-xs font-black text-blue-900">{doc.experience}</p>
+              {/* INFO OVERLAY */}
+              <div className="absolute bottom-0 left-0 right-0 p-5 md:p-7 lg:p-10 z-10">
+                <div className="space-y-2 md:space-y-3 lg:space-y-4">
+                  <div>
+                    <h3 className="font-black text-white text-xl md:text-2xl lg:text-3xl mb-1 md:mb-2 tracking-tight">
+                      {doc.name}
+                    </h3>
+                    
+                    <div className="flex items-center gap-2">
+                      <GraduationCap size={14} className="text-red-400 md:size-4 lg:size-5" />
+                      <p className="text-[10px] md:text-[11px] lg:text-xs text-white/70 font-bold uppercase tracking-wider">
+                        {doc.qualification}
+                      </p>
                     </div>
                   </div>
-                  
-                  <div className="text-right">
-                    <div className="flex items-center gap-1 justify-end text-red-600 mb-1">
-                      <MapPin size={12} />
-                      <span className="text-[10px] font-black uppercase tracking-tighter">Cawangan</span>
+
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-red-600 text-white rounded-xl text-[10px] md:text-[11px] lg:text-xs font-black border border-red-500/50 shadow-lg shadow-red-900/20">
+                    <img src="/logo.PNG" alt="Logo" className="w-3 h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 object-contain brightness-0 invert" />
+                    {doc.specialty}
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 md:gap-2">
+                    {doc.tags.map(tag => (
+                      <span key={tag} className="text-[9px] md:text-[10px] font-bold text-white/60 bg-white/10 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 md:pt-5 lg:pt-6 border-t border-white/10 flex items-center justify-between">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 bg-white/10 backdrop-blur-md rounded-lg md:rounded-xl flex items-center justify-center text-red-400 border border-white/10">
+                        <Briefcase size={14} className="md:size-16 lg:size-18" />
+                      </div>
+                      <div>
+                        <p className="text-[8px] md:text-[9px] lg:text-[10px] text-white/40 font-bold uppercase">Pengalaman</p>
+                        <p className="text-xs md:text-sm font-black text-white">{doc.experience}</p>
+                      </div>
                     </div>
-                    <p className="text-[11px] font-bold text-neutral-500">{doc.branch}</p>
+                    
+                    <div className="text-right">
+                      <div className="flex items-center gap-1 justify-end text-red-400 mb-0.5 md:mb-1">
+                        <MapPin size={12} className="md:size-14 lg:size-4" />
+                        <span className="text-[8px] md:text-[9px] lg:text-[10px] font-black uppercase tracking-widest">Peranan</span>
+                      </div>
+                      <p className="text-[10px] md:text-xs font-bold text-white/80">{doc.branch}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -141,31 +126,84 @@ export default function Doctors() {
           ))}
         </div>
 
+        {/* 🔥 MANAGER SECTION */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 flex justify-center"
+        >
+          <div className="group relative h-[500px] w-full max-w-md rounded-[3rem] overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-blue-900/20 transition-all duration-700">
+            {/* FULL IMAGE */}
+            <img 
+              src="/mohiyedin.JPG" 
+              alt="Mohiyedin" 
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            />
+
+            {/* GRADIENT OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+
+            {/* INFO OVERLAY */}
+            <div className="absolute bottom-0 left-0 right-0 p-8 text-center z-10">
+              <h3 className="text-2xl font-black text-white mb-2">
+                Mohiyedin Bin Muhammad Syaiful Nizam
+              </h3>
+
+              <p className="text-sm text-white/70 font-bold mb-1">
+                Bachelor of Business Management
+              </p>
+
+              <p className="text-xs text-white/50 mb-6">
+                SEGi College Subang Jaya
+              </p>
+
+              <div className="inline-block px-6 py-2.5 bg-blue-600 text-white rounded-2xl font-black text-xs tracking-widest shadow-lg shadow-blue-900/20 border border-blue-500/50">
+                CLINIC MANAGER
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* 🔥 HUBUNGI KAMI SECTION */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-20 flex flex-col md:flex-row items-center justify-center gap-6 p-8 bg-white rounded-[2.5rem] border border-neutral-100 shadow-sm"
+          className="mt-20 flex flex-col md:flex-row items-center justify-between gap-8 p-10 bg-white rounded-[3rem] border border-neutral-100 shadow-xl shadow-red-900/5 relative overflow-hidden group"
         >
-          <div className="flex -space-x-4">
-            {[1,2,3,4].map(i => (
-              <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-red-100 flex items-center justify-center overflow-hidden">
-                <img src={`https://ui-avatars.com/api/?background=random&size=128&name=Doctor+${i}`} alt="doc" />
-              </div>
-            ))}
+          {/* Decorative background circles */}
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-red-50 rounded-full opacity-50 group-hover:scale-110 transition-transform duration-700" />
+          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-blue-50 rounded-full opacity-50 group-hover:scale-110 transition-transform duration-700" />
+
+          <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+            <div className="flex -space-x-4">
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} className="w-16 h-16 rounded-2xl border-4 border-white bg-neutral-100 flex items-center justify-center overflow-hidden shadow-lg rotate-3 hover:rotate-0 transition-transform duration-300">
+                  <img 
+                    src={`https://ui-avatars.com/api/?background=random&size=128&name=Doctor+${i}`} 
+                    alt="doc" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            
+            <div>
+              <h4 className="text-blue-900 font-black text-2xl md:text-3xl mb-2 tracking-tight">Sedia Berkhidmat Untuk Anda</h4>
+              <p className="text-neutral-500 text-sm md:text-base max-w-md">Pasukan kami sentiasa bersedia memberikan konsultasi perubatan terbaik untuk kesihatan optimum anda.</p>
+            </div>
           </div>
-          <div className="text-center md:text-left">
-            <h4 className="text-blue-900 font-black text-lg">Sedia Berkhidmat Untuk Anda</h4>
-            <p className="text-neutral-500 text-sm">Pasukan kami sentiasa bersedia memberikan konsultasi perubatan terbaik.</p>
-          </div>
+
           <motion.a 
             href="#contact"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, x: 5 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-red-600 text-white px-8 py-4 rounded-2xl font-black text-sm tracking-widest shadow-lg shadow-red-600/20"
+            className="relative z-10 bg-red-600 text-white px-10 py-5 rounded-2xl font-black text-sm tracking-[0.2em] shadow-2xl shadow-red-600/30 hover:bg-red-700 transition-all flex items-center gap-3 group/btn"
           >
             HUBUNGI KAMI
+            <Award size={18} className="group-hover/btn:rotate-12 transition-transform" />
           </motion.a>
         </motion.div>
       </div>

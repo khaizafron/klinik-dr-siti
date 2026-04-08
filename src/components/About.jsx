@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const stats = [
   { icon: Users, value: '5,000+', label: 'Pesakit Puas Hati' },
-  { icon: Award, value: '10+', label: 'Tahun Pengalaman' },
+  { icon: Award, value: '15+', label: 'Tahun Pengalaman' },
   { icon: Heart, value: '2', label: 'Cawangan Puchong' },
   { icon: Clock, value: '7 Hari', label: 'Beroperasi Seminggu' },
 ]
@@ -128,19 +128,18 @@ export default function About() {
   whileInView={{ opacity: 1, x: 0 }}
   viewport={{ once: true }}
   transition={{ delay: 0.8, duration: 0.8 }}
-  className="
-    absolute 
-    top-4 
-    left-4 
-    md:-top-10 md:-left-10 
-    rounded-3xl 
-    overflow-hidden 
-    border-4 md:border-8 border-white 
-    shadow-2xl 
-    z-20 
-    w-[180px] md:w-[300px] lg:w-[420px] 
-    aspect-[16/9]
-  "
+className="
+  absolute 
+  top-2 left-2 
+  md:-top-10 md:-left-10 
+  rounded-2xl 
+  overflow-hidden 
+  border-4 md:border-8 border-white 
+  shadow-xl 
+  z-20
+  w-[140px] sm:w-[180px] md:w-[300px] lg:w-[420px] 
+  aspect-[16/9]
+"
 >
   <img 
     src="staff.jpg" 

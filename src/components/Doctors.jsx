@@ -65,7 +65,7 @@ export default function Doctors() {
               />
 
               {/* GRADIENT OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/60 md:via-blue-950/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500" />
 
               {/* VERIFIED BADGE */}
               <div className="absolute top-6 right-6 w-12 h-12 bg-emerald-500 rounded-2xl border-4 border-white/20 backdrop-blur-md flex items-center justify-center shadow-lg z-20">
@@ -142,7 +142,7 @@ export default function Doctors() {
             />
 
             {/* GRADIENT OVERLAY */}
-            <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
 
             {/* INFO OVERLAY */}
             <div className="absolute bottom-0 left-0 right-0 p-8 text-center z-10">

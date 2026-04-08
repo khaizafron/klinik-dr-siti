@@ -13,9 +13,9 @@ const branches = [
     phone: '+603-8070 XXXX',
     mobile: '+60166914270',
     hours: [
-      { day: 'Isnin - Jumaat', time: '8:30am – 6:00pm' },
-      { day: 'Sabtu', time: '8:30am – 1:00pm' },
-      { day: 'Ahad', time: 'Tutup' }
+      { day: 'Isnin - Jumaat', time: '8:30am – 10:00pm' },
+      { day: 'Sabtu', time: '8:30am – 5:00pm' },
+      { day: 'Ahad', time: '12:00pm - 10pm' }
     ],
     thumbnail: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31874.582248434464!2d101.56319571083985!3d3.0075724000000252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb36e80a150a9%3A0xd422f8497d009bd7!2sKlinik%20Dr%20Siti%20dan%20Rakan%20Rakan!5e0!3m2!1sen!2smy!4v1775012564781!5m2!1sen!2smy',
@@ -30,9 +30,9 @@ const branches = [
     phone: '+603-8071 XXXX',
     mobile: '+60166914270',
     hours: [
-      { day: 'Isnin - Jumaat', time: '8:30am – 6:00pm' },
-      { day: 'Sabtu', time: '8:30am – 1:00pm' },
-      { day: 'Ahad', time: 'Tutup' }
+      { day: 'Isnin - Jumaat', time: '8:30am – 9:00pm' },
+      { day: 'Sabtu', time: '9:00am – 5:00pm' },
+      { day: 'Ahad', time: '10:00am - 5:00pm' }
     ],
     thumbnail: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31874.582248434464!2d101.56319571083985!3d3.0075724000000252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb50d2456b0cf%3A0xf76c0e2c30d17952!2sKlinik%20Dr%20Siti%20dan%20Rakan%20rakan!5e0!3m2!1sen!2smy!4v1775012619200!5m2!1sen!2smy',
@@ -159,7 +159,7 @@ export default function Branches() {
                     </div>
                   </div>
 
-                  <div className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
+                  <div className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm md:col-span-1 min-w-[280px]">
                     <div className="flex items-center gap-3 mb-4">
                       <Clock size={16} className="text-red-500" />
                       <h4 className="text-xs font-black text-blue-900 uppercase tracking-widest">Waktu Operasi</h4>

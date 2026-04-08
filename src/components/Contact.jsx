@@ -21,7 +21,12 @@ const BRANCHES = [
     address: 'No. 12, Jalan Permai 1, Taman Puchong Permai, 47100 Puchong, Selangor',
     phone: '+603-8070 1234',
     mobile: '+6016-691 4270',
-    mapUrl: 'https://maps.app.goo.gl/B7tT98wH4qeywhM5A'
+    mapUrl: 'https://maps.app.goo.gl/B7tT98wH4qeywhM5A',
+    hours: [
+      { day: 'Isnin – Jumaat', time: '8:30am – 10:00pm' },
+      { day: 'Sabtu', time: '9:00am – 5:00pm' },
+      { day: 'Ahad', time: '12:00pm – 10:00pm' },
+    ]
   },
   {
     id: 'puchong-utama',
@@ -29,7 +34,12 @@ const BRANCHES = [
     address: 'No. 5, Jalan Utama 2, Taman Puchong Utama, 47150 Puchong, Selangor',
     phone: '+603-8071 5678',
     mobile: '+6016-691 4270',
-    mapUrl: 'https://maps.app.goo.gl/B7tT98wH4qeywhM5A'
+    mapUrl: 'https://maps.app.goo.gl/B7tT98wH4qeywhM5A',
+    hours: [
+      { day: 'Isnin – Jumaat', time: '8:30am – 9:00pm' },
+      { day: 'Sabtu', time: '9:00am – 5:00pm' },
+      { day: 'Ahad', time: '10:00am – 5:00pm' },
+    ]
   }
 ]
 
@@ -169,8 +179,29 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="text-[10px] font-black text-neutral-400 uppercase tracking-widest mb-1">Waktu Operasi</p>
-                        <p className="text-neutral-700 font-bold">Isnin – Jumaat: 8:30am – 6:00pm</p>
-                        <p className="text-neutral-500 font-medium">Sabtu: 8:30am – 1:00pm</p>
+                        <div className="bg-neutral-50 border border-neutral-100 rounded-2xl p-4 space-y-3">
+
+  {branch.hours.map((h, i) => (
+    <div 
+      key={i} 
+      className="flex items-center justify-between"
+    >
+      {/* DAY */}
+      <span className="text-[11px] font-bold text-neutral-500 tracking-wide whitespace-nowrap">
+        {h.day}
+      </span>
+
+      {/* LINE */}
+      <div className="flex-1 mx-3 border-t border-dashed border-neutral-200" />
+
+      {/* TIME */}
+      <span className="text-[12px] font-black text-blue-700 whitespace-nowrap">
+        {h.time}
+      </span>
+    </div>
+  ))}
+
+</div>
                       </div>
                     </div>
                   </motion.div>

@@ -2,11 +2,11 @@ import React, { useRef, useState, useEffect } from 'react'
 
 const panels = [
   { name: 'Health Connect / Mediexpress', img: 'hc.PNG' },
-  { name: 'Micare', img: 'mc.PNG' },
-  { name: 'AIA', img: 'aia.PNG' },
+  { name: 'Micare', img: 'mc.png' },
+  { name: 'AIA', img: 'aia.png' },
   { name: 'IA International', img: 'ia.PNG' },
-  { name: 'IHP', img: 'IHP.PNG' },
-  { name: 'E-MAS', img: 'em.PNG' },
+  { name: 'IHP', img: 'IHP.png' },
+  { name: 'E-MAS', img: 'em.png' },
   { name: 'Allianz', img: 'a.png' },
   { name: 'Compumed', img: 'c.PNG' },
   { name: 'Mednefit', img: 'm.png' },

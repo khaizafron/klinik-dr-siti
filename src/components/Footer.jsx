@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="flex items-center gap-5 group">
             <div className="relative">
               <div className="absolute -inset-4 bg-red-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              <img src="/logo.PNG" className="h-14 w-14 relative z-10" />
+              <img src="/logo.PNG" className="h-24 w-24 relative z-10" />
             </div>
 
             <div>
@@ -61,17 +61,49 @@ export default function Footer() {
           </div>
 
           {/* 🔥 FIXED SOCIAL */}
-          <div className="flex items-center gap-2">
-            <a className="w-11 h-11 rounded-2xl bg-white border border-red-100 flex items-center justify-center text-red-400 hover:bg-red-600 hover:text-white transition">
-              f
-            </a>
-            <a className="w-11 h-11 rounded-2xl bg-white border border-red-100 flex items-center justify-center text-red-400 hover:bg-red-600 hover:text-white transition">
-              ig
-            </a>
-            <a href={waUrl} target="_blank" className="w-11 h-11 rounded-2xl bg-white border border-red-100 flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition">
-              <MessageCircle size={18} />
-            </a>
-          </div>
+          {/* 🔥 UPDATED SOCIAL */}
+<div className="flex items-center gap-2">
+
+  {/* Facebook */}
+  <a 
+    href="https://www.facebook.com/people/Klinik-DrSiti-Dan-RakanRakan/100014080984681/?locale=ms_MY" 
+    target="_blank"
+    className="w-11 h-11 rounded-2xl bg-white border border-red-100 flex items-center justify-center hover:bg-red-600 transition"
+  >
+    <img 
+      src="/facebook.png" 
+      alt="Facebook" 
+      className="w-full h-full object-cover rounded-2xl"
+    />
+  </a>
+
+  {/* Instagram */}
+  <a 
+    href="https://www.instagram.com/klinikdrsitidanrakanrakan/" 
+    target="_blank"
+    className="w-11 h-11 rounded-2xl bg-white border border-red-100 flex items-center justify-center hover:bg-red-600 transition"
+  >
+    <img 
+      src="/instagram.jpg" 
+      alt="Instagram" 
+      className="w-full h-full object-cover rounded-2xl"
+    />
+  </a>
+
+  {/* WhatsApp */}
+  <a 
+    href={waUrl} 
+    target="_blank"
+    className="w-11 h-11 rounded-2xl bg-white border border-red-100 flex items-center justify-center hover:bg-green-500 transition"
+  >
+    <img 
+      src="/whatsapp.png" 
+      alt="WhatsApp" 
+      className="w-full h-full object-cover rounded-2xl"
+    />
+  </a>
+
+</div>
 
         </div>
 
@@ -116,17 +148,22 @@ export default function Footer() {
             <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
               Waktu Operasi
             </h4>
+              <h3 className="font-black text-sm text-blue-950">Cawangan Puchong Permai</h3>
+              <p className="text-sm">Isnin – Jumaat: 8:30am – 10pm</p>
+              <p className="text-sm">Sabtu: 9:00am – 5pm</p>
+              <p className="text-sm">Ahad: 12:00pm - 10pm</p>
+              <h3 className="font-black text-sm text-blue-950">Cawangan Puchong Utama</h3>
+              <p className="text-sm">Isnin – Jumaat: 8:30am – 9pm</p>
+              <p className="text-sm">Sabtu: 9:00am – 5pm</p>
+              <p className="text-sm">Ahad: 10:00am - 5pm</p>
 
-            <div className="bg-white/40 backdrop-blur-md rounded-[2rem] border border-red-50 p-6">
-              <p className="text-sm">Isnin – Jumaat: 8:30am – 6pm</p>
-              <p className="text-sm">Sabtu: 8:30am – 1pm</p>
-              <p className="text-red-400 text-sm">Ahad Tutup</p>
+           
 
               <a href={waUrl} target="_blank" className="mt-4 w-full py-3 bg-blue-900 text-white rounded-xl flex items-center justify-center gap-2 text-xs font-bold">
                 <MessageCircle size={14} />
                 Hubungi Kami
               </a>
-            </div>
+            
           </div>
 
         </div>

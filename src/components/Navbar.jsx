@@ -49,7 +49,7 @@ export default function Navbar({ isModalOpen = false }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div
-          className={`relative flex items-center justify-between px-6 rounded-none md:rounded-3xl transition-all duration-500 border ${
+          className={`relative flex items-center justify-between px-6 rounded-3xl transition-all duration-500 border ${
             scrolled
               ? 'bg-white/10 backdrop-blur-xl border-white/20 shadow-xl shadow-black/10 h-16 mt-2'
               : 'bg-transparent border-transparent h-20 mt-4'
@@ -195,16 +195,47 @@ export default function Navbar({ isModalOpen = false }) {
           >
             <div className="bg-white/95 backdrop-blur-xl border border-neutral-200 rounded-3xl p-6 shadow-xl">
 
-              {links.map((link) => (
+              {/* Navigation Links */}
+              <div className="space-y-2 mb-6">
+                {links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="block px-4 py-4 text-lg font-medium text-neutral-700 hover:text-black hover:bg-neutral-100 rounded-2xl transition-all duration-200"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+
+              {/* Services Section */}
+              <div className="border-t border-neutral-200 pt-6">
                 <a
-                  key={link.label}
-                  href={link.href}
+                  href="#services"
                   onClick={() => setMenuOpen(false)}
-                  className="block px-4 py-4 text-lg font-medium text-neutral-700 hover:text-black hover:bg-neutral-100 rounded-2xl"
+                  className="group relative p-4 bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-100 rounded-2xl transition-all duration-300 hover:shadow-md hover:scale-105 block"
                 >
-                  {link.label}
+                  <div className="flex items-center justify-center text-center">
+                    <span className="text-sm font-medium text-neutral-700 group-hover:text-blue-700 transition-colors">
+                      Perkhidmatan
+                    </span>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300" />
                 </a>
-              ))}
+              </div>
+
+              {/* CTA Button */}
+              <div className="mt-6 pt-6 border-t border-neutral-200">
+                <a
+                  href="https://klinikdrsiti.yezza.co/appointment"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  <Calendar size={18} />
+                  Book Appointment
+                </a>
+              </div>
 
             </div>
           </motion.div>

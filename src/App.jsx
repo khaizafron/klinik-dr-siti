@@ -55,7 +55,7 @@ export default function App() {
       </main>
 
       <Footer />
-      <WhatsAppButton />
+      <WhatsAppButton hide={isModalOpen} />
 
     </div>
   )

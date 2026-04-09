@@ -4,7 +4,7 @@ import { MessageCircle, X } from 'lucide-react'
 const WA_NUMBER = '60166914270'
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=Hi%2C%20saya%20ingin%20membuat%20temujanji%20di%20Klinik%20Dr%20Siti`
 
-export default function WhatsAppButton() {
+export default function WhatsAppButton({ hide }) {
   const [tooltip, setTooltip] = useState(false)
 
   useEffect(() => {
@@ -64,7 +64,9 @@ export default function WhatsAppButton() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-end flex-col gap-3">
+    <div className={`fixed bottom-6 right-6 z-20 flex items-end flex-col gap-3 transition-all duration-300
+  ${hide ? 'opacity-0 pointer-events-none translate-y-4' : 'opacity-100 translate-y-0'}
+`}>
 
       {/* Tooltip */}
       {tooltip && (

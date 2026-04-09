@@ -87,10 +87,13 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-32 bg-[#fafafa] overflow-hidden">
-      {/* Decorative Background Elements */}
+      {/* Decorative Background Elements - Optimized for Mobile */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-red-100/40 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[100px]" />
+        <div className="hidden md:block absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-red-100/40 rounded-full blur-[120px]" />
+        <div className="hidden md:block absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[100px]" />
+        {/* Mobile version - simplified */}
+        <div className="md:hidden absolute top-[-5%] right-[-10%] w-[300px] h-[300px] bg-red-100/20 rounded-full blur-[60px]" />
+        <div className="md:hidden absolute bottom-[-5%] left-[-10%] w-[250px] h-[250px] bg-blue-50/20 rounded-full blur-[60px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -102,6 +105,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
               className="space-y-6"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-900 text-white rounded-full text-[10px] font-black uppercase tracking-widest">
@@ -142,10 +146,11 @@ export default function Contact() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
                     className="space-y-6"
                   >
                     <div className="flex gap-4 group cursor-pointer">
-                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-red-600 md:group-hover:bg-red-600 md:group-hover:text-white transition-all duration-300 shadow-sm">
                         <MapPin size={20} />
                       </div>
                       <div className="flex-1">
@@ -163,7 +168,7 @@ export default function Contact() {
                     </div>
 
                     <div className="flex gap-4 group cursor-pointer">
-                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-red-600 md:group-hover:bg-red-600 md:group-hover:text-white transition-all duration-300 shadow-sm">
                         <Phone size={20} />
                       </div>
                       <div>
@@ -174,7 +179,7 @@ export default function Contact() {
                     </div>
 
                     <div className="flex gap-4 group cursor-pointer">
-                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center text-red-600 md:group-hover:bg-red-600 md:group-hover:text-white transition-all duration-300 shadow-sm">
                         <Clock size={20} />
                       </div>
                       <div>
@@ -216,7 +221,8 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-blue-900/5 border border-neutral-100 relative overflow-hidden"
+              transition={{ duration: 0.4 }}
+              className="bg-white rounded-[3rem] p-8 md:p-12 md:shadow-2xl md:shadow-blue-900/5 shadow-lg md:border border-neutral-100 relative overflow-hidden"
             >
               {/* Form Header */}
               <div className="mb-10">
@@ -233,8 +239,8 @@ export default function Contact() {
                       placeholder="Contoh: Siti Aminah"
                       value={form.name}
                       onChange={(e) => setForm({...form, name: e.target.value})}
-                      className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border transition-all outline-none text-neutral-800 font-medium ${
-                        errors.name ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-red-300 focus:bg-white'
+                      className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border md:transition-all outline-none text-neutral-800 font-medium ${
+                        errors.name ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-red-300 md:focus:bg-white'
                       }`}
                     />
                     {errors.name && <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1">{errors.name}</p>}
@@ -247,8 +253,8 @@ export default function Contact() {
                       placeholder="012-3456789"
                       value={form.phone}
                       onChange={(e) => setForm({...form, phone: e.target.value})}
-                      className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border transition-all outline-none text-neutral-800 font-medium ${
-                        errors.phone ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-red-300 focus:bg-white'
+                      className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border md:transition-all outline-none text-neutral-800 font-medium ${
+                        errors.phone ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-red-300 md:focus:bg-white'
                       }`}
                     />
                     {errors.phone && <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1">{errors.phone}</p>}
@@ -263,9 +269,9 @@ export default function Contact() {
                         key={branch.id}
                         type="button"
                         onClick={() => setForm({...form, branch: branch.id})}
-                        className={`px-4 py-4 rounded-2xl border text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+                        className={`px-4 py-4 rounded-2xl border text-xs font-bold md:transition-all flex items-center justify-center gap-2 ${
                           form.branch === branch.id 
-                            ? 'bg-blue-900 text-white border-blue-900 shadow-lg shadow-blue-900/20' 
+                            ? 'bg-blue-900 text-white border-blue-900 md:shadow-lg md:shadow-blue-900/20' 
                             : 'bg-neutral-50 text-neutral-500 border-neutral-100 hover:border-red-200'
                         }`}
                       >
@@ -284,8 +290,8 @@ export default function Contact() {
                     placeholder="Bagaimana kami boleh membantu anda hari ini?"
                     value={form.message}
                     onChange={(e) => setForm({...form, message: e.target.value})}
-                    className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border transition-all outline-none text-neutral-800 font-medium resize-none ${
-                      errors.message ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-red-300 focus:bg-white'
+                    className={`w-full px-6 py-4 rounded-2xl bg-neutral-50 border md:transition-all outline-none text-neutral-800 font-medium resize-none ${
+                      errors.message ? 'border-red-200 focus:border-red-400' : 'border-neutral-100 focus:border-red-300 md:focus:bg-white'
                     }`}
                   />
                   {errors.message && <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1">{errors.message}</p>}
@@ -294,7 +300,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full relative group overflow-hidden bg-blue-950 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs transition-all hover:shadow-2xl hover:shadow-red-900/40 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full relative group overflow-hidden bg-blue-950 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs md:hover:shadow-2xl md:hover:shadow-red-900/40 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <div className="relative z-10 flex items-center justify-center gap-3">
                     {loading ? (
@@ -302,11 +308,11 @@ export default function Contact() {
                     ) : (
                       <>
                         Hantar Mesej
-                        <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        <Send size={14} className="md:group-hover:translate-x-1 md:group-hover:-translate-y-1 transition-transform" />
                       </>
                     )}
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-400 translate-y-full md:group-hover:translate-y-0 transition-transform duration-500" />
                 </button>
               </form>
 

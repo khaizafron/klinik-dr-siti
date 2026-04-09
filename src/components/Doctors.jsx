@@ -5,7 +5,7 @@ import { GraduationCap, Briefcase, Star, Award, MapPin, CheckCircle2 } from 'luc
 const doctors = [
   {
     name: 'Dr Sumaya Bibi bt Md Ali',
-    qualification: 'MBBS (IMU) | MMC 38615',
+    qualification: 'MBBS (IMU), Diploma In Microbiology (UiTM) | MMC 38615',
     specialty: 'Women Health, Antenatal Care, Child Health, Ultrasound',
     experience: '24 Tahun',
     avatar: '/drsumaiya.JPG',
@@ -73,7 +73,7 @@ export default function Doctors() {
               </div>
 
               {/* INFO OVERLAY */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 md:p-7 lg:p-10 z-10">
+              <div className="absolute bottom-0 left-0 right-0 p-5 pb-16 md:p-7 md:pb-20 lg:p-10 lg:pb-24 z-10">
                 <div className="space-y-2 md:space-y-3 lg:space-y-4">
                   <div>
                     <h3 className="font-black text-white text-xl md:text-2xl lg:text-3xl mb-1 md:mb-2 tracking-tight">
@@ -101,26 +101,30 @@ export default function Doctors() {
                     ))}
                   </div>
 
-                  <div className="pt-4 md:pt-5 lg:pt-6 border-t border-white/10 flex items-center justify-between">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 bg-white/10 backdrop-blur-md rounded-lg md:rounded-xl flex items-center justify-center text-red-400 border border-white/10">
-                        <Briefcase size={14} className="md:size-16 lg:size-18" />
+                  <div className="pt-1 md:pt-1 lg:pt-1 border-t border-white/10 flex items-center justify-center">
+                    <div className="flex items-center gap-4 md:gap-6">
+                      <div className="text-center">
+                        <p className="text-2xl md:text-3xl font-black text-white leading-none tracking-tighter">
+                          {doc.experience.split(' ')[0]}
+                        </p>
+                        <p className="text-[8px] md:text-[9px] text-white/40 font-bold uppercase tracking-widest mt-1">Tahun</p>
                       </div>
-                      <div>
-                        <p className="text-[8px] md:text-[9px] lg:text-[10px] text-white/40 font-bold uppercase">Pengalaman</p>
-                        <p className="text-xs md:text-sm font-black text-white">{doc.experience}</p>
+                      <div className="w-px h-8 bg-white/10" />
+                      <div className="text-left">
+                        <p className="text-[10px] md:text-[11px] text-white/60 font-black uppercase leading-tight tracking-wider">
+                          Pengalaman<br/>Berdedikasi
+                        </p>
                       </div>
-                    </div>
-                    
-                    <div className="text-right">
-                      <div className="flex items-center gap-1 justify-end text-red-400 mb-0.5 md:mb-1">
-                        <MapPin size={12} className="md:size-14 lg:size-4" />
-                        <span className="text-[8px] md:text-[9px] lg:text-[10px] font-black uppercase tracking-widest">Peranan</span>
-                      </div>
-                      <p className="text-[10px] md:text-xs font-bold text-white/80">{doc.branch}</p>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* ROLE BANNER */}
+              <div className="absolute bottom-0 left-0 right-0 bg-red-600 py-3 text-center z-20 shadow-[0_-10px_20px_rgba(220,38,38,0.2)]">
+                <p className="text-white font-black text-[10px] tracking-[0.3em] uppercase">
+                  {doc.branch}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -136,7 +140,7 @@ export default function Doctors() {
           <div className="group relative h-[500px] w-full max-w-md rounded-[3rem] overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-blue-900/20 transition-all duration-700">
             {/* FULL IMAGE */}
             <img 
-              src="/mohiyedin.JPG" 
+              src="/mohiyedin.PNG" 
               alt="Mohiyedin" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             />
@@ -145,8 +149,8 @@ export default function Doctors() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
 
             {/* INFO OVERLAY */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 text-center z-10">
-              <h3 className="text-2xl font-black text-white mb-2">
+            <div className="absolute bottom-0 left-0 right-0 p-8 pb-20 text-center z-10">
+              <h3 className="text-1xl font-black text-white mb-2">
                 Mohiyedin Bin Muhammad Syaiful Nizam
               </h3>
 
@@ -158,9 +162,29 @@ export default function Doctors() {
                 SEGi College Subang Jaya
               </p>
 
-              <div className="inline-block px-6 py-2.5 bg-blue-600 text-white rounded-2xl font-black text-xs tracking-widest shadow-lg shadow-blue-900/20 border border-blue-500/50">
-                CLINIC MANAGER
+              <div className="pt-1 border-t border-white/10 flex items-center justify-center">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="text-center">
+                    <p className="text-sm md:text-1xl font-black text-white leading-none tracking-tighter">
+                      100%
+                    </p>
+                    <p className="text-[8px] md:text-[9px] text-white/40 font-bold uppercase tracking-widest mt-1">Komitmen</p>
+                  </div>
+                  <div className="w-px h-8 bg-white/10" />
+                  <div className="text-left">
+                    <p className="text-sm md:text-[11px] text-white/60 font-black uppercase leading-tight tracking-wider">
+                      Pengurusan<br/>Operasi
+                    </p>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            {/* ROLE BANNER */}
+            <div className="absolute bottom-0 left-0 right-0 bg-blue-600 py-5 text-center z-20 shadow-[0_-10px_20px_rgba(37,99,235,0.2)]">
+              <p className="text-white font-black text-sm tracking-[0.4em] uppercase">
+                CLINIC MANAGER
+              </p>
             </div>
           </div>
         </motion.div>

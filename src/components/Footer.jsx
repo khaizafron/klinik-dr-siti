@@ -13,7 +13,7 @@ const BRANCHES = [
   { 
     name: 'Puchong Permai', 
     addr: 'No. 12, Jalan Permai 1, 47100 Puchong', 
-    tel: '+603-8070 1234',
+    tel: '+603-8066 0086',
   },
   { 
     name: 'Puchong Utama', 
@@ -115,9 +115,25 @@ export default function Footer() {
               Visi & Misi
             </h4>
 
-            <p className="text-neutral-600 text-sm italic">
-              "Kami berdedikasi untuk memberikan rawatan perubatan berkualiti tinggi dengan empati."
-            </p>
+            <div className="space-y-4">
+  <div>
+    <p className="text-[10px] font-bold text-blue-900 uppercase tracking-wide">
+      Vision
+    </p>
+    <p className="text-neutral-600 text-sm italic">
+      "Klinik Dr Siti & Rakan-Rakan aims to be the most accessible and preferred community medical care, committed to holistic treatments and healthcare excellence."
+    </p>
+  </div>
+
+  <div>
+    <p className="text-[10px] font-bold text-blue-900 uppercase tracking-wide">
+      Mission
+    </p>
+    <p className="text-neutral-600 text-sm italic">
+      "To provide an affordable, comprehensive and high quality healthcare service to the communities we serve."
+    </p>
+  </div>
+</div>
           </div>
 
           <div className="lg:col-span-5">

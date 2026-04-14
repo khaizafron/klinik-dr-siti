@@ -19,8 +19,8 @@ const BRANCHES = [
     id: 'puchong-permai',
     name: 'Puchong Permai',
     address: 'No. 12, Jalan Permai 1, Taman Puchong Permai, 47100 Puchong, Selangor',
-    phone: '+603-8070 1234',
-    mobile: '+6016-691 4270',
+    phone: '+603-8066 0086',
+    mobile: '+6016-729 6121',
     mapUrl: 'https://maps.app.goo.gl/B7tT98wH4qeywhM5A',
     hours: [
       { day: 'Isnin – Jumaat', time: '8:30am – 10:00pm' },

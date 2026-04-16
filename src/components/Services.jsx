@@ -539,11 +539,13 @@ const categories = [
         { 
           name: 'Socso Medical Checkup', 
           desc: 'Pemeriksaan kesihatan berkaitan tuntutan atau keperluan SOCSO.', 
+          price: 'PERCUMA',
           bookingLink: '' 
         },
         { 
           name: 'PEKA B40 Medical Checkup', 
           desc: 'Saringan kesihatan percuma untuk golongan B40 yang layak.', 
+          price: 'PERCUMA',
           bookingLink: '' 
         },
         { 

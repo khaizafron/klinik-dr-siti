@@ -221,33 +221,23 @@ const mainContentScale = useTransform(scrollYProgress, [0.20, 1], [0.96, 1])
           style={{ opacity: excellenceOpacity, y: excellenceY }}
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
         >
-          <div className="flex justify-center gap-12 mb-8">
-  <div className="flex flex-col items-center gap-2">
-    <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center border border-white/20">
-      <Clock className="text-white w-5 h-5" />
-    </div>
-    <span className="min-w-[100px] text-center text-black bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-[10px] uppercase tracking-widest">
-      Compassion
-    </span>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 mb-6">
+
+  <div className="flex items-center gap-2 text-blue-900 text-xs sm:text-sm italic font-serif font-semibold tracking-wide">
+    <Shield className="w-4 h-4 text-blue-900" />
+    <span>Certified Doctors</span>
   </div>
 
-  <div className="flex flex-col items-center gap-2">
-    <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center border border-white/20">
-      <Shield className="text-white w-5 h-5" />
-    </div>
-    <span className="min-w-[100px] text-center text-black bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-[10px] uppercase tracking-widest">
-      Trust
-    </span>
+  <div className="flex items-center gap-2 text-blue-900 text-xs sm:text-sm italic font-serif font-semibold tracking-wide">
+    <Clock className="w-4 h-4 text-blue-900" />
+    <span>Fast Service</span>
   </div>
 
-  <div className="flex flex-col items-center gap-2">
-    <div className="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center border border-white/20">
-      <Heart className="text-white w-5 h-5" />
-    </div>
-    <span className="min-w-[100px] text-center text-black bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-[10px] uppercase tracking-widest">
-      Care
-    </span>
+  <div className="flex items-center gap-2 text-blue-900 text-xs sm:text-sm italic font-serif font-semibold tracking-wide">
+    <Heart className="w-4 h-4 text-blue-900" />
+    <span>Patient First</span>
   </div>
+
 </div>
           <h2 className="text-4xl md:text-6xl font-medium text-red-500 tracking-tight">
             Excellence in <span className="italic font-serif font-light text-red-500">Healthcare</span>

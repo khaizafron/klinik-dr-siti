@@ -61,7 +61,7 @@ export default function Trust() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="relative max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-900/20 group"
+          className="relative max-w-5xl mx-auto rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-900/20 group"
         >
           <div className="relative aspect-video bg-neutral-900 overflow-hidden">
             {!isPlaying ? (
@@ -81,21 +81,21 @@ export default function Trust() {
                 <div className="absolute inset-0 bg-linear-to-t from-blue-950/80 via-transparent to-transparent" />
 
                 {/* Play Button UI */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 md:p-6">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="w-24 h-24 bg-white/10 backdrop-blur-xl border border-white/30 rounded-full flex items-center justify-center mb-8 shadow-2xl relative"
+                    className="w-16 h-16 md:w-24 md:h-24 bg-white/10 backdrop-blur-xl border border-white/30 rounded-full flex items-center justify-center mb-4 md:mb-8 shadow-2xl relative"
                   >
-                    <Play size={32} className="text-white fill-white ml-1" />
-                    <div className="absolute -inset-4 border border-white/20 rounded-full animate-ping opacity-20" />
+                    <Play size={24} className="text-white fill-white ml-1 md:size-32" />
+                    <div className="absolute -inset-2 md:-inset-4 border border-white/20 rounded-full animate-ping opacity-20" />
                   </motion.div>
-                  <h3 className="text-white text-3xl md:text-4xl font-bold mb-2 tracking-tight drop-shadow-lg">Kenali Klinik Kami</h3>
-                  <p className="text-blue-200 text-lg font-light tracking-wide drop-shadow-md">Lawatan Maya & Pengenalan Doktor</p>
+                  <h3 className="text-white text-xl md:text-4xl font-bold mb-1 md:mb-2 tracking-tight drop-shadow-lg">Kenali Klinik Kami</h3>
+                  <p className="text-blue-200 text-xs md:text-lg font-light tracking-wide drop-shadow-md">Lawatan Maya & Pengenalan Doktor</p>
                 </div>
 
                 {/* Logo Watermark */}
-                <img src="/logo.PNG" alt="" className="absolute bottom-8 right-8 h-20 w-20 object-contain opacity-30 brightness-0 invert" referrerPolicy="no-referrer" />
+                <img src="/logo.PNG" alt="" className="absolute bottom-4 right-4 md:bottom-8 md:right-8 h-10 w-10 md:h-20 md:w-20 object-contain opacity-30 brightness-0 invert" referrerPolicy="no-referrer" />
               </div>
             ) : (
               <iframe 
@@ -110,19 +110,19 @@ export default function Trust() {
           </div>
 
           {/* Video Bottom Bar */}
-          <div className="bg-neutral-900 px-10 py-8 flex flex-wrap items-center justify-between gap-6 border-t border-white/10">
-            <div className="flex items-center gap-4">
-              <div className="w-1 h-12 bg-red-500 rounded-full" />
+          <div className="bg-neutral-900 px-6 py-4 md:px-10 md:py-8 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6 border-t border-white/10">
+            <div className="flex items-center gap-3 md:gap-4 text-center md:text-left">
+              <div className="hidden md:block w-1 h-12 bg-red-500 rounded-full" />
               <div>
-                <p className="text-white font-bold text-xl">"Dipercayai oleh komuniti setempat"</p>
-                <p className="text-red-400/80 text-sm uppercase tracking-widest font-medium">Klinik Dr Siti & Rakan-Rakan, Puchong</p>
+                <p className="text-white font-bold text-[10px] min-[375px]:text-[12px] sm:text-sm md:text-xl leading-tight whitespace-nowrap min-w-max">"Dipercayai oleh komuniti setempat"</p>
+                <p className="text-red-400/80 text-[8px] md:text-sm uppercase tracking-widest font-medium mt-0.5">Klinik Dr Siti & Rakan-Rakan, Puchong</p>
               </div>
             </div>
             <motion.a
               href="#contact"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-white text-black font-bold px-8 py-4 rounded-2xl hover:bg-neutral-200 transition-all text-sm tracking-tighter"
+              className="w-full md:w-auto bg-white text-black font-bold px-6 py-2.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-neutral-200 transition-all text-[10px] md:text-sm tracking-tighter text-center"
             >
               BUAT TEMUJANJI SEKARANG
             </motion.a>
@@ -130,7 +130,7 @@ export default function Trust() {
         </motion.div>
 
         {/* Trust Badges Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-10 lg:gap-12 mt-12 md:mt-20">
   {trustBadges.map((item, index) => (
     <motion.div 
       key={item.title}
@@ -138,7 +138,7 @@ export default function Trust() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="relative group h-80 rounded-[2.5rem] overflow-hidden shadow-xl border border-white/10"
+      className="relative group aspect-square lg:aspect-auto lg:h-80 rounded-[1.5rem] lg:rounded-[2.5rem] overflow-hidden shadow-xl border border-white/10"
     >
       {/* Background Image */}
       <img 
@@ -152,20 +152,20 @@ export default function Trust() {
       <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
       {/* Content */}
-      <div className="absolute inset-0 p-8 flex flex-col justify-end items-center text-center">
+      <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end items-center text-center">
         
         {/* ICON */}
-        <div className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-500">
-          <item.icon size={28} className="text-white" />
+        <div className="w-10 h-10 md:w-14 md:h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl md:rounded-2xl flex items-center justify-center mb-2 md:mb-4 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-500">
+          <item.icon size={20} className="text-white md:size-28" />
         </div>
 
         {/* 🔥 TITLE (INI YANG BERUBAH WARNA) */}
-        <h4 className="text-xl font-bold text-white mb-2 tracking-tight transition-colors duration-300 group-hover:text-blue-900">
+        <h4 className="text-sm md:text-xl font-bold text-white mb-1 md:mb-2 tracking-tight transition-colors duration-300 group-hover:text-blue-900">
           {item.title}
         </h4>
 
         {/* DESC */}
-        <p className="text-white/60 text-sm font-medium uppercase tracking-widest group-hover:text-blue-600 transition-colors duration-300">
+        <p className="text-white/60 text-[8px] md:text-sm font-medium uppercase tracking-widest group-hover:text-blue-600 transition-colors duration-300">
           {item.desc}
         </p>
 

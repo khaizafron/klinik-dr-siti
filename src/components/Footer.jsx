@@ -13,12 +13,13 @@ const BRANCHES = [
   { 
     name: 'Puchong Permai', 
     addr: 'No. 12, Jalan Permai 1, 47100 Puchong', 
-    tel: '+603-8066 0086',
+    tel: '+60 16 729 6121',
   },
   { 
     name: 'Puchong Utama', 
     addr: 'No. 5, Jalan Utama 2, 47150 Puchong', 
-    tel: '+603-8071 5678',
+    tel: '+60 11-3604 3101',
+    
   },
 ]
 

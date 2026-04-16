@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 
 const INITIAL_FORM = { name: '', phone: '', message: '', branch: '' }
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyD2_rtSAJhkV3-R-8U3XVmMt-hGnKEdOK9T_dyxx9P0_hmbDR8R02sQTbhjtUOThxiQg/exec";
 
 const BRANCHES = [
   {
@@ -64,26 +65,41 @@ export default function Contact() {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const validationErrors = validate()
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors)
-      return
-    }
+  e.preventDefault()
 
-    setLoading(true)
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      setStatus('success')
-      setForm(INITIAL_FORM)
-      setTimeout(() => setStatus(null), 5000)
-    } catch (err) {
-      setStatus('error')
-    } finally {
-      setLoading(false)
-    }
+  const validationErrors = validate()
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors)
+    return
   }
+
+  setLoading(true)
+
+  try {
+    const params = new URLSearchParams({
+      name:    form.name,
+      phone:   form.phone,
+      branch:  form.branch,
+      message: form.message,
+    })
+
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode:   "no-cors",
+      body:   params,
+    })
+
+    setStatus('success')
+    setForm(INITIAL_FORM)
+    setTimeout(() => setStatus(null), 5000)
+
+  } catch (err) {
+    console.error(err)
+    setStatus('error')
+  } finally {
+    setLoading(false)
+  }
+}
 
   return (
     <section id="contact" className="relative py-32 bg-[#fafafa] overflow-hidden">

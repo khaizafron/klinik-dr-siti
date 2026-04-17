@@ -36,7 +36,7 @@ const trustBadges = [
    { 
     icon: Home, 
     title: 'Tempat Selesa', 
-    desc: 'Bilik pemeriksaan modern',
+    desc: 'Bilik pemeriksaan moden',
     img: 'bilik-scan-permai.jpg'
   },
 ]

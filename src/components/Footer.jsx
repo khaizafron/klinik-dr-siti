@@ -186,7 +186,7 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM */}
-        <div className="pt-10 border-t border-red-100 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-10 border-t border-red-100 flex flex-col md:flex-row md:justify-between items-center gap-6 lg:relative">
 
           <div className="flex flex-wrap gap-6">
             {QUICK_LINKS.map((l, i) => (
@@ -200,13 +200,16 @@ export default function Footer() {
             © {currentYear} Klinik Dr Siti & Rakan2
           </p>
 
-          <div className="text-neutral-400 text-xs font-medium tracking-wide">
+          <a 
+  href="https://www.luxera.my" 
+  target="_blank"
+  className="text-neutral-400 text-xs font-medium tracking-wide hover:opacity-80 transition lg:absolute lg:left-[45%]"
+>
   Powered by{' '}
   <span className="font-bold bg-gradient-to-r from-blue-900 to-blue-500 bg-clip-text text-transparent">
     Luxera Cognitive Resources
   </span>
-
-          </div>
+</a>
 
         </div>
 

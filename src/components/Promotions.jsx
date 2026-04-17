@@ -15,7 +15,7 @@ const promos = [
     tag: 'HOT DEAL',
     color: 'from-red-600 via-blue-500 to-red-700',
     desc: 'Ujian darah lengkap, ECG, ultrasound abdomen & konsultasi doktor.',
-    expiry: '31 Mei 2026',
+    expiry: 'Tawaran Berterusan',
     icon: Sparkles
   },
   {
@@ -51,7 +51,7 @@ const promos = [
     tag: 'QUICK CHECK',
     color: 'from-red-500 via-blue-500 to-red-700',
     desc: 'HbA1c + gula darah puasa + kaunseling diet percuma.',
-    expiry: 'Setiap Sabtu',
+    expiry: 'Setiap Hari',
     icon: Clock
   },
 ]

@@ -9,9 +9,9 @@ const branches = [
     id: 'permai',
     name: 'Puchong Permai',
     tagline: 'Cawangan Utama',
-    address: 'No. 12, Jalan Permai 1, Taman Puchong Permai, 47100 Puchong, Selangor',
+    address: '2, Jalan Puchong Permai 3, Taman Puchong Perdana, 47100 Puchong, Selangor',
     phone: '+603-8066 0086',
-    mobile: '+60-16 729 6121',
+    mobile: '+6016-729 6121',
     hours: [
       { day: 'Isnin - Jumaat', time: '8:30am – 10:00pm' },
       { day: 'Sabtu', time: '8:30am – 5:00pm' },
@@ -19,16 +19,16 @@ const branches = [
     ],
     thumbnail: 'klinikpermai.jpg',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31874.582248434464!2d101.56319571083985!3d3.0075724000000252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb36e80a150a9%3A0xd422f8497d009bd7!2sKlinik%20Dr%20Siti%20dan%20Rakan%20Rakan!5e0!3m2!1sen!2smy!4v1775012564781!5m2!1sen!2smy',
-    mapLink: 'https://maps.app.goo.gl/vY9xJvX9xJvX9xJvX',
+    mapLink: 'https://share.google.com/nd1Gtv87tV4YyeAfM',
     waLink: `https://wa.me/60167296121?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20Cawangan%20Puchong%20Permai`,
   },
   {
     id: 'utama',
     name: 'Puchong Utama',
     tagline: 'Cawangan Kedua',
-    address: 'No. 5, Jalan Utama 2, Taman Puchong Utama, 47150 Puchong, Selangor',
+    address: 'A-G-13A Block A, Dataran, Jln Puchong, Taman Puchong Utama, 47140 Puchong, Selangor',
     phone: '+603-8066 0086',
-    mobile: '+60-11 3604 3101',
+    mobile: '+6011-3604 3101',
     hours: [
       { day: 'Isnin - Jumaat', time: '8:30am – 9:00pm' },
       { day: 'Sabtu', time: '9:00am – 5:00pm' },
@@ -36,7 +36,7 @@ const branches = [
     ],
     thumbnail: 'klinikutama.webp',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31874.582248434464!2d101.56319571083985!3d3.0075724000000252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb50d2456b0cf%3A0xf76c0e2c30d17952!2sKlinik%20Dr%20Siti%20dan%20Rakan%20rakan!5e0!3m2!1sen!2smy!4v1775012619200!5m2!1sen!2smy',
-    mapLink: 'https://maps.app.goo.gl/vY9xJvX9xJvX9xJvX',
+    mapLink: 'https://share.google.com/XYrp8bo2wIYJE1ACx',
     waLink: `https://wa.me/601136043101?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20Cawangan%20Puchong%20Utama`,
   },
 ]
@@ -113,6 +113,7 @@ export default function Branches() {
                         alt={branch.name} 
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                         referrerPolicy="no-referrer"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-linear-to-t from-blue-900/80 via-transparent to-transparent" />
                       <div className="absolute inset-0 flex items-center justify-center">

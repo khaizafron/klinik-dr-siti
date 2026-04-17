@@ -667,6 +667,7 @@ function ServiceModal({ service, onClose }) {
                     alt={service.name}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
                   
@@ -973,6 +974,7 @@ export default function Services({ onModalToggle }) {
                           alt={svc.name} 
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                           referrerPolicy="no-referrer"
+                          loading="lazy"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-blue-950/80 via-blue-950/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
                         

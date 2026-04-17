@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { Star, ExternalLink } from 'lucide-react'
 
@@ -12,18 +12,6 @@ const reviews = [
 ]
 
 export default function Testimonials() {
-
-  // 🔥 LOAD ELFSIGHT SCRIPT (React-safe)
-  useEffect(() => {
-    const existingScript = document.querySelector('script[src="https://elfsightcdn.com/platform.js"]')
-
-    if (!existingScript) {
-      const script = document.createElement('script')
-      script.src = 'https://elfsightcdn.com/platform.js'
-      script.async = true
-      document.body.appendChild(script)
-    }
-  }, [])
 
   return (
     <section id="testimonials" className="py-32 bg-white relative overflow-hidden">
@@ -70,6 +58,7 @@ export default function Testimonials() {
                   src={r.avatar} 
                   alt="" 
                   className="w-12 h-12 rounded-full border-4 border-white bg-purple-50"
+                  loading="lazy"
                 />
               ))}
 
@@ -85,7 +74,7 @@ export default function Testimonials() {
           </motion.div>
         </div>
 
-        {/* 🔥 ELFSIGHT WIDGET (UPDATED ID) */}
+        {/* 🔥 ELFSIGHT WIDGET - Google Reviews */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,7 +82,7 @@ export default function Testimonials() {
           className="rounded-[3rem] overflow-hidden shadow-2xl shadow-purple-900/5 border border-neutral-100 bg-white p-4 min-h-[300px]"
         >
           <div 
-            className="elfsight-app-07b899d9-18b4-4d4e-981b-293c41508a96" 
+            className="elfsight-app-07b899d9-18b4-4d4e-981b-293c41508a96"
             data-elfsight-app-lazy
           ></div>
         </motion.div>

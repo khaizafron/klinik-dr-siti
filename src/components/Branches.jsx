@@ -189,7 +189,9 @@ export default function Branches() {
                     WHATSAPP CAWANGAN
                   </motion.a>
                   <motion.a 
-                    href="#contact"
+                    href="https://klinikdrsiti.yezza.co/appointment"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     className="flex-1 bg-red-600 hover:bg-red-700 text-white font-black px-8 py-5 rounded-2xl text-center flex items-center justify-center gap-3 shadow-lg shadow-red-900/20 transition-all text-xs tracking-widest"

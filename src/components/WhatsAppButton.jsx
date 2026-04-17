@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { MessageCircle, X } from 'lucide-react'
 
-const WA_NUMBER = '60166914270'
+const WA_NUMBER = '601136043101'
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=Hi%2C%20saya%20ingin%20membuat%20temujanji%20di%20Klinik%20Dr%20Siti`
 
 export default function WhatsAppButton({ hide }) {

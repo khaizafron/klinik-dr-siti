@@ -13,7 +13,7 @@ import {
 } from 'lucide-react'
 
 const INITIAL_FORM = { name: '', phone: '', message: '', branch: '' }
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyD2_rtSAJhkV3-R-8U3XVmMt-hGnKEdOK9T_dyxx9P0_hmbDR8R02sQTbhjtUOThxiQg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTxZ5Js8aFCVCj-PMcD2ZAq8y43_aO-JbNweCcbM07GltmLgkN6X0RaIxTIXYUOmfa6A/exec";
 
 const BRANCHES = [
   {

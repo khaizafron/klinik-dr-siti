@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { Calendar, Tag, ArrowRight, Sparkles, Clock, Percent } from 'lucide-react'
 import BorderGlow from '../components/ui/BorderGlow'
 
-const WHATSAPP = "60166914270"
+const WHATSAPP = "601136043101"
 
 const promos = [
   {
@@ -196,7 +196,7 @@ export default function Promotions() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
               <motion.a 
-                href="https://wa.me/60166914270"
+                href="https://wa.me/601136043101"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -2 }}

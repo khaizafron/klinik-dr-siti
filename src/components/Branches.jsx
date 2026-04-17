@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MapPin, Phone, Clock, ExternalLink, Calendar, MessageCircle, Navigation } from 'lucide-react'
 
-const WA_NUMBER = '60166914270'
+const WA_NUMBER = ''
 
 const branches = [
   {
@@ -20,7 +20,7 @@ const branches = [
     thumbnail: 'klinikpermai.jpg',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31874.582248434464!2d101.56319571083985!3d3.0075724000000252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb36e80a150a9%3A0xd422f8497d009bd7!2sKlinik%20Dr%20Siti%20dan%20Rakan%20Rakan!5e0!3m2!1sen!2smy!4v1775012564781!5m2!1sen!2smy',
     mapLink: 'https://maps.app.goo.gl/vY9xJvX9xJvX9xJvX',
-    waLink: `https://wa.me/${WA_NUMBER}?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20Cawangan%20Puchong%20Permai`,
+    waLink: `https://wa.me/60167296121?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20Cawangan%20Puchong%20Permai`,
   },
   {
     id: 'utama',
@@ -37,7 +37,7 @@ const branches = [
     thumbnail: 'klinikutama.webp',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31874.582248434464!2d101.56319571083985!3d3.0075724000000252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb50d2456b0cf%3A0xf76c0e2c30d17952!2sKlinik%20Dr%20Siti%20dan%20Rakan%20rakan!5e0!3m2!1sen!2smy!4v1775012619200!5m2!1sen!2smy',
     mapLink: 'https://maps.app.goo.gl/vY9xJvX9xJvX9xJvX',
-    waLink: `https://wa.me/${WA_NUMBER}?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20Cawangan%20Puchong%20Utama`,
+    waLink: `https://wa.me/601136043101?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20Cawangan%20Puchong%20Utama`,
   },
 ]
 

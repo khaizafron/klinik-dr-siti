@@ -19,7 +19,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion'
 
 const BOOKING_URL = 'https://klinikdrsiti.yezza.co/appointment'
-const WA_NUMBER = '60166914270'
+const WA_NUMBER = '601136043101'
 
 const categories = [
   {

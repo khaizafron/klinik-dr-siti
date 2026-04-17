@@ -33,7 +33,7 @@ const QUICK_LINKS = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
-  const waUrl = 'https://wa.me/60166914270'
+  const waUrl = 'https://wa.me/601136043101'
 
   return (
     <footer className="relative bg-gradient-to-b from-red-50 via-white to-white pt-24 pb-12 overflow-hidden border-t border-red-100/50">

@@ -1,71 +1,87 @@
 <!DOCTYPE html>
-
 <html lang="ms">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.PNG" />
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.PNG" />
+    <link rel="apple-touch-icon" href="/logo.PNG" />
+
+    <!-- ✅ Mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Klinik Dr Siti & Rakan-Rakan - Klinik Pakar Ibu, Anak & Keluarga di Puchong Permai dan Puchong Utama. Rawatan Profesional, Harga Berpatutan." />
 
-```
-<!-- Security Headers -->
-<meta http-equiv="X-Content-Type-Options" content="nosniff" />
-<meta http-equiv="X-Frame-Options" content="DENY" />
-<meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
+    <!-- ✅ SEO -->
+    <title>Klinik Dr Siti & Rakan-Rakan | Klinik Ibu & Anak di Puchong</title>
+    <meta name="description" content="Klinik Dr Siti & Rakan-Rakan menyediakan rawatan ibu, anak dan keluarga di Puchong Permai & Puchong Utama. Klinik profesional, harga berpatutan." />
+    <meta name="keywords" content="klinik puchong, klinik ibu dan anak, klinik keluarga, klinik puchong utama, klinik puchong permai" />
+    <meta name="author" content="Klinik Dr Siti & Rakan-Rakan" />
 
-<!-- ✅ FIXED CSP -->
-<meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-    https://www.google.com 
-    https://maps.googleapis.com 
-    https://*.elfsight.com 
-    https://*.elfsightcdn.com;
-  style-src 'self' 'unsafe-inline' 
-    https://fonts.googleapis.com 
-    https://*.elfsight.com;
-  font-src 'self' https://fonts.gstatic.com;
-  img-src 'self' data: https:;
-  frame-src 
-    https://www.google.com 
-    https://maps.google.com 
-    https://*.elfsight.com;
-  connect-src 'self' 
-    https://*.elfsight.com 
-    https://*.elfsightcdn.com;
-" />
+    <!-- ✅ Open Graph -->
+    <meta property="og:title" content="Klinik Dr Siti & Rakan-Rakan" />
+    <meta property="og:description" content="Rawatan ibu, anak & keluarga di Puchong. Klinik profesional & dipercayai." />
+    <meta property="og:image" content="/logo.PNG" />
+    <meta property="og:type" content="website" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- ✅ Theme -->
+    <meta name="theme-color" content="#1e3a8a" />
 
-<title>Klinik Dr Siti & Rakan-Rakan | Puchong</title>
+    <!-- ✅ Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
 
-<!-- Elfsight Script -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
+    <!-- ✅ Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+        https://www.google.com 
+        https://maps.googleapis.com 
+        https://*.elfsight.com 
+        https://*.elfsightcdn.com;
+      style-src 'self' 'unsafe-inline' 
+        https://fonts.googleapis.com 
+        https://*.elfsight.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https:;
+      frame-src 
+        https://www.google.com 
+        https://maps.google.com 
+        https://*.elfsight.com;
+      connect-src 'self' 
+        https://*.elfsight.com 
+        https://*.elfsightcdn.com;
+    " />
 
-<script>
-  function hideElfsightBranding() {
-    const elfsightLinks = document.querySelectorAll(
-      'div[class*="elfsight-app"] a[href*="elfsight.com"], div[class*="elfsight-app"] a[title*="Elfsight"], div[class*="elfsight-app"] a[href*="google-reviews"]'
-    );
+    <!-- ✅ Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-    elfsightLinks.forEach(link => {
-      link.style.display = 'none';
-      link.style.visibility = 'hidden';
-      link.style.opacity = '0';
-      link.style.pointerEvents = 'none';
-      link.style.height = '0';
-      link.style.width = '0';
-      link.style.position = 'absolute';
-    });
-  }
+    <!-- ✅ Elfsight -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
 
-  const interval = setInterval(hideElfsightBranding, 500);
-  setTimeout(() => clearInterval(interval), 15000);
-</script>
-```
+    <!-- ✅ Hide Elfsight Branding -->
+    <script>
+      function hideElfsightBranding() {
+        const elfsightLinks = document.querySelectorAll(
+          'div[class*="elfsight-app"] a[href*="elfsight.com"], div[class*="elfsight-app"] a[title*="Elfsight"], div[class*="elfsight-app"] a[href*="google-reviews"]'
+        );
 
+        elfsightLinks.forEach(link => {
+          link.style.display = 'none';
+          link.style.visibility = 'hidden';
+          link.style.opacity = '0';
+          link.style.pointerEvents = 'none';
+          link.style.height = '0';
+          link.style.width = '0';
+          link.style.position = 'absolute';
+        });
+      }
+
+      const interval = setInterval(hideElfsightBranding, 500);
+      setTimeout(() => clearInterval(interval), 15000);
+    </script>
   </head>
 
   <body>

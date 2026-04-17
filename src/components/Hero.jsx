@@ -3,7 +3,7 @@ import { MessageCircle, Calendar, ChevronDown, Heart, Shield, Clock } from 'luci
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import GlassSurface from '../components/ui/GlassSurface'
 
-const WA_NUMBER = '60166914270'
+const WA_NUMBER = '601136043101'
 const BOOKING_URL = 'https://klinikdrsiti.yezza.co/appointment'
 
 export default function Hero() {

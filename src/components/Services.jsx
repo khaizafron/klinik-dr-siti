@@ -611,7 +611,6 @@ const categories = [
         'Rawatan disesuaikan',
         'Follow-up & maintenance'
       ],
-      price: 'Dari RM1XX',
       bookingLink: '',
       isComingSoon: true
     }

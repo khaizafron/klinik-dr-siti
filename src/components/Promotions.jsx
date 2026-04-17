@@ -206,7 +206,7 @@ export default function Promotions() {
                 WHATSAPP SEKARANG
               </motion.a>
               <motion.a 
-                href="#contact"
+                href="#services"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="bg-red-600 text-white px-10 py-5 rounded-2xl font-black text-xs tracking-[0.2em] shadow-lg shadow-red-600/20 text-center"

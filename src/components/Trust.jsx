@@ -1,5 +1,5 @@
 import React from 'react'
-import { Play, ShieldCheck, Award, FlaskConical, Pill } from 'lucide-react'
+import { Play, ShieldCheck, Award, FlaskConical, Pill, Handshake, Home } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const trustBadges = [
@@ -26,6 +26,18 @@ const trustBadges = [
     title: 'Ubatan Berkualiti', 
     desc: 'Farmasi berlesen',
     img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=600&h=800'
+  },
+  { 
+    icon: Handshake, 
+    title: 'Staf Mesra', 
+    desc: 'Pelayanan terbaik',
+    img: 'staffutama.jpg'
+  },
+   { 
+    icon: Home, 
+    title: 'Tempat Selesa', 
+    desc: 'Bilik pemeriksaan modern',
+    img: 'bilik-scan-permai.jpg'
   },
 ]
 
@@ -130,7 +142,7 @@ export default function Trust() {
         </motion.div>
 
         {/* Trust Badges Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-10 lg:gap-12 mt-12 md:mt-20">
+        <div className="grid grid-cols-2 gap-4 md:gap-10 mt-12 md:mt-20 lg:flex lg:flex-wrap lg:justify-center lg:gap-12">
   {trustBadges.map((item, index) => (
     <motion.div 
       key={item.title}
@@ -138,7 +150,7 @@ export default function Trust() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="relative group aspect-square lg:aspect-auto lg:h-80 rounded-[1.5rem] lg:rounded-[2.5rem] overflow-hidden shadow-xl border border-white/10"
+      className="relative group aspect-square lg:aspect-auto lg:h-80 lg:w-[22%] rounded-[1.5rem] lg:rounded-[2.5rem] overflow-hidden shadow-xl border border-white/10"
     >
       {/* Background Image */}
       <img 

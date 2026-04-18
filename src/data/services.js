@@ -1,6 +1,6 @@
 export const services = [
   {
-    slug: 'perubatan-am',
+    slug: 'perubatan-am-core',
     name: 'Perubatan Am',
     emoji: '🩺',
     shortDesc: 'Rawatan penyakit biasa seperti demam, batuk, selsema dan lain-lain.',
@@ -10,7 +10,7 @@ export const services = [
     for: 'Semua peringkat umur',
     price: 'Dari RM 25',
     duration: '15 – 30 minit',
-    description: `Perubatan Am adalah asas kepada penjagaan kesihatan keluarga anda. Di Klinik Dr Siti & Rakan-Rakan, kami menangani pelbagai kes perubatan harian dengan cepat, tepat dan berkesan.
+    description: `Perubatan Am adalah asas kepada penjagaan kesihatan keluarga anda. Di Klinik Dr Siti dan Rakan Rakan, kami menangani pelbagai kes perubatan harian dengan cepat, tepat dan berkesan.
 
 Doktor kami yang berpengalaman akan melakukan penilaian menyeluruh terhadap simptom anda, mendiagnosis kondisi dengan tepat dan menetapkan rawatan yang sesuai termasuk ubatan dan pelan pemulihan.`,
     conditions: [

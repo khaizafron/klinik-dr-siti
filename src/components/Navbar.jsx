@@ -1,21 +1,32 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu, X, ChevronDown, Calendar } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const services = [
-  { label: 'Rawatan Umum', href: '#services' },
-  { label: 'Ibu & Anak', href: '#services' },
-  { label: 'Diagnostik', href: '#services' },
-  { label: 'Kesihatan Wanita', href: '#services' },
-  { label: 'Saringan Kesihatan', href: '#services' },
-  { label: 'Estetika', href: '#services' },
+  { label: 'Perubatan Am (Core)', slug: 'perubatan-am-core' },
+  { label: 'Minor Surgery / Procedures', slug: 'minor-surgery-procedures' },
+  { label: 'Fertiliti & Kesihatan Reproduktif', slug: 'fertiliti-kesihatan-reproduktif' },
+  { label: 'Kehamilan & Penjagaan Antenatal', slug: 'kehamilan-penjagaan-antenatal' },
+  { label: 'Scan Kehamilan / Ultrasound', slug: 'scan-kehamilan-ultrasound' },
+  { label: 'Vaksinasi KKM', slug: 'vaksinasi-kkm' },
+  { label: 'Vaksinasi Tambahan Kanak-Kanak', slug: 'vaksinasi-tambahan-kanak-kanak' },
+  { label: 'Penjagaan Bayi & Kanak-kanak', slug: 'penjagaan-bayi-kanak-kanak' },
+  { label: 'Vaksinasi Dewasa & Travel', slug: 'vaksinasi-dewasa-travel' },
+  { label: 'Mini Lab & Pemeriksaan Asas', slug: 'mini-lab-pemeriksaan-asas' },
+  { label: 'Scan & Ultrasound', slug: 'scan-ultrasound' },
+  { label: 'Perancang Keluarga', slug: 'perancang-keluarga' },
+  { label: 'Rawatan & Konsultasi Kesihatan Wanita', slug: 'rawatan-konsultasi-kesihatan-wanita' },
+  { label: 'Medical Checkup', slug: 'medical-checkup' },
+  { label: 'FOMEMA (Foreign Workers Screening)', slug: 'fomema-foreign-workers-screening' },
+  { label: 'Aesthetic Premium Experience', slug: 'aesthetic-premium-experience' },
 ]
 
 const links = [
-  { label: 'Home', href: '#home' },
-  { label: 'Tentang Kami', href: '#about' },
-  { label: 'Cawangan', href: '#branches' },
-  { label: 'Hubungi', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'Tentang Kami', to: '/about' },
+  { label: 'Cawangan', to: '/branch/puchong-permai' },
+  { label: 'Hubungi', to: '/contact' },
 ]
 
 export default function Navbar({ isModalOpen = false }) {
@@ -43,6 +54,12 @@ export default function Navbar({ isModalOpen = false }) {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
+  const scrollHome = () => {
+    setTimeout(() => {
+      document.getElementById('home')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 50)
+  }
+
   return (
     <nav className={`${isModalOpen ? 'hidden' : ''} fixed top-0 left-0 right-0 z-50 isolate transition-all duration-500`}>
 
@@ -57,7 +74,7 @@ export default function Navbar({ isModalOpen = false }) {
         >
 
           {/* LOGO */}
-          <a href="#home" className="flex items-center gap-4 group">
+          <Link to="/" onClick={scrollHome} className="flex items-center gap-4 group">
             <img
               src="/logo.PNG"
               alt="Logo"
@@ -80,18 +97,19 @@ export default function Navbar({ isModalOpen = false }) {
                   scrolled ? 'text-neutral-500' : 'text-white/50'
                 }`}
               >
-                & Rakan-Rakan
+                & Rakan Rakan
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* DESKTOP NAV */}
           <div className="hidden lg:flex items-center gap-1">
 
             {links.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.to}
+                onClick={link.to === '/' ? scrollHome : undefined}
                 className={`px-4 py-2 text-sm font-medium transition-colors relative group ${
                   scrolled
                     ? 'text-neutral-600 hover:text-neutral-900'
@@ -105,7 +123,7 @@ export default function Navbar({ isModalOpen = false }) {
                     scrolled ? 'bg-neutral-900' : 'bg-white'
                   }`}
                 />
-              </a>
+              </Link>
             ))}
 
             {/* DROPDOWN */}
@@ -136,17 +154,19 @@ export default function Navbar({ isModalOpen = false }) {
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute top-full left-0 mt-2 w-64 p-2 bg-white/90 backdrop-blur-xl border border-neutral-200 rounded-2xl shadow-xl"
+                    className="absolute top-full right-0 mt-2 w-[760px] max-w-[calc(100vw-2rem)] p-3 bg-white/90 backdrop-blur-xl border border-neutral-200 rounded-2xl shadow-xl"
                   >
-                    {services.map((s) => (
-                      <a
-                        key={s.label}
-                        href={s.href}
-                        className="block px-4 py-3 text-sm text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 rounded-xl transition"
-                      >
-                        {s.label}
-                      </a>
-                    ))}
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {services.map((s) => (
+                        <Link
+                          key={s.label}
+                          to={`/services/${s.slug}`}
+                          className="block px-4 py-3 text-sm text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 rounded-xl transition leading-snug"
+                        >
+                          {s.label}
+                        </Link>
+                      ))}
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -198,21 +218,24 @@ export default function Navbar({ isModalOpen = false }) {
               {/* Navigation Links */}
               <div className="space-y-2 mb-6">
                 {links.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
+                    to={link.to}
+                    onClick={() => {
+                      setMenuOpen(false)
+                      if (link.to === '/') scrollHome()
+                    }}
                     className="block px-4 py-4 text-lg font-medium text-neutral-700 hover:text-black hover:bg-neutral-100 rounded-2xl transition-all duration-200"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
 
               {/* Services Section */}
               <div className="border-t border-neutral-200 pt-6">
-                <a
-                  href="#services"
+                <Link
+                  to="/services/perubatan-am-core"
                   onClick={() => setMenuOpen(false)}
                   className="group relative p-4 bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-100 rounded-2xl transition-all duration-300 hover:shadow-md hover:scale-105 block"
                 >
@@ -222,7 +245,7 @@ export default function Navbar({ isModalOpen = false }) {
                     </span>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300" />
-                </a>
+                </Link>
               </div>
 
               {/* CTA Button */}

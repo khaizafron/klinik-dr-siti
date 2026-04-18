@@ -1,4 +1,22 @@
 {
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "/"
+    },
+    {
+      "source": "/contact",
+      "destination": "/"
+    },
+    {
+      "source": "/services/:slug",
+      "destination": "/"
+    },
+    {
+      "source": "/branch/:slug",
+      "destination": "/"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

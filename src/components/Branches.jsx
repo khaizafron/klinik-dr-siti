@@ -4,6 +4,13 @@ import { MapPin, Phone, Clock, ExternalLink, Calendar, MessageCircle, Navigation
 
 const WA_NUMBER = ''
 
+const slugify = (value) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+
 const branches = [
   {
     id: 'permai',
@@ -17,7 +24,7 @@ const branches = [
       { day: 'Sabtu', time: '8:30am – 5:00pm' },
       { day: 'Ahad', time: '12:00pm - 10pm' }
     ],
-    thumbnail: 'klinikpermai.jpg',
+    thumbnail: '/klinikpermai.jpg',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31874.582248434464!2d101.56319571083985!3d3.0075724000000252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb36e80a150a9%3A0xd422f8497d009bd7!2sKlinik%20Dr%20Siti%20dan%20Rakan%20Rakan!5e0!3m2!1sen!2smy!4v1775012564781!5m2!1sen!2smy',
     mapLink: 'https://share.google.com/nd1Gtv87tV4YyeAfM',
     waLink: `https://wa.me/60167296121?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20Cawangan%20Puchong%20Permai`,
@@ -34,7 +41,7 @@ const branches = [
       { day: 'Sabtu', time: '9:00am – 5:00pm' },
       { day: 'Ahad', time: '10:00am - 5:00pm' }
     ],
-    thumbnail: 'klinikutama.webp',
+    thumbnail: '/klinikutama.webp',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31874.582248434464!2d101.56319571083985!3d3.0075724000000252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb50d2456b0cf%3A0xf76c0e2c30d17952!2sKlinik%20Dr%20Siti%20dan%20Rakan%20rakan!5e0!3m2!1sen!2smy!4v1775012619200!5m2!1sen!2smy',
     mapLink: 'https://share.google.com/XYrp8bo2wIYJE1ACx',
     waLink: `https://wa.me/601136043101?text=Hi%2C%20saya%20ingin%20tanya%20tentang%20Cawangan%20Puchong%20Utama`,
@@ -68,11 +75,12 @@ export default function Branches() {
           {branches.map((branch, i) => (
             <motion.div
               key={branch.id}
+              id={slugify(branch.name)}
               initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
-              className="group bg-neutral-50 rounded-[3.5rem] overflow-hidden border border-neutral-100 shadow-sm hover:shadow-2xl hover:shadow-red-900/5 transition-all duration-500"
+              className="group scroll-mt-28 bg-neutral-50 rounded-[3.5rem] overflow-hidden border border-neutral-100 shadow-sm hover:shadow-2xl hover:shadow-red-900/5 transition-all duration-500"
             >
               {/* Interactive Map/Thumbnail Area */}
               <div 

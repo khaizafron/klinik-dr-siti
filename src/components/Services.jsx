@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { 
   ArrowRight, 
   Stethoscope, 
@@ -17,9 +17,19 @@ import {
   ShieldCheck
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const BOOKING_URL = 'https://klinikdrsiti.yezza.co/appointment'
 const WA_NUMBER = '601136043101'
+
+const slugify = (value) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+
+const getServiceSlug = (service) => service?.slug || (service?.name ? slugify(service.name) : '')
 
 const categories = [
   {
@@ -626,6 +636,26 @@ function ServiceModal({ service, onClose }) {
     return () => clearTimeout(timer)
   }, [service])
 
+  useEffect(() => {
+    if (!service) return
+
+    const originalTitle = document.title
+    const descriptionMeta = document.querySelector('meta[name="description"]')
+    const originalDescription = descriptionMeta?.getAttribute('content')
+    const nextDescription =
+      service.desc.length > 150 ? `${service.desc.slice(0, 147)}...` : service.desc
+
+    document.title = `${service.name} | Klinik Dr Siti dan Rakan Rakan`
+    descriptionMeta?.setAttribute('content', nextDescription)
+
+    return () => {
+      document.title = originalTitle
+      if (descriptionMeta && originalDescription !== null) {
+        descriptionMeta.setAttribute('content', originalDescription)
+      }
+    }
+  }, [service])
+
   if (!service) return null
 
   const getWaLink = (subServiceName) => {
@@ -908,10 +938,72 @@ function ServiceModal({ service, onClose }) {
 
 export default function Services({ onModalToggle }) {
   const [selected, setSelected] = useState(null)
+  const navigate = useNavigate()
+  const { slug } = useParams()
+  const closingRef = useRef(false)
+  const openTimerRef = useRef(null)
 
   useEffect(() => {
     onModalToggle?.(Boolean(selected))
   }, [selected, onModalToggle])
+
+  const openServiceAfterScroll = (service) => {
+    const nextSlug = getServiceSlug(service)
+    const target = document.getElementById(nextSlug) || document.getElementById('services')
+
+    if (openTimerRef.current) {
+      clearTimeout(openTimerRef.current)
+    }
+
+    if (target) {
+      const y = target.getBoundingClientRect().top + window.scrollY - 100
+      window.scrollTo({ top: Math.max(y, 0), behavior: 'smooth' })
+    }
+
+    openTimerRef.current = setTimeout(() => {
+      if (!closingRef.current) {
+        setSelected((current) => (getServiceSlug(current) === nextSlug ? current : service))
+      }
+    }, 450)
+  }
+
+  useEffect(() => {
+    if (!slug) {
+      closingRef.current = false
+      return
+    }
+
+    if (closingRef.current) return
+
+    const matchingService = categories
+      .flatMap((cat) => cat.services)
+      .find((svc) => getServiceSlug(svc) === slug)
+
+    if (matchingService && getServiceSlug(selected || {}) !== slug) {
+      openServiceAfterScroll(matchingService)
+    }
+  }, [slug, selected])
+
+  const handleServiceClick = (service) => {
+    closingRef.current = false
+    const nextSlug = getServiceSlug(service)
+
+    if (slug === nextSlug) {
+      openServiceAfterScroll(service)
+      return
+    }
+
+    navigate(`/services/${nextSlug}`)
+  }
+
+  const handleModalClose = () => {
+    closingRef.current = true
+    if (openTimerRef.current) {
+      clearTimeout(openTimerRef.current)
+    }
+    setSelected(null)
+    navigate('/', { replace: true })
+  }
 
   return (
     <section id="services" className="py-20 md:py-32 bg-white overflow-hidden">
@@ -960,12 +1052,13 @@ export default function Services({ onModalToggle }) {
                   {cat.services.map((svc, index) => (
                     <motion.button
                       key={svc.name}
+                      id={slugify(svc.name)}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
-                      onClick={() => setSelected(svc)}
-                      className="group text-left bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-neutral-100 hover:border-red-200 transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-red-900/5 flex flex-col h-full relative"
+                      onClick={() => handleServiceClick(svc)}
+                      className="group scroll-mt-28 text-left bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-neutral-100 hover:border-red-200 transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-red-900/5 flex flex-col h-full relative"
                     >
                       <div className="relative h-56 md:h-64 overflow-hidden">
                         <img 
@@ -1014,7 +1107,7 @@ export default function Services({ onModalToggle }) {
       </div>
       
       <AnimatePresence>
-        {selected && <ServiceModal service={selected} onClose={() => setSelected(null)} />}
+        {selected && <ServiceModal service={selected} onClose={handleModalClose} />}
       </AnimatePresence>
     </section>
   )

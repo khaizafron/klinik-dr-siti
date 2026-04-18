@@ -6,107 +6,102 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://klinikdrsitirakan.com/about</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#branches</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://klinikdrsitirakan.com/contact</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#contact</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://klinikdrsitirakan.com/#services-perubatan-am-core</loc>
+    <loc>https://klinikdrsitirakan.com/services/perubatan-am-core</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-minor-surgery-procedures</loc>
+    <loc>https://klinikdrsitirakan.com/services/minor-surgery-procedures</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-fertiliti-kesihatan-reproduktif</loc>
+    <loc>https://klinikdrsitirakan.com/services/fertiliti-kesihatan-reproduktif</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-kehamilan-penjagaan-antenatal</loc>
+    <loc>https://klinikdrsitirakan.com/services/kehamilan-penjagaan-antenatal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-scan-kehamilan-ultrasound</loc>
+    <loc>https://klinikdrsitirakan.com/services/scan-kehamilan-ultrasound</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-vaksinasi-kkm</loc>
+    <loc>https://klinikdrsitirakan.com/services/vaksinasi-kkm</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-vaksinasi-tambahan-kanak-kanak</loc>
+    <loc>https://klinikdrsitirakan.com/services/vaksinasi-tambahan-kanak-kanak</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-penjagaan-bayi-kanak-kanak</loc>
+    <loc>https://klinikdrsitirakan.com/services/penjagaan-bayi-kanak-kanak</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-vaksinasi-dewasa-travel</loc>
+    <loc>https://klinikdrsitirakan.com/services/vaksinasi-dewasa-travel</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-mini-lab-pemeriksaan-asas</loc>
+    <loc>https://klinikdrsitirakan.com/services/mini-lab-pemeriksaan-asas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-scan-ultrasound</loc>
+    <loc>https://klinikdrsitirakan.com/services/scan-ultrasound</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-perancang-keluarga</loc>
+    <loc>https://klinikdrsitirakan.com/services/perancang-keluarga</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-rawatan-konsultasi-kesihatan-wanita</loc>
+    <loc>https://klinikdrsitirakan.com/services/rawatan-konsultasi-kesihatan-wanita</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-medical-checkup</loc>
+    <loc>https://klinikdrsitirakan.com/services/medical-checkup</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-fomema-foreign-workers-screening</loc>
+    <loc>https://klinikdrsitirakan.com/services/fomema-foreign-workers-screening</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#services-aesthetic-premium-experience</loc>
+    <loc>https://klinikdrsitirakan.com/services/aesthetic-premium-experience</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#branch-puchong-permai</loc>
+    <loc>https://klinikdrsitirakan.com/branch/puchong-permai</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://klinikdrsitirakan.com/#branch-puchong-utama</loc>
+    <loc>https://klinikdrsitirakan.com/branch/puchong-utama</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

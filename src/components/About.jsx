@@ -13,7 +13,7 @@ const stats = [
 const flowingMenuItems = [
   { link: '#about', text: '5,000+ Pesakit Puas Hati', image: 'https://plus.unsplash.com/premium_photo-1675807264533-5e6db71ba3c4?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
   { link: '#about', text: '15+ Tahun Pengalaman', image: 'https://plus.unsplash.com/premium_photo-1667511010926-549af1b3499d?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { link: '#about', text: '2 Cawangan di Puchong', image: 'klinikdrsiti-desktop.PNG' },
+  { link: '#about', text: '2 Cawangan di Puchong', image: '/klinikdrsiti-desktop.PNG' },
   { link: '#about', text: '7 Hari Operasi Seminggu', image: 'https://images.unsplash.com/photo-1589554882513-691f8f071f72?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }
 ];
 
@@ -54,7 +54,7 @@ export default function About() {
 
             <div className="space-y-4 md:space-y-6 text-neutral-500 text-base md:text-lg leading-relaxed mb-10 md:mb-12">
               <p>
-                Klinik Dr Siti & Rakan-Rakan merupakan klinik swasta yang menyediakan rawatan menyeluruh untuk ibu, kanak-kanak dan keluarga.
+                Klinik Dr Siti dan Rakan Rakan merupakan klinik swasta yang menyediakan rawatan menyeluruh untuk ibu, kanak-kanak dan keluarga.
               </p>
               <p>
                 Dengan dua cawangan di Puchong, kami komited memberikan rawatan profesional, cepat dan selesa kepada setiap pesakit.
@@ -111,7 +111,7 @@ export default function About() {
               className="relative z-10 rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] aspect-[4/5] max-w-md mx-auto lg:max-w-none border border-neutral-100"
             >
               <img 
-                src="permaiinside.jpg" 
+                src="/permaiinside.jpg" 
                 alt="Suasana Klinik Profesional" 
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"
@@ -132,7 +132,7 @@ export default function About() {
                     <img src="/logo.PNG" alt="Logo" className="h-6 w-6 md:h-8 md:w-8 object-contain" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-sm md:text-xl leading-none tracking-tight">Klinik Dr Siti & Rakan2</h3>
+                    <h3 className="font-bold text-sm md:text-xl leading-none tracking-tight">Klinik Dr Siti dan Rakan Rakan</h3>
                     <p className="text-white/60 text-[8px] md:text-[10px] uppercase tracking-[0.2em] mt-1.5 font-medium">Healthcare Excellence</p>
                   </div>
                 </div>
@@ -159,7 +159,7 @@ export default function About() {
               className="absolute -top-4 -left-2 md:-top-12 md:-left-12 rounded-2xl md:rounded-[2rem] overflow-hidden border-4 md:border-[12px] border-white shadow-2xl z-20 w-[160px] md:w-[320px] lg:w-[450px] aspect-[16/9]"
             >
               <img 
-                src="staff.jpg" 
+                src="/staff.jpg" 
                 alt="Konsultasi Doktor" 
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                 referrerPolicy="no-referrer"

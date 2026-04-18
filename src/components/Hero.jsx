@@ -211,9 +211,10 @@ const mainContentScale = useTransform(scrollYProgress, [0.20, 1], [0.96, 1])
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
         >
           <span className="text-black/60 uppercase tracking-[0.3em] text-xs mb-4 font-medium">Welcome to</span>
-          <h1 className="text-5xl md:text-7xl font-light text-blue tracking-tight italic font-serif">
-            Klinik Dr Siti & Rakan2
+          <h1 className="text-4xl md:text-7xl font-light text-blue tracking-tight italic font-serif">
+            Klinik Dr Siti Dan Rakan Rakan
           </h1>
+          <p className="text-md md:text-2xl font-light text-blue tracking-tight font-serif"> Klinik Ibu, Anak & Keluarga di Puchong</p>
         </motion.div>
 
         {/* Scene 2: Excellence */}

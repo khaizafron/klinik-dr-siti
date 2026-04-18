@@ -7,7 +7,7 @@ const trustBadges = [
     icon: ShieldCheck, 
     title: 'Klinik Berlesen', 
     desc: 'Berdaftar dengan KKM',
-    img: 'kkm.JPG'
+    img: '/kkm.JPG'
   },
   { 
     icon: Award, 
@@ -31,13 +31,13 @@ const trustBadges = [
     icon: Handshake, 
     title: 'Staf Mesra', 
     desc: 'Pelayanan terbaik',
-    img: 'staffutama.jpg'
+    img: '/staffutama.jpg'
   },
    { 
     icon: Home, 
     title: 'Tempat Selesa', 
     desc: 'Bilik pemeriksaan moden',
-    img: 'bilik-scan-permai.jpg'
+    img: '/bilik-scan-permai.jpg'
   },
 ]
 
@@ -127,7 +127,7 @@ export default function Trust() {
               <div className="hidden md:block w-1 h-12 bg-red-500 rounded-full" />
               <div>
                 <p className="text-white font-bold text-[10px] min-[375px]:text-[12px] sm:text-sm md:text-xl leading-tight whitespace-nowrap min-w-max">"Dipercayai oleh komuniti setempat"</p>
-                <p className="text-red-400/80 text-[8px] md:text-sm uppercase tracking-widest font-medium mt-0.5">Klinik Dr Siti & Rakan-Rakan, Puchong</p>
+                <p className="text-red-400/80 text-[8px] md:text-sm uppercase tracking-widest font-medium mt-0.5">Klinik Dr Siti dan Rakan Rakan, Puchong</p>
               </div>
             </div>
             <motion.a

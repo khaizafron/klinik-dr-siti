@@ -57,7 +57,7 @@ export default function Footer() {
 
             <div>
               <h2 className="font-black text-2xl text-blue-950">KLINIK DR SITI</h2>
-              <p className="text-[10px] font-black tracking-[0.4em] text-red-500">& Rakan-Rakan</p>
+              <p className="text-[10px] font-black tracking-[0.4em] text-red-500">& Rakan Rakan</p>
             </div>
           </div>
 
@@ -197,7 +197,7 @@ export default function Footer() {
           </div>
 
           <p className="text-neutral-400 text-xs">
-            © {currentYear} Klinik Dr Siti & Rakan2
+            © {currentYear} Klinik Dr Siti dan Rakan Rakan. All rights reserved.
           </p>
 
           <a 

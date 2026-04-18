@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation, useParams } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -13,8 +14,32 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 
-export default function App() {
+function MainPage() {
+  const { slug } = useParams()
+  const { pathname } = useLocation()
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    if (pathname.startsWith('/services/')) return
+
+    const routeSectionMap = {
+      '/about': 'about',
+      '/contact': 'contact',
+    }
+
+    const targetId = routeSectionMap[pathname] || slug
+    if (!targetId) return
+
+    const scrollTimer = setTimeout(() => {
+      const target = document.getElementById(targetId)
+      if (target) {
+        const y = target.getBoundingClientRect().top + window.scrollY - 100
+        window.scrollTo({ top: Math.max(y, 0), behavior: 'smooth' })
+      }
+    }, 200)
+
+    return () => clearTimeout(scrollTimer)
+  }, [pathname, slug])
 
   useEffect(() => {
     document.body.style.overflow = isModalOpen ? 'hidden' : ''
@@ -58,5 +83,19 @@ export default function App() {
       <WhatsAppButton hide={isModalOpen} />
 
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/about" element={<MainPage />} />
+        <Route path="/contact" element={<MainPage />} />
+        <Route path="/services/:slug" element={<MainPage />} />
+        <Route path="/branch/:slug" element={<MainPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

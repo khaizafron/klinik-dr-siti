@@ -108,8 +108,8 @@ export default function Contact() {
         <div className="hidden md:block absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-red-100/40 rounded-full blur-[120px]" />
         <div className="hidden md:block absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[100px]" />
         {/* Mobile version - simplified */}
-        <div className="md:hidden absolute top-[-5%] right-[-10%] w-[300px] h-[300px] bg-red-100/20 rounded-full blur-[60px]" />
-        <div className="md:hidden absolute bottom-[-5%] left-[-10%] w-[250px] h-[250px] bg-blue-50/20 rounded-full blur-[60px]" />
+        <div className="hidden absolute top-[-5%] right-[-10%] w-[300px] h-[300px] bg-red-100/20 rounded-full blur-[60px]" />
+        <div className="hidden absolute bottom-[-5%] left-[-10%] w-[250px] h-[250px] bg-blue-50/20 rounded-full blur-[60px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">

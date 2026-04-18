@@ -105,3 +105,7 @@
 .wa-pulse {
   animation: wa-pulse 2s infinite;
 }
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+}

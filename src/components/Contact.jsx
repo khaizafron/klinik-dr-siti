@@ -13,7 +13,8 @@ import {
 } from 'lucide-react'
 
 const INITIAL_FORM = { name: '', phone: '', message: '', branch: '' }
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTxZ5Js8aFCVCj-PMcD2ZAq8y43_aO-JbNweCcbM07GltmLgkN6X0RaIxTIXYUOmfa6A/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzgAkfkBWWeXwdk50ehENX7v_h1-ZAih7zgtw-EbeGIH1Ae337XZcXK-43txj30Y4T6EQ/exec";
+const RECAPTCHA_SITE_KEY = '6LdBVL0sAAAAACDlmEWY06Ol293Vbu8EcKkhEPVh'
 
 const BRANCHES = [
   {
@@ -48,6 +49,26 @@ function sanitize(str) {
   return str.replace(/[<>"'&]/g, c => ({'<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;','&':'&amp;'}[c]))
 }
 
+function getRecaptchaToken() {
+  return new Promise((resolve) => {
+    if (!window.grecaptcha?.ready || !window.grecaptcha?.execute) {
+      resolve('')
+      return
+    }
+
+    try {
+      window.grecaptcha.ready(() => {
+        window.grecaptcha
+          .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
+          .then(resolve)
+          .catch(() => resolve(''))
+      })
+    } catch {
+      resolve('')
+    }
+  })
+}
+
 export default function Contact() {
   const [form, setForm] = useState(INITIAL_FORM)
   const [errors, setErrors] = useState({})
@@ -73,14 +94,24 @@ export default function Contact() {
     return
   }
 
+  setErrors({})
+
   setLoading(true)
 
   try {
+    const recaptchaToken = await getRecaptchaToken()
+
+    if (!recaptchaToken) {
+    setStatus('error')
+    setLoading(false)
+    return
+}
     const params = new URLSearchParams({
       name:    form.name,
       phone:   form.phone,
       branch:  form.branch,
       message: form.message,
+      recaptchaToken,
     })
 
     await fetch(SCRIPT_URL, {
@@ -330,6 +361,11 @@ export default function Contact() {
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-400 translate-y-full md:group-hover:translate-y-0 transition-transform duration-500" />
                 </button>
+                <p className="text-[10px] text-neutral-400 leading-relaxed">
+                  This site is protected by reCAPTCHA and the Google{' '}
+                  <a href="https://policies.google.com/privacy" className="underline">Privacy Policy</a> and{' '}
+                  <a href="https://policies.google.com/terms" className="underline">Terms of Service</a> apply.
+                </p>
               </form>
 
               {/* Status Messages */}

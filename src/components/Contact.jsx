@@ -13,7 +13,7 @@ import {
 } from 'lucide-react'
 
 const INITIAL_FORM = { name: '', phone: '', message: '', branch: '' }
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxtKVsB-C__UF1cnTtNXlwXkyR9drydl-rbUWpxUgjYlAxkdoSso4aZx7i_c3bDmIY5xA/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8ibVxCy8pVU4EotC0qHz4bV6zMRzGjcdkLgjxQpSI5I97mBHLUHYeTg9DOgHCfdCmfA/exec";
 const RECAPTCHA_SITE_KEY = '6LdBVL0sAAAAACDlmEWY06Ol293Vbu8EcKkhEPVh'
 
 const BRANCHES = [
@@ -95,31 +95,31 @@ export default function Contact() {
   }
 
   setErrors({})
-
   setLoading(true)
 
   try {
-    const recaptchaToken = await getRecaptchaToken()
+    // 🚀 TRY ambil token (kalau gagal, tetap proceed)
+    let recaptchaToken = ''
+    try {
+      recaptchaToken = await getRecaptchaToken()
+    } catch {
+      recaptchaToken = ''
+    }
 
-    if (!recaptchaToken) {
-    setStatus('error')
-    setLoading(false)
-    return
-}
-    const params = new URLSearchParams({
-      name:    form.name,
-      phone:   form.phone,
-      branch:  form.branch,
-      message: form.message,
-      recaptchaToken,
-    })
-
+    // 🚀 HANTAR DATA WALAU TOKEN ADA / TAKDE
     await fetch(SCRIPT_URL, {
-      method: "POST",
-      mode:   "no-cors",
-      body:   params,
+      method: 'POST',
+      mode: 'no-cors',
+      body: new URLSearchParams({
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        branch: form.branch,
+        message: form.message.trim(),
+        recaptchaToken: recaptchaToken || '', // optional
+      }),
     })
 
+    // ✅ assume success (same macam code lama)
     setStatus('success')
     setForm(INITIAL_FORM)
     setTimeout(() => setStatus(null), 5000)

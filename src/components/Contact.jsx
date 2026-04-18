@@ -98,13 +98,8 @@ export default function Contact() {
   setLoading(true)
 
   try {
-    // 🚀 TRY ambil token (kalau gagal, tetap proceed)
-    let recaptchaToken = ''
-    try {
-      recaptchaToken = await getRecaptchaToken()
-    } catch {
-      recaptchaToken = ''
-    }
+    const recaptchaToken = await getRecaptchaToken()
+    console.log("TOKEN:", recaptchaToken)
 
     // 🚀 HANTAR DATA WALAU TOKEN ADA / TAKDE
     await fetch(SCRIPT_URL, {

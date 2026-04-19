@@ -13,7 +13,7 @@ import {
 } from 'lucide-react'
 
 const INITIAL_FORM = { name: '', phone: '', message: '', branch: '' }
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8ibVxCy8pVU4EotC0qHz4bV6zMRzGjcdkLgjxQpSI5I97mBHLUHYeTg9DOgHCfdCmfA/exec";
+const SCRIPT_URL = "https://klinik-dr-siti.vercel.app/api/contact";
 const RECAPTCHA_SITE_KEY = '6LdBVL0sAAAAACDlmEWY06Ol293Vbu8EcKkhEPVh'
 
 const BRANCHES = [
@@ -51,21 +51,18 @@ function sanitize(str) {
 
 function getRecaptchaToken() {
   return new Promise((resolve) => {
-    if (!window.grecaptcha?.ready || !window.grecaptcha?.execute) {
+    if (!window.grecaptcha) {
+      console.error("reCAPTCHA NOT LOADED")
       resolve('')
       return
     }
 
-    try {
-      window.grecaptcha.ready(() => {
-        window.grecaptcha
-          .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
-          .then(resolve)
-          .catch(() => resolve(''))
-      })
-    } catch {
-      resolve('')
-    }
+    window.grecaptcha.ready(() => {
+      window.grecaptcha
+        .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
+        .then((token) => resolve(token))
+        .catch(() => resolve(''))
+    })
   })
 }
 
@@ -101,23 +98,38 @@ export default function Contact() {
     const recaptchaToken = await getRecaptchaToken()
     console.log("TOKEN:", recaptchaToken)
 
-    // 🚀 HANTAR DATA WALAU TOKEN ADA / TAKDE
-    await fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: new URLSearchParams({
-        name: form.name.trim(),
-        phone: form.phone.trim(),
-        branch: form.branch,
-        message: form.message.trim(),
-        recaptchaToken: recaptchaToken || '', // optional
-      }),
-    })
+    if (!recaptchaToken) {
+  console.error("NO TOKEN - STOP SUBMIT")
+  setStatus('error')
+  setLoading(false)
+  return
+}
+const res = await fetch(SCRIPT_URL, {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name: form.name.trim(),
+    phone: form.phone.trim(),
+    branch: form.branch,
+    message: form.message.trim(),
+    token: recaptchaToken
+  })
+});
 
-    // ✅ assume success (same macam code lama)
-    setStatus('success')
-    setForm(INITIAL_FORM)
-    setTimeout(() => setStatus(null), 5000)
+const data = await res.json();
+
+console.log("SERVER RESPONSE:", data);
+
+if (!data.success) {
+  throw new Error(data.error || "Submit failed");
+}
+
+// ✅ only run kalau backend confirm success
+setStatus('success')
+setForm(INITIAL_FORM)
+setTimeout(() => setStatus(null), 5000)
 
   } catch (err) {
     console.error(err)
@@ -341,7 +353,7 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={loading || !window.grecaptcha}
                   className="w-full relative group overflow-hidden bg-blue-950 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs md:hover:shadow-2xl md:hover:shadow-red-900/40 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <div className="relative z-10 flex items-center justify-center gap-3">

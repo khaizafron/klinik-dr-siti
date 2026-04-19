@@ -18,9 +18,10 @@ import {
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useParams } from 'react-router-dom'
+import { getWaLink } from '../utils/whatsapp'
 
 const BOOKING_URL = 'https://klinikdrsiti.yezza.co/appointment'
-const WA_NUMBER = '601136043101'
+
 
 const slugify = (value) =>
   value
@@ -658,10 +659,7 @@ function ServiceModal({ service, onClose }) {
 
   if (!service) return null
 
-  const getWaLink = (subServiceName) => {
-    const message = `Hi saya nak buat temu janji untuk ${subServiceName || service.name} di Klinik Dr Siti.`
-    return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`
-  }
+
 
   return (
     <AnimatePresence>
@@ -790,7 +788,9 @@ function ServiceModal({ service, onClose }) {
                                     </div>
                                     <div className="flex gap-2 w-full sm:w-auto">
                                       <a 
-                                        href={getWaLink(opt.name)}
+                                        href={getWaLink(
+  `Hi saya nak buat temu janji untuk ${opt.name} di Klinik Dr Siti & Rakan2.`
+)}
                                         target="_blank"
                                         className="flex-1 sm:flex-none px-3 md:px-4 py-2 md:py-2.5 bg-white border border-neutral-200 text-blue-600 hover:bg-blue-50 hover:border-blue-200 rounded-xl flex items-center justify-center gap-2 transition-all text-[9px] md:text-[10px] font-black uppercase tracking-widest"
                                       >
@@ -840,7 +840,9 @@ function ServiceModal({ service, onClose }) {
                                 </div>
                                 <div className="flex gap-2 w-full sm:w-auto">
                                   <a 
-                                    href={getWaLink(opt.name)}
+                                    href={getWaLink(
+  `Hi saya nak buat temu janji untuk ${opt.name} di Klinik Dr Siti & Rakan2.`
+)}
                                     target="_blank"
                                     className="flex-1 sm:flex-none px-3 md:px-4 py-2 md:py-2.5 bg-white border border-neutral-200 text-blue-600 hover:bg-blue-50 hover:border-blue-200 rounded-xl flex items-center justify-center gap-2 transition-all text-[9px] md:text-[10px] font-black uppercase tracking-widest"
                                   >
@@ -901,7 +903,9 @@ function ServiceModal({ service, onClose }) {
 
   {/* WHATSAPP */}
   <a 
-    href={getWaLink()}
+    href={getWaLink(
+  `Hi saya nak buat temu janji untuk ${service.name} di Klinik Dr Siti & Rakan2.`
+)}
     target="_blank"
     className="flex-1 lg:w-full bg-green-500 hover:bg-green-600 text-white font-black py-3 md:py-3.5 lg:py-4 rounded-xl lg:rounded-2xl flex items-center justify-center gap-2 lg:gap-3 transition-all text-[8px] md:text-[10px] lg:text-xs tracking-widest"
   >

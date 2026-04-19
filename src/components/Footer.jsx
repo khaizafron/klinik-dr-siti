@@ -8,6 +8,7 @@ import {
   Heart,
   ShieldCheck
 } from 'lucide-react'
+import { getWaLink } from "../utils/whatsapp";
 
 const BRANCHES = [
   { 
@@ -33,7 +34,7 @@ const QUICK_LINKS = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
-  const waUrl = 'https://wa.me/601136043101'
+  const waUrl = getWaLink("Hi saya nak tanya");
 
   return (
     <footer className="relative bg-gradient-to-b from-red-50 via-white to-white pt-24 pb-12 overflow-hidden border-t border-red-100/50">

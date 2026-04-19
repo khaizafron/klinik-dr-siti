@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { MessageCircle, X } from 'lucide-react'
+import { getWaLink } from "../utils/whatsapp";
 
 const WA_NUMBER = '601136043101'
-const WA_URL = `https://wa.me/${WA_NUMBER}?text=Hi%2C%20saya%20ingin%20membuat%20temujanji%20di%20Klinik%20Dr%20Siti`
+const WA_URL = getWaLink(
+  "Hi saya nak membuat temujanji di Klinik Dr Siti"
+);
 
 export default function WhatsAppButton({ hide }) {
   const [tooltip, setTooltip] = useState(false)

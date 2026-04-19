@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, Tag, ArrowRight, Sparkles, Clock, Percent } from 'lucide-react'
 import BorderGlow from '../components/ui/BorderGlow'
+import { getWaLink } from "../utils/whatsapp";
 
 const WHATSAPP = "601136043101"
 
@@ -87,9 +88,9 @@ export default function Promotions() {
           {promos.map((promo, i) => {
             const Icon = promo.icon
 
-            const waLink = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-              `Hi, saya berminat dengan ${promo.title} (${promo.range})`
-            )}`
+            const waLink = getWaLink(
+  `Hi saya nak tanya promo ${promo.title}`
+);
 
             return (
               <BorderGlow
@@ -196,7 +197,7 @@ export default function Promotions() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
               <motion.a 
-                href="https://wa.me/601136043101"
+                href={getWaLink("Hi saya nak tanya")}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -2 }}

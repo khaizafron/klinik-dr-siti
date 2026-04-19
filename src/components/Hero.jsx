@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { MessageCircle, Calendar, ChevronDown, Heart, Shield, Clock } from 'lucide-react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import GlassSurface from '../components/ui/GlassSurface'
+import { getWaLink } from "../utils/whatsapp";
 
 const WA_NUMBER = '601136043101'
 const BOOKING_URL = 'https://klinikdrsiti.yezza.co/appointment'
@@ -153,7 +154,7 @@ const currentFrame = (i) => {
     }
   }, [])
 
-  const waUrl = `https://wa.me/${WA_NUMBER}?text=Hi%2C%20saya%20ingin%20membuat%20temujanji`
+  const waUrl = getWaLink("Hi saya nak membuat temujanji");
 
   // Content visibility transforms
   // Keep the intro scenes shorter and let the final CTA take most of the scroll time.

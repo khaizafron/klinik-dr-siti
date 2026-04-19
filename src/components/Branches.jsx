@@ -30,7 +30,7 @@ const branches = [
     mapLink: 'https://share.google.com/nd1Gtv87tV4YyeAfM',
     waLink: getWaLink(
   "Hi saya nak tanya tentang Cawangan Puchong Permai",
-  "branch"
+  "permai"
 )
   },
   {
@@ -50,7 +50,7 @@ const branches = [
     mapLink: 'https://share.google.com/XYrp8bo2wIYJE1ACx',
         waLink: getWaLink(
   "Hi saya nak tanya tentang Cawangan Puchong Utama",
-  "branch"
+  "utama"
 )
   },
 ]

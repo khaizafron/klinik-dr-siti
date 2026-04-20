@@ -53,7 +53,7 @@ export default function Footer() {
           <div className="flex items-center gap-5 group">
             <div className="relative">
               <div className="absolute -inset-4 bg-red-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              <img src="/logo.PNG" className="h-24 w-24 relative z-10" />
+              <img src="/logo.PNG" alt="Logo Klinik Dr Siti Dan Rakan Rakan" className="h-24 w-24 relative z-10" />
             </div>
 
             <div>

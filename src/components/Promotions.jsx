@@ -170,6 +170,7 @@ export default function Promotions() {
                         target="_blank"
                         whileHover={{ x: 3 }}
                         className="w-10 h-10 bg-red-50 text-red-600 rounded-xl flex items-center justify-center hover:bg-red-600 hover:text-white transition-all duration-300"
+                        aria-label={`Inquire about ${promo.title} via WhatsApp`}
                       >
                         <ArrowRight size={18} />
                       </motion.a>

@@ -196,6 +196,7 @@ export default function Navbar({ isModalOpen = false }) {
                   ? 'bg-neutral-100 border-neutral-200 text-neutral-900'
                   : 'bg-white/10 border-white/20 text-white'
               }`}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>

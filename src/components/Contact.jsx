@@ -185,7 +185,7 @@ setTimeout(() => setStatus(null), 5000)
                     className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
                       activeBranch === branch.id 
                         ? 'bg-white text-blue-900 shadow-sm' 
-                        : 'text-neutral-500 hover:text-blue-900'
+                        : 'text-neutral-600 hover:text-blue-900'
                     }`}
                   >
                     {branch.name}
@@ -208,7 +208,7 @@ setTimeout(() => setStatus(null), 5000)
                         <MapPin size={20} />
                       </div>
                       <div className="flex-1">
-                        <p className="text-[10px] font-black text-neutral-400 uppercase tracking-widest mb-1">Lokasi Kami</p>
+                        <p className="text-[10px] font-black text-neutral-600 uppercase tracking-widest mb-1">Lokasi Kami</p>
                         <p className="text-neutral-700 font-medium leading-snug">{branch.address}</p>
                         <a 
                           href={branch.mapUrl} 
@@ -226,9 +226,9 @@ setTimeout(() => setStatus(null), 5000)
                         <Phone size={20} />
                       </div>
                       <div>
-                        <p className="text-[10px] font-black text-neutral-400 uppercase tracking-widest mb-1">Talian Terus</p>
+                        <p className="text-[10px] font-black text-neutral-600 uppercase tracking-widest mb-1">Talian Terus</p>
                         <p className="text-neutral-700 font-bold">{branch.phone}</p>
-                        <p className="text-neutral-500 font-medium">{branch.mobile}</p>
+                        <p className="text-neutral-600 font-medium">{branch.mobile}</p>
                       </div>
                     </div>
 
@@ -237,7 +237,7 @@ setTimeout(() => setStatus(null), 5000)
                         <Clock size={20} />
                       </div>
                       <div>
-                        <p className="text-[10px] font-black text-neutral-400 uppercase tracking-widest mb-1">Waktu Operasi</p>
+                        <p className="text-[10px] font-black text-neutral-600 uppercase tracking-widest mb-1">Waktu Operasi</p>
                         <div className="bg-neutral-50 border border-neutral-100 rounded-2xl p-4 space-y-3">
 
   {branch.hours.map((h, i) => (
@@ -246,7 +246,7 @@ setTimeout(() => setStatus(null), 5000)
       className="flex items-center justify-between"
     >
       {/* DAY */}
-      <span className="text-[11px] font-bold text-neutral-500 tracking-wide whitespace-nowrap">
+      <span className="text-[11px] font-bold text-neutral-700 tracking-wide whitespace-nowrap">
         {h.day}
       </span>
 

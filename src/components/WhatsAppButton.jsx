@@ -78,6 +78,7 @@ export default function WhatsAppButton({ hide }) {
           <button
             onClick={handleClose}
             className="absolute -top-2 -right-2 w-5 h-5 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center text-gray-500 transition-colors"
+            aria-label="Close WhatsApp tooltip"
           >
             <X size={12} />
           </button>
@@ -100,6 +101,7 @@ export default function WhatsAppButton({ hide }) {
         rel="noopener noreferrer"
         className="w-16 h-16 bg-green-500 hover:bg-green-400 text-white rounded-full flex items-center justify-center shadow-2xl shadow-green-500/50 hover:scale-110 transition-all duration-300 wa-pulse"
         onMouseEnter={() => setTooltip(true)}
+        aria-label="Contact us via WhatsApp"
       >
         <MessageCircle size={30} fill="white" strokeWidth={0} />
       </a>

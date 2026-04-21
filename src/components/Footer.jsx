@@ -113,9 +113,9 @@ export default function Footer() {
         <div className="grid lg:grid-cols-12 gap-12 mb-20">
           
           <div className="lg:col-span-4">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
               Visi & Misi
-            </h4>
+            </h3>
 
             <div className="space-y-4">
   <div>
@@ -139,9 +139,9 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-5">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
               Lokasi Cawangan
-            </h4>
+            </h3>
 
             <div className="grid sm:grid-cols-2 gap-5">
               {BRANCHES.map((b, i) => (
@@ -163,14 +163,14 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
               Waktu Operasi
-            </h4>
-              <h3 className="font-black text-sm text-blue-950">Cawangan Puchong Permai</h3>
+            </h3>
+              <h4 className="font-black text-sm text-blue-950">Cawangan Puchong Permai</h4>
               <p className="text-sm">Isnin – Jumaat: 8:30am – 10pm</p>
               <p className="text-sm">Sabtu: 9:00am – 5pm</p>
               <p className="text-sm">Ahad: 12:00pm - 10pm</p>
-              <h3 className="font-black text-sm text-blue-950">Cawangan Puchong Utama</h3>
+              <h4 className="font-black text-sm text-blue-950">Cawangan Puchong Utama</h4>
               <p className="text-sm">Isnin – Jumaat: 8:30am – 9pm</p>
               <p className="text-sm">Sabtu: 9:00am – 5pm</p>
               <p className="text-sm">Ahad: 10:00am - 5pm</p>

@@ -87,7 +87,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- ✅ Elfsight -->
-    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <script>
+      if (window.innerWidth < 768) {
+        window.addEventListener('load', function() {
+          const script = document.createElement('script');
+          script.src = 'https://elfsightcdn.com/platform.js';
+          script.async = true;
+          document.head.appendChild(script);
+        });
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://elfsightcdn.com/platform.js';
+        script.async = true;
+        document.head.appendChild(script);
+      }
+    </script>
     <script src="https://www.google.com/recaptcha/api.js?render=6LdBVL0sAAAAACDlmEWY06Ol293Vbu8EcKkhEPVh" async defer></script>
 
     <!-- ✅ Hide Elfsight Branding -->

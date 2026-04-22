@@ -146,7 +146,7 @@ const categories = [
     { 
       name: 'TVS / Pelvic Ultrasound', 
       desc: 'Imbasan transvaginal untuk menilai keadaan rahim dan ovari secara lebih terperinci.', 
-      bookingLink: '' 
+      bookingLink: 'https://klinikdrsiti.yezza.co/appointment/pelvic-gynae-tvs-218678' 
     }
   ]
 },
@@ -168,7 +168,7 @@ const categories = [
     { 
       name: 'Antenatal Followup', 
       desc: 'Pemantauan berkala termasuk tekanan darah, berat badan dan ujian air kencing.', 
-      bookingLink: '' 
+      bookingLink: 'https://klinikdrsiti.yezza.co/appointment/antenatal-checkup-buku-pink-70345' 
     },
     { 
       name: 'MOGTT (Ujian Gula)', 
@@ -184,13 +184,13 @@ const categories = [
       name: 'Detail Scan', 
       desc: 'Imbasan terperinci untuk menilai perkembangan dan struktur bayi.', 
       price: 'RM120',
-      bookingLink: '' 
+      bookingLink: 'https://klinikdrsiti.yezza.co/appointment/detail-scan-+-5d-70355' 
     },
     { 
       name: 'Growth Scan', 
       desc: 'Imbasan untuk memantau tumbesaran dan posisi bayi sepanjang kehamilan.', 
       price: 'RM45',
-      bookingLink: '' 
+      bookingLink: 'https://klinikdrsiti.yezza.co/appointment/2d-growth-scan-70356' 
     }
   ]
 },
@@ -226,7 +226,7 @@ const categories = [
       name: '4D Scan', 
       desc: 'Imbasan dinamik untuk melihat pergerakan bayi secara langsung dengan lebih jelas.', 
       price: 'RM90',
-      bookingLink: '' 
+      bookingLink: 'https://klinikdrsiti.yezza.co/appointment/4d-228328' 
     },
     { 
       name: 'Growth Scan', 
@@ -248,9 +248,9 @@ const categories = [
       options: [
         { name: 'Influenza Vaccine', desc: 'Vaksin selsema bermusim (disyorkan setiap tahun).', price: 'RM85', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/vaccine-influenza-70390' },
         { name: 'Child Immunization', desc: 'Vaksin tambahan seperti Rotavirus, Pneumococcal & Chickenpox.', price: 'RM120 - RM250', bookingLink: '' },
-        { name: 'DTaP-IPV-Hep B-Hib', desc: 'Vaksin kombinasi untuk perlindungan difteria, tetanus, pertusis, polio, hepatitis B dan Hib (2, 3, 5 & 18 bulan). Termasuk konsultasi doktor.', price: 'RM180', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/vaccine-influenza-70390' },
-        { name: 'Pneumococcal', desc: 'Perlindungan daripada jangkitan paru-paru dan meningitis (4, 6 & 15 bulan). Termasuk konsultasi doktor.', price: 'RM230', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/vaccine-influenza-70390' },
-        { name: 'MMR', desc: 'Perlindungan terhadap campak, beguk dan rubella (9 & 12 bulan). Termasuk konsultasi doktor.', price: 'RM75', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/vaccine-influenza-70390' },       
+        { name: 'DTaP-IPV-Hep B-Hib', desc: 'Vaksin kombinasi untuk perlindungan difteria, tetanus, pertusis, polio, hepatitis B dan Hib (2, 3, 5 & 18 bulan). Termasuk konsultasi doktor.', price: 'RM180', bookingLink: 'https://klinikdrsiti.yezza.co/appointment' },
+        { name: 'Pneumococcal', desc: 'Perlindungan daripada jangkitan paru-paru dan meningitis (4, 6 & 15 bulan). Termasuk konsultasi doktor.', price: 'RM230', bookingLink: 'https://klinikdrsiti.yezza.co/appointment' },
+        { name: 'MMR', desc: 'Perlindungan terhadap campak, beguk dan rubella (9 & 12 bulan). Termasuk konsultasi doktor.', price: 'RM75', bookingLink: 'https://klinikdrsiti.yezza.co/appointment' },       
       ]
     },
   {
@@ -269,7 +269,7 @@ const categories = [
           name: 'Influenza Vaccine', 
           desc: 'Vaksin selsema bermusim untuk perlindungan tahunan kanak-kanak.', 
           price: 'RM85',
-          bookingLink: '' 
+          bookingLink: 'https://klinikdrsiti.yezza.co/appointment/vaccine-influenza-70390' 
         },
         { 
           name: 'Rotavirus', 
@@ -346,7 +346,7 @@ const categories = [
     { 
       name: 'Influenza Vaccine', 
       desc: 'Perlindungan tahunan terhadap virus selesema (flu), disarankan untuk semua golongan dewasa.', 
-      bookingLink: '' 
+      bookingLink: 'https://klinikdrsiti.yezza.co/appointment/vaccine-influenza-70390' 
     }
   ]
 }

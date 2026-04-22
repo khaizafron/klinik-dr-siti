@@ -88,14 +88,7 @@
 
     <!-- ✅ Elfsight -->
     <script>
-      if (window.innerWidth < 768) {
-        window.addEventListener('load', function() {
-          const script = document.createElement('script');
-          script.src = 'https://elfsightcdn.com/platform.js';
-          script.async = true;
-          document.head.appendChild(script);
-        });
-      } else {
+      if (window.innerWidth >= 768) {
         const script = document.createElement('script');
         script.src = 'https://elfsightcdn.com/platform.js';
         script.async = true;

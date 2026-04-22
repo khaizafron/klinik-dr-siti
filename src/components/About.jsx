@@ -129,7 +129,7 @@ export default function About() {
               >
                 <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
                   <div className="p-2 md:p-3 bg-white rounded-xl shadow-lg">
-                    <img src="/logo.PNG" alt="Logo" className="h-6 w-6 md:h-8 md:w-8 object-contain" />
+                    <img src="/logo.webp" alt="Logo" className="h-6 w-6 md:h-8 md:w-8 object-contain" />
                   </div>
                   <div>
                     <h3 className="font-bold text-sm md:text-xl leading-none tracking-tight">Klinik Dr Siti dan Rakan Rakan</h3>

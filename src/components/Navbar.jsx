@@ -76,7 +76,7 @@ export default function Navbar({ isModalOpen = false }) {
           {/* LOGO */}
           <Link to="/" onClick={scrollHome} className="flex items-center gap-4 group">
             <img
-              src="/logo.PNG"
+              src="/logo.webp"
               alt="Logo"
               className={`h-10 w-10 object-contain transition-all duration-500 ${
                 scrolled ? 'brightness-100 invert-0' : 'brightness-0 invert'

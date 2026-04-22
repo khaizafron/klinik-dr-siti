@@ -90,7 +90,7 @@ export default function Doctors() {
                   </div>
 
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-red-600 text-white rounded-xl text-[10px] md:text-[11px] lg:text-xs font-black border border-red-500/50 shadow-lg shadow-red-900/20">
-                    <img src="/logo.PNG" alt="Logo" className="w-3 h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 object-contain brightness-0 invert" />
+                    <img src="/logo.webp" alt="Logo" className="w-3 h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 object-contain brightness-0 invert" />
                     {doc.specialty}
                   </div>
 

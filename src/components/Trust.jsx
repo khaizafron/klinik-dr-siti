@@ -107,7 +107,7 @@ export default function Trust() {
                 </div>
 
                 {/* Logo Watermark */}
-                <img src="/logo.PNG" alt="" className="absolute bottom-4 right-4 md:bottom-8 md:right-8 h-10 w-10 md:h-20 md:w-20 object-contain opacity-30 brightness-0 invert" referrerPolicy="no-referrer" />
+                <img src="/logo.webp" alt="" className="absolute bottom-4 right-4 md:bottom-8 md:right-8 h-10 w-10 md:h-20 md:w-20 object-contain opacity-30 brightness-0 invert" referrerPolicy="no-referrer" />
               </div>
             ) : (
               <iframe 

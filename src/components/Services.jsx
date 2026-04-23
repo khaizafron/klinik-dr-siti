@@ -99,6 +99,7 @@ const categories = [
           { name: 'Nail Avulsion', desc: 'Prosedur mencabut kuku yang cengkam atau rosak.', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/nail-avulsion(full)-70395' },
           { name: 'Cuci Telinga (Ear Syringing)', desc: 'Membersihkan tahi telinga yang tersumbat dengan selamat.', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/cuci-telinga-(-ear-syringing-)-70360' },
           { name: 'Minor Surgery (Buang Ketulan / Cyst / Lipoma)', desc: 'Prosedur pembedahan kecil untuk membuang ketulan, cyst atau lipoma dengan teknik steril dan selamat.', bookingLink: ''},
+          { name: 'Rawatan Buang Implanon', desc: 'Prosedur membuang implan perancang keluarga (Implanon) dengan teknik selamat, cepat dan minimal kesakitan.', bookingLink: '' },
         ]
       },
 
@@ -181,7 +182,7 @@ const categories = [
       bookingLink: 'https://klinikdrsiti.yezza.co/appointment/beta--hcg-(blood-test)-201158' 
     },
     { 
-      name: 'Detail Scan', 
+      name: 'Detail Scan / Anomaly Scan', 
       desc: 'Imbasan terperinci untuk menilai perkembangan dan struktur bayi.', 
       price: 'RM120',
       bookingLink: 'https://klinikdrsiti.yezza.co/appointment/detail-scan-+-5d-70355' 
@@ -211,7 +212,7 @@ const categories = [
       bookingLink: 'https://klinikdrsiti.yezza.co/appointment/nt-scan-70386' 
     },
     { 
-      name: 'Detail Scan', 
+      name: 'Detail Scan / Anomaly Scan', 
       desc: 'Pemeriksaan anatomi lengkap organ bayi secara terperinci.', 
       price: 'RM120',
       bookingLink: 'https://klinikdrsiti.yezza.co/appointment/detail-anomaly-scan-70351' 
@@ -246,8 +247,6 @@ const categories = [
       for: 'Ibu & Kanak-kanak',
       benefits: ['Vaksin KKM & swasta', 'Rekod vaksin digital', 'Penyimpanan suhu terkawal'],
       options: [
-        { name: 'Influenza Vaccine', desc: 'Vaksin selsema bermusim (disyorkan setiap tahun).', price: 'RM85', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/vaccine-influenza-70390' },
-        { name: 'Child Immunization', desc: 'Vaksin tambahan seperti Rotavirus, Pneumococcal & Chickenpox.', price: 'RM120 - RM250', bookingLink: '' },
         { name: 'DTaP-IPV-Hep B-Hib', desc: 'Vaksin kombinasi untuk perlindungan difteria, tetanus, pertusis, polio, hepatitis B dan Hib (2, 3, 5 & 18 bulan). Termasuk konsultasi doktor.', price: 'RM180', bookingLink: 'https://klinikdrsiti.yezza.co/appointment' },
         { name: 'Pneumococcal', desc: 'Perlindungan daripada jangkitan paru-paru dan meningitis (4, 6 & 15 bulan). Termasuk konsultasi doktor.', price: 'RM230', bookingLink: 'https://klinikdrsiti.yezza.co/appointment' },
         { name: 'MMR', desc: 'Perlindungan terhadap campak, beguk dan rubella (9 & 12 bulan). Termasuk konsultasi doktor.', price: 'RM75', bookingLink: 'https://klinikdrsiti.yezza.co/appointment' },       
@@ -336,16 +335,19 @@ const categories = [
     { 
       name: 'Umrah Vaccine (Meningococcal)', 
       desc: 'Vaksin wajib untuk jemaah umrah dan haji bagi perlindungan meningitis.', 
+      price: 'RM170',
       bookingLink: 'https://klinikdrsiti.yezza.co/appointment/imunisasi-umrah(menctra-meninggococcal)-70368' 
     },
     { 
       name: 'Pneumococcal Vaccine (Dewasa)', 
       desc: 'Melindungi daripada jangkitan paru-paru serius seperti pneumonia, sesuai untuk warga emas dan individu berisiko.', 
+      price: 'RM195',
       bookingLink: '' 
     },
     { 
       name: 'Influenza Vaccine', 
       desc: 'Perlindungan tahunan terhadap virus selesema (flu), disarankan untuk semua golongan dewasa.', 
+      price: 'RM85',
       bookingLink: 'https://klinikdrsiti.yezza.co/appointment/vaccine-influenza-70390' 
     }
   ]
@@ -373,19 +375,25 @@ const categories = [
         { 
           name: 'ECG', 
           desc: 'Ujian saringan jantung untuk mengesan keabnormalan ritma.', 
-          price: 'RM40 - RM60', 
+          price: 'RM40', 
           bookingLink: 'https://klinikdrsiti.yezza.co/appointment/ecg-70349' 
         },
         { 
           name: 'Full Blood Count (FBC)', 
           desc: 'Ujian darah lengkap untuk mengesan jangkitan, anemia atau masalah kesihatan lain.', 
-          price: 'RM40 - RM80', 
+          price: 'RM40', 
           bookingLink: '' 
         },
         { 
           name: 'Urine Test', 
           desc: 'Ujian air kencing untuk saringan kencing manis, jangkitan dan fungsi buah pinggang.', 
           price: 'RM15 - RM30', 
+          bookingLink: '' 
+        },
+        { 
+          name: 'Urine Drug Test', 
+          desc: 'Ujian air kencing bagi saringan penyalahgunaan dadah.', 
+          price: 'RM45', 
           bookingLink: '' 
         }
       ]
@@ -407,7 +415,7 @@ const categories = [
           items: [
             { name: 'Abdominal Scan', desc: 'Pemeriksaan organ dalaman abdomen seperti hati, buah pinggang dan pundi hempedu.', price: 'RM80', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/abdormal-scan-116413' },
             { name: 'KUB Scan', desc: 'Pemeriksaan buah pinggang, ureter dan pundi kencing.', price: 'RM80', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/kub-scan-151771' },
-            { name: 'Breast Scan', desc: 'Ultrasound payudara untuk saringan ketulan atau perubahan tisu.', price: 'RM80 - RM150', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/breast-scan-218676' }
+            { name: 'Breast Scan', desc: 'Ultrasound payudara untuk saringan ketulan atau perubahan tisu.', price: 'RM80', bookingLink: 'https://klinikdrsiti.yezza.co/appointment/breast-scan-218676' }
           ]
         },
         {
@@ -491,7 +499,19 @@ const categories = [
           desc: 'Imbasan pelvis atau transvaginal untuk pemeriksaan lebih terperinci organ reproduktif wanita.', 
           price: 'RM99',
           bookingLink: '' 
-        }
+        },
+        { 
+  name: 'Pap Smear', 
+  desc: 'Saringan awal untuk mengesan perubahan sel serviks dan risiko kanser pangkal rahim.', 
+  price: 'RM80',
+  bookingLink: '' 
+},
+{ 
+  name: 'HPV DNA Test', 
+  desc: 'Ujian untuk mengesan jangkitan Human Papillomavirus (HPV) yang boleh menyebabkan kanser serviks.', 
+  price: 'RM190',
+  bookingLink: '' 
+}
       ]
     }
   ]
@@ -783,7 +803,6 @@ function ServiceModal({ service, onClose }) {
                                   </div>
                                   <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end justify-between gap-3 md:gap-4 shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-neutral-100">
                                     <div className="text-left md:text-right">
-                                      <p className="text-[8px] md:text-[10px] font-black text-neutral-400 uppercase tracking-widest leading-none mb-1">Anggaran Harga</p>
                                       <p className="text-sm md:text-xl font-black text-blue-900">{opt.price}</p>
                                     </div>
                                     <div className="flex gap-2 w-full sm:w-auto">
@@ -835,7 +854,6 @@ function ServiceModal({ service, onClose }) {
                               </div>
                               <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end justify-between gap-3 md:gap-4 shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-neutral-100">
                                 <div className="text-left md:text-right">
-                                  <p className="text-[8px] md:text-[10px] font-black text-neutral-400 uppercase tracking-widest leading-none mb-1">Anggaran Harga</p>
                                   <p className="text-sm md:text-xl font-black text-blue-900">{opt.price}</p>
                                 </div>
                                 <div className="flex gap-2 w-full sm:w-auto">
@@ -1093,7 +1111,6 @@ export default function Services({ onModalToggle }) {
                         
                         <div className="flex items-center justify-between mt-auto pt-4 md:pt-6 border-t border-neutral-100">
                           <div className="flex flex-col">
-                            <span className="text-[8px] md:text-[10px] font-black text-neutral-400 uppercase tracking-widest mb-1">Mula Dari</span>
                             <span className="text-blue-900 font-black text-base md:text-lg">{svc.type === 'multi' ? svc.options[0].price : svc.type === 'grouped' ? svc.groups[0].items[0].price : svc.price}</span>
                           </div>
                           <div className="w-10 h-10 md:w-12 md:h-12 bg-neutral-50 rounded-xl md:rounded-2xl flex items-center justify-center text-red-600 shadow-inner group-hover:bg-red-600 group-hover:text-white transition-all duration-300">

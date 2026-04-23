@@ -13,12 +13,12 @@ import { getWaLink } from "../utils/whatsapp";
 const BRANCHES = [
   { 
     name: 'Puchong Permai', 
-    addr: 'No. 12, Jalan Permai 1, 47100 Puchong', 
+    addr: '2, Jalan Puchong Permai 3, Taman Puchong Perdana, 47100 Puchong, Selangor', 
     tel: '+60 16 729 6121',
   },
   { 
     name: 'Puchong Utama', 
-    addr: 'No. 5, Jalan Utama 2, 47150 Puchong', 
+    addr: 'A-G-13A Block A, Dataran, Jln Puchong, Taman Puchong Utama, 47140 Puchong, Selangor', 
     tel: '+60 11-3604 3101',
     
   },
@@ -58,7 +58,8 @@ export default function Footer() {
 
             <div>
               <h2 className="font-black text-2xl text-blue-950">KLINIK DR SITI</h2>
-              <p className="text-[10px] font-black tracking-[0.4em] text-red-500">& Rakan Rakan</p>
+              <p className="text-[10px] font-black tracking-[0.4em] text-red-500">Dan Rakan Rakan</p>
+              <p className="text-[10px] font-black tracking-[0.4em] text-black">Klinik Ibu, Anak & Keluarga di Puchong</p>
             </div>
           </div>
 
@@ -162,27 +163,59 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-3">
-            <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
-              Waktu Operasi
-            </h3>
-              <h4 className="font-black text-sm text-blue-950">Cawangan Puchong Permai</h4>
-              <p className="text-sm">Isnin – Jumaat: 8:30am – 10pm</p>
-              <p className="text-sm">Sabtu: 9:00am – 5pm</p>
-              <p className="text-sm">Ahad: 12:00pm - 10pm</p>
-              <h4 className="font-black text-sm text-blue-950">Cawangan Puchong Utama</h4>
-              <p className="text-sm">Isnin – Jumaat: 8:30am – 9pm</p>
-              <p className="text-sm">Sabtu: 9:00am – 5pm</p>
-              <p className="text-sm">Ahad: 10:00am - 5pm</p>
+<div className="lg:col-span-3 flex flex-col">
+  <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-red-300 mb-6">
+    Waktu Operasi
+  </h3>
 
-           
+  {/* PERMAI */}
+  <div className="mb-5 space-y-1">
+    <h4 className="font-black text-sm text-blue-950 mb-1">
+      Cawangan Puchong Permai
+    </h4>
+    <p className="text-sm text-neutral-600 flex italic justify-between">
+      <span>Isnin – Jumaat</span>
+      <span>8:30am – 10pm</span>
+    </p>
+    <p className="text-sm text-neutral-600 flex italic justify-between">
+      <span>Sabtu</span>
+      <span>9:00am – 5pm</span>
+    </p>
+    <p className="text-sm text-neutral-600 flex italic justify-between">
+      <span>Ahad</span>
+      <span>12:00pm – 10pm</span>
+    </p>
+  </div>
 
-              <a href={waUrl} target="_blank" className="mt-4 w-full py-3 bg-blue-900 text-white rounded-xl flex items-center justify-center gap-2 text-xs font-bold">
-                <MessageCircle size={14} />
-                Hubungi Kami
-              </a>
-            
-          </div>
+  {/* UTAMA */}
+  <div className="mb-6 space-y-1">
+    <h4 className="font-black text-sm text-blue-950 mb-1">
+      Cawangan Puchong Utama
+    </h4>
+    <p className="text-sm text-neutral-600 flex italic justify-between">
+      <span>Isnin – Jumaat</span>
+      <span>8:30am – 9pm</span>
+    </p>
+    <p className="text-sm text-neutral-600 flex italic justify-between">
+      <span>Sabtu</span>
+      <span>9:00am – 5pm</span>
+    </p>
+    <p className="text-sm text-neutral-600 flex italic justify-between">
+      <span>Ahad</span>
+      <span>10:00am – 5pm</span>
+    </p>
+  </div>
+
+  {/* BUTTON */}
+  <a 
+    href={waUrl} 
+    target="_blank" 
+    className="mt-auto w-full py-3 bg-blue-900 hover:bg-blue-800 text-white rounded-xl flex items-center justify-center gap-2 text-xs font-bold transition-all"
+  >
+    <MessageCircle size={14} />
+    Hubungi Kami
+  </a>
+</div>
 
         </div>
 

@@ -111,7 +111,7 @@ export default function About() {
               className="relative z-10 rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] aspect-[4/5] max-w-md mx-auto lg:max-w-none border border-neutral-100"
             >
               <img 
-                src="/permaiinside.jpg" 
+                src="/klinikutama.webp" 
                 alt="Suasana Klinik Profesional" 
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"

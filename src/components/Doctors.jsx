@@ -6,11 +6,11 @@ const doctors = [
   {
     name: 'Dr Sumaya Bibi bt Md Ali',
     qualification: 'MBBS (IMU), Diploma In Microbiology (UiTM) | MMC 38615',
-    specialty: 'Women Health, Antenatal Care, Child Health, Ultrasound',
+    specialty: 'Women Health, Antenatal Care, Child Health, General Health, Nutritional Health, Ultrasound',
     experience: '24 Tahun',
     avatar: '/drsumaiya.JPG',
     branch: 'Medical Director',
-    tags: ['Women Health', 'Antenatal', 'Ultrasound']
+    tags: ['Women Health', 'Antenatal', 'Nutritional Health', 'Ultrasound']
   },
   {
     name: 'Dr Nursalia Hanum Binti Md Sidek',
@@ -204,16 +204,23 @@ export default function Doctors() {
 
           <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
             <div className="flex -space-x-4">
-              {[1, 2, 3, 4].map(i => (
-                <div key={i} className="w-16 h-16 rounded-2xl border-4 border-white bg-neutral-100 flex items-center justify-center overflow-hidden shadow-lg rotate-3 hover:rotate-0 transition-transform duration-300">
-                  <img 
-                    src={`https://ui-avatars.com/api/?background=random&size=128&name=Doctor+${i}`} 
-                    alt="doc" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
+  {[
+    "/drsumaiya.JPG",
+    "/drsalia.PNG",
+    "/mohiyedin.JPG"
+  ].map((src, i) => (
+    <div 
+      key={i} 
+      className="w-14 h-14 rounded-full border-2 border-white overflow-hidden shadow-md hover:scale-105 transition"
+    >
+      <img 
+        src={src}
+        alt="doctor"
+        className="w-full h-full object-cover"
+      />
+    </div>
+  ))}
+</div>
             
             <div>
               <h4 className="text-blue-900 font-black text-2xl md:text-3xl mb-2 tracking-tight">Sedia Berkhidmat Untuk Anda</h4>

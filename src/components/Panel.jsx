@@ -24,6 +24,7 @@ const panels = [
   { name: 'Peduli Sihat (ILTIZAM)', img: 'ps.png' },
   { name: 'Angsana Health', img: 'ah.png' },
   { name: 'KPSB Care', img: 'kpsb.png' },
+  { name: 'Mudah Med', img: 'mudahmed.png' },
 ]
 
 function useInView(ref) {

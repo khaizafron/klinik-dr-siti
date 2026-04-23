@@ -330,6 +330,7 @@ const categories = [
     { 
       name: 'Typhoid Injection', 
       desc: 'Vaksin wajib untuk pengendali makanan dan perlindungan dari demam kepialu.', 
+      price: 'RM80',
       bookingLink: 'https://klinikdrsiti.yezza.co/appointment/injection-thypoid-70369' 
     },
     { 
@@ -386,13 +387,7 @@ const categories = [
         },
         { 
           name: 'Urine Test', 
-          desc: 'Ujian air kencing untuk saringan kencing manis, jangkitan dan fungsi buah pinggang.', 
-          price: 'RM15 - RM30', 
-          bookingLink: '' 
-        },
-        { 
-          name: 'Urine Drug Test', 
-          desc: 'Ujian air kencing bagi saringan penyalahgunaan dadah.', 
+          desc: 'Ujian air kencing untuk saringan kencing manis, ujian dadah, jangkitan dan fungsi buah pinggang.', 
           price: 'RM45', 
           bookingLink: '' 
         }

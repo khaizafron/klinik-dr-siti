@@ -73,7 +73,7 @@ export default function WhatsAppButton({ hide }) {
 
       {/* Tooltip */}
       {tooltip && (
-        <div className="relative bg-white rounded-2xl px-4 py-3 shadow-xl border border-green-100 mr-1 max-w-[220px] animate-slide-up">
+        <div className="relative bg-white rounded-2xl px-4 py-3 shadow-xl border border-green-100 mr-2 max-w-[220px] animate-slide-up">
           
           <button
             onClick={handleClose}
@@ -95,16 +95,24 @@ export default function WhatsAppButton({ hide }) {
       )}
 
       {/* WA Button */}
-      <a
-        href={WA_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-16 h-16 bg-green-500 hover:bg-green-400 text-white rounded-full flex items-center justify-center shadow-2xl shadow-green-500/50 hover:scale-110 transition-all duration-300 wa-pulse"
-        onMouseEnter={() => setTooltip(true)}
-        aria-label="Contact us via WhatsApp"
-      >
-        <MessageCircle size={30} fill="white" strokeWidth={0} />
-      </a>
+<a
+  href={WA_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="relative w-14 h-14 flex items-center justify-center hover:scale-110 transition-all duration-300"
+  onMouseEnter={() => setTooltip(true)}
+  aria-label="Contact us via WhatsApp"
+>
+  {/* PULSE EFFECT (behind image) */}
+  <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-30 animate-ping"></span>
+
+  {/* IMAGE ONLY (no green background) */}
+  <img 
+    src="/whatsapp.png"
+    alt="WhatsApp"
+    className="w-12 h-12 object-contain relative z-10 drop-shadow-lg"
+  />
+</a>
 
     </div>
   )

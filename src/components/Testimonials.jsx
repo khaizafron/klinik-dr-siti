@@ -1,8 +1,65 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Star, ExternalLink } from 'lucide-react'
 
 const GOOGLE_MAPS_LINK = 'https://maps.app.goo.gl/B7tT98wH4qeywhM5A'
+const ELFSIGHT_WIDGET_ID = '07b899d9-18b4-4d4e-981b-293c41508a96'
+const ELFSIGHT_SCRIPT_ID = 'elfsight-platform-script'
+const ELFSIGHT_SCRIPT_SRC = 'https://elfsightcdn.com/platform.js'
+
+let elfsightLoadPromise = null
+
+function ensureElfsightScript() {
+  if (typeof window === 'undefined') return Promise.resolve(false)
+  if (window.ElfsightPlatform || window.__ELFSIGHT__ || document.getElementById(ELFSIGHT_SCRIPT_ID)) {
+    return Promise.resolve(true)
+  }
+
+  if (elfsightLoadPromise) return elfsightLoadPromise
+
+  elfsightLoadPromise = new Promise((resolve) => {
+    const existing = document.querySelector(`script[src="${ELFSIGHT_SCRIPT_SRC}"]`)
+
+    if (existing) {
+      existing.addEventListener('load', () => resolve(true), { once: true })
+      existing.addEventListener('error', () => resolve(false), { once: true })
+      return
+    }
+
+    const script = document.createElement('script')
+    script.id = ELFSIGHT_SCRIPT_ID
+    script.src = ELFSIGHT_SCRIPT_SRC
+    script.async = true
+    script.defer = true
+    script.onload = () => resolve(true)
+    script.onerror = () => resolve(false)
+    document.body.appendChild(script)
+  }).finally(() => {
+    if (typeof window !== 'undefined' && !window.ElfsightPlatform && !window.__ELFSIGHT__) {
+      elfsightLoadPromise = null
+    }
+  })
+
+  return elfsightLoadPromise
+}
+
+function hideElfsightBranding(container) {
+  if (!container) return
+
+  const elfsightLinks = container.querySelectorAll(
+    'a[href*="elfsight.com"], a[title*="Elfsight"], a[href*="google-reviews"]'
+  )
+
+  elfsightLinks.forEach((link) => {
+    link.style.display = 'none'
+    link.style.visibility = 'hidden'
+    link.style.opacity = '0'
+    link.style.pointerEvents = 'none'
+    link.style.height = '0'
+    link.style.width = '0'
+    link.style.position = 'absolute'
+  })
+}
 
 const reviews = [
   { avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Siti' },
@@ -12,9 +69,75 @@ const reviews = [
 ]
 
 export default function Testimonials() {
+  const widgetRef = useRef(null)
+  const sectionRef = useRef(null)
+  const [widgetLoaded, setWidgetLoaded] = useState(false)
+  const widgetLoadedRef = useRef(false)
+
+  useEffect(() => {
+    let cancelled = false
+    let observer
+
+    const loadWidget = async () => {
+      if (cancelled || widgetLoadedRef.current) return
+      const loaded = await ensureElfsightScript()
+      if (!cancelled && loaded) {
+        widgetLoadedRef.current = true
+        setWidgetLoaded(true)
+        hideElfsightBranding(widgetRef.current)
+      }
+    }
+
+    const timeoutId = window.setTimeout(loadWidget, 3000)
+
+    const triggerLoad = () => {
+      loadWidget()
+      cleanupTriggers()
+    }
+
+    const cleanupTriggers = () => {
+      window.removeEventListener('pointerdown', triggerLoad)
+      window.removeEventListener('touchstart', triggerLoad)
+      window.removeEventListener('keydown', triggerLoad)
+      window.removeEventListener('scroll', triggerLoad)
+      if (observer) observer.disconnect()
+    }
+
+    if ('IntersectionObserver' in window && sectionRef.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            triggerLoad()
+          }
+        },
+        { rootMargin: '250px 0px' }
+      )
+
+      observer.observe(sectionRef.current)
+    } else {
+      loadWidget()
+    }
+
+    window.addEventListener('pointerdown', triggerLoad, { passive: true })
+    window.addEventListener('touchstart', triggerLoad, { passive: true })
+    window.addEventListener('keydown', triggerLoad)
+    window.addEventListener('scroll', triggerLoad, { passive: true })
+
+    const brandingObserver = new MutationObserver(() => hideElfsightBranding(widgetRef.current))
+    if (widgetRef.current) {
+      brandingObserver.observe(widgetRef.current, { childList: true, subtree: true })
+    }
+
+    return () => {
+      cancelled = true
+      clearTimeout(timeoutId)
+      cleanupTriggers()
+      brandingObserver.disconnect()
+    }
+  }, [])
 
   return (
-    <section id="testimonials" className="py-32 bg-white relative overflow-hidden">
+    <section id="testimonials" ref={sectionRef} className="py-32 bg-white relative overflow-hidden">
       
       {/* Abstract Background Elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50" />
@@ -81,10 +204,12 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="rounded-[3rem] overflow-hidden shadow-2xl shadow-purple-900/5 border border-neutral-100 bg-white p-4 min-h-[300px]"
         >
-          <div 
-            className="elfsight-app-07b899d9-18b4-4d4e-981b-293c41508a96"
+          <div
+            ref={widgetRef}
+            className={`elfsight-app-${ELFSIGHT_WIDGET_ID}`}
             data-elfsight-app-lazy
-          ></div>
+            aria-busy={!widgetLoaded}
+          />
         </motion.div>
 
         {/* Google Review CTA */}

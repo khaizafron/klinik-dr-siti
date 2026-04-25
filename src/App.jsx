@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { Suspense, lazy, useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation, useParams } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -9,10 +9,11 @@ import Services from './components/Services'
 import Doctors from './components/Doctors'
 import Branches from './components/Branches'
 import Promotions from './components/Promotions'
-import Testimonials from './components/Testimonials'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+
+const Testimonials = lazy(() => import('./components/Testimonials'))
+const Contact = lazy(() => import('./components/Contact'))
 
 function MainPage() {
   const { slug } = useParams()
@@ -73,8 +74,12 @@ function MainPage() {
           <Doctors />
           <Branches />
           <Promotions />
-          <Testimonials />
-          <Contact />
+          <Suspense fallback={<div className="py-32 min-h-[520px]" />}>
+            <Testimonials />
+          </Suspense>
+          <Suspense fallback={<div className="py-32 min-h-[980px]" />}>
+            <Contact />
+          </Suspense>
         </div>
 
       </main>

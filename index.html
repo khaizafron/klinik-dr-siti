@@ -81,50 +81,10 @@
 
     <!-- Security headers are sent from vercel.json. Keep them out of meta tags. -->
 
-    <!-- ✅ Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-    <!-- ✅ Elfsight -->
-    <script>
-      if (window.innerWidth < 768) {
-        window.addEventListener('load', function() {
-          const script = document.createElement('script');
-          script.src = 'https://elfsightcdn.com/platform.js';
-          script.async = true;
-          document.head.appendChild(script);
-        });
-      } else {
-        const script = document.createElement('script');
-        script.src = 'https://elfsightcdn.com/platform.js';
-        script.async = true;
-        document.head.appendChild(script);
-      }
-    </script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LdBVL0sAAAAACDlmEWY06Ol293Vbu8EcKkhEPVh" async defer></script>
-
-    <!-- ✅ Hide Elfsight Branding -->
-    <script>
-      function hideElfsightBranding() {
-        const elfsightLinks = document.querySelectorAll(
-          'div[class*="elfsight-app"] a[href*="elfsight.com"], div[class*="elfsight-app"] a[title*="Elfsight"], div[class*="elfsight-app"] a[href*="google-reviews"]'
-        );
-
-        elfsightLinks.forEach(link => {
-          link.style.display = 'none';
-          link.style.visibility = 'hidden';
-          link.style.opacity = '0';
-          link.style.pointerEvents = 'none';
-          link.style.height = '0';
-          link.style.width = '0';
-          link.style.position = 'absolute';
-        });
-      }
-
-      const interval = setInterval(hideElfsightBranding, 500);
-      setTimeout(() => clearInterval(interval), 15000);
-    </script>
   </head>
 
   <body>

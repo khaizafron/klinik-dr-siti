@@ -207,7 +207,7 @@ export default function Doctors() {
   {[
     "/drsumaiya.JPG",
     "/drsalia.PNG",
-    "/mohiyedin.JPG"
+    "/mohiyedin.PNG"
   ].map((src, i) => (
     <div 
       key={i} 

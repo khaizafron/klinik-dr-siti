@@ -85,6 +85,7 @@ export default function Trust() {
                 <img 
                   src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200" 
                   alt="Klinik Dr Siti Thumbnail" 
+                  loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
@@ -107,7 +108,7 @@ export default function Trust() {
                 </div>
 
                 {/* Logo Watermark */}
-                <img src="/logo.webp" alt="" className="absolute bottom-4 right-4 md:bottom-8 md:right-8 h-10 w-10 md:h-20 md:w-20 object-contain opacity-30 brightness-0 invert" referrerPolicy="no-referrer" />
+                <img src="/logo.webp" alt="" loading="lazy" className="absolute bottom-4 right-4 md:bottom-8 md:right-8 h-10 w-10 md:h-20 md:w-20 object-contain opacity-30 brightness-0 invert" referrerPolicy="no-referrer" />
               </div>
             ) : (
               <iframe 
@@ -156,6 +157,7 @@ export default function Trust() {
       <img 
         src={item.img} 
         alt={item.title} 
+        loading="lazy"
         className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         referrerPolicy="no-referrer"
       />

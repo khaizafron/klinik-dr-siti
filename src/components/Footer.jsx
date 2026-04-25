@@ -58,6 +58,7 @@ export default function Footer() {
                 alt="Logo Klinik Dr Siti Dan Rakan Rakan"
                 width="96"
                 height="96"
+                loading="lazy"
                 className="relative z-10 h-24 w-24 shrink-0 aspect-square object-contain"
               />
             </div>
@@ -82,6 +83,7 @@ export default function Footer() {
     <img 
       src="/facebook.png" 
       alt="Facebook" 
+      loading="lazy"
       className="w-full h-full object-cover rounded-2xl"
     />
   </a>
@@ -95,6 +97,7 @@ export default function Footer() {
     <img 
       src="/instagram.jpg" 
       alt="Instagram" 
+      loading="lazy"
       className="w-full h-full object-cover rounded-2xl"
     />
   </a>
@@ -108,6 +111,7 @@ export default function Footer() {
     <img 
       src="/whatsapp.png" 
       alt="WhatsApp" 
+      loading="lazy"
       className="w-full h-full object-cover rounded-2xl"
     />
   </a>

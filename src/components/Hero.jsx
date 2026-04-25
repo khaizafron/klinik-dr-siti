@@ -255,7 +255,15 @@ const mainContentScale = useTransform(scrollYProgress, [0.20, 1], [0.96, 1])
               whileHover={{ scale: 1.05 }}
               className="relative p-6 rounded-full bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl"
             >
-              <img src="/logo.webp" alt="Logo" className="h-16 w-16 md:h-24 md:w-24 object-contain " />
+              <img
+                src="/logo.webp"
+                alt="Logo"
+                width="96"
+                height="96"
+                loading="eager"
+                fetchPriority="high"
+                className="h-16 w-16 md:h-24 md:w-24 object-contain"
+              />
               <div className="absolute -inset-1 bg-white/5 rounded-full blur-xl -z-10" />
             </motion.div>
           </div>

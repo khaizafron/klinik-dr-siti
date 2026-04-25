@@ -78,6 +78,10 @@ export default function Navbar({ isModalOpen = false }) {
             <img
               src="/logo.webp"
               alt="Logo"
+              width="40"
+              height="40"
+              loading="eager"
+              fetchPriority="high"
               className={`h-10 w-10 object-contain transition-all duration-500 ${
                 scrolled ? 'brightness-100 invert-0' : 'brightness-0 invert'
               }`}

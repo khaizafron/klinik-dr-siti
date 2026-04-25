@@ -110,6 +110,7 @@ export default function WhatsAppButton({ hide }) {
   <img 
     src="/whatsapp.png"
     alt="WhatsApp"
+    loading="eager"
     className="w-12 h-12 object-contain relative z-10 drop-shadow-lg"
   />
 </a>

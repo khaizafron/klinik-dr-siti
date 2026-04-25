@@ -4,16 +4,17 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Trust from './components/Trust'
-import Panel from './components/Panel'
-import Services from './components/Services'
-import Doctors from './components/Doctors'
 import Branches from './components/Branches'
-import Promotions from './components/Promotions'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import DeferredMount from './components/ui/DeferredMount'
 
+const Panel = lazy(() => import('./components/Panel'))
 const Testimonials = lazy(() => import('./components/Testimonials'))
 const Contact = lazy(() => import('./components/Contact'))
+const LazyDoctors = lazy(() => import('./components/Doctors'))
+const LazyServices = lazy(() => import('./components/Services'))
+const LazyPromotions = lazy(() => import('./components/Promotions'))
 
 function MainPage() {
   const { slug } = useParams()
@@ -69,17 +70,37 @@ function MainPage() {
         <div className="relative z-10 bg-white">
           <About />
           <Trust />
-          <Panel />
-          <Services onModalToggle={setIsModalOpen} />
-          <Doctors />
+          <DeferredMount minHeight={900}>
+            <Suspense fallback={<div className="py-28 min-h-[900px]" />}>
+              <Panel />
+            </Suspense>
+          </DeferredMount>
+          <DeferredMount minHeight={1100}>
+            <Suspense fallback={<div className="py-28 min-h-[1100px]" />}>
+              <LazyServices onModalToggle={setIsModalOpen} />
+            </Suspense>
+          </DeferredMount>
+          <DeferredMount minHeight={1200}>
+            <Suspense fallback={<div className="py-32 min-h-[1200px]" />}>
+              <LazyDoctors />
+            </Suspense>
+          </DeferredMount>
           <Branches />
-          <Promotions />
-          <Suspense fallback={<div className="py-32 min-h-[520px]" />}>
-            <Testimonials />
-          </Suspense>
-          <Suspense fallback={<div className="py-32 min-h-[980px]" />}>
-            <Contact />
-          </Suspense>
+          <DeferredMount minHeight={680}>
+            <Suspense fallback={<div className="py-32 min-h-[680px]" />}>
+              <LazyPromotions />
+            </Suspense>
+          </DeferredMount>
+          <DeferredMount minHeight={520}>
+            <Suspense fallback={<div className="py-32 min-h-[520px]" />}>
+              <Testimonials />
+            </Suspense>
+          </DeferredMount>
+          <DeferredMount id="contact" minHeight={980}>
+            <Suspense fallback={<div className="py-32 min-h-[980px]" />}>
+              <Contact sectionId={null} />
+            </Suspense>
+          </DeferredMount>
         </div>
 
       </main>

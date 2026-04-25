@@ -96,7 +96,7 @@ async function getRecaptchaToken() {
   })
 }
 
-export default function Contact() {
+export default function Contact({ sectionId = 'contact' }) {
   const [form, setForm] = useState(INITIAL_FORM)
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState(null)
@@ -196,7 +196,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" ref={sectionRef} className="relative py-32 bg-[#fafafa] overflow-hidden">
+    <section id={sectionId || undefined} ref={sectionRef} className="relative py-32 bg-[#fafafa] overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
         <div className="hidden md:block absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-red-100/40 rounded-full blur-[120px]" />
         <div className="hidden md:block absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[100px]" />

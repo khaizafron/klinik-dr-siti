@@ -113,6 +113,7 @@ export default function About() {
               <img 
                 src="/klinikutama.webp" 
                 alt="Suasana Klinik Profesional" 
+                loading="lazy"
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"
               />
@@ -129,7 +130,7 @@ export default function About() {
               >
                 <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
                   <div className="p-2 md:p-3 bg-white rounded-xl shadow-lg">
-                    <img src="/logo.webp" alt="Logo" className="h-6 w-6 md:h-8 md:w-8 object-contain" />
+                    <img src="/logo.webp" alt="Logo" loading="lazy" className="h-6 w-6 md:h-8 md:w-8 object-contain" />
                   </div>
                   <div>
                     <h3 className="font-bold text-sm md:text-xl leading-none tracking-tight">Klinik Dr Siti dan Rakan Rakan</h3>
@@ -161,6 +162,7 @@ export default function About() {
               <img 
                 src="/staff.jpg" 
                 alt="Konsultasi Doktor" 
+                loading="lazy"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                 referrerPolicy="no-referrer"
               />

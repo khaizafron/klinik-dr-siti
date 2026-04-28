@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, Tag, ArrowRight, Sparkles, Clock, Percent } from 'lucide-react'
 import BorderGlow from '../components/ui/BorderGlow'
@@ -57,16 +57,62 @@ const promos = [
   },
 ]
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)')
+
+    const update = () => setIsMobile(mediaQuery.matches)
+    update()
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', update)
+      return () => mediaQuery.removeEventListener('change', update)
+    }
+
+    mediaQuery.addListener(update)
+    return () => mediaQuery.removeListener(update)
+  }, [])
+
+  return isMobile
+}
+
 export default function Promotions() {
+  const isMobile = useIsMobile()
+ const sectionMotion = isMobile
+  ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } }
+  : {
+      initial: { opacity: 0, y: 12 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true },
+      transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    }
+
+const cardMotion = isMobile
+  ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } }
+  : {
+      initial: { opacity: 0, y: 10, scale: 0.985 },
+      whileInView: { opacity: 1, y: 0, scale: 1 },
+      viewport: { once: true },
+      transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+    }
+
+const bannerMotion = isMobile
+  ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } }
+  : {
+      initial: { opacity: 0, y: 10, scale: 0.985 },
+      whileInView: { opacity: 1, scale: 1 },
+      viewport: { once: true },
+      transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+    }
+
   return (
-    <section id="promotions" className="py-32 bg-neutral-50 overflow-hidden">
+    <section id="promotions" className="py-24 md:py-32 bg-neutral-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+        <motion.div
+          {...sectionMotion}
           className="text-center mb-20"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2  text-red-700 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
@@ -87,108 +133,167 @@ export default function Promotions() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {promos.map((promo, i) => {
             const Icon = promo.icon
+            const waLink = getWaLink(`Hi saya nak tanya promo ${promo.title}`)
 
-            const waLink = getWaLink(
-  `Hi saya nak tanya promo ${promo.title}`
-);
+            const promoCard = isMobile ? (
+              <div
+                className="group relative flex flex-col h-full rounded-[2.5rem] overflow-hidden bg-white border border-neutral-200 shadow-xl"
+              >
+                <div
+                  className="relative p-8"
+                  style={{
+                    backgroundImage: 'linear-gradient(135deg, #dc2626 0%, #2563eb 55%, #b91c1c 100%)',
+                  }}
+                >
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="bg-white/20 text-white text-[10px] font-black px-3 py-1 rounded-lg border border-white/20 tracking-widest">
+                        {promo.tag}
+                      </span>
+                      <Icon size={20} className="text-white/80" />
+                    </div>
+
+                    <h3 className="text-white font-black text-xl mb-1">
+                      {promo.title}
+                    </h3>
+
+                    <p className="text-white/85 text-xs font-bold uppercase tracking-widest mb-4">
+                      {promo.subtitle}
+                    </p>
+
+                    <div className="text-white text-3xl font-black">
+                      {promo.range}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative h-6 bg-white flex items-center justify-between">
+                  <div className="absolute left-0 w-3 h-6 bg-neutral-50 rounded-r-full" />
+                  <div className="w-full border-t-2 border-dashed border-neutral-100 mx-4" />
+                  <div className="absolute right-0 w-3 h-6 bg-neutral-50 rounded-l-full" />
+                </div>
+
+                <div className="bg-white p-8 flex flex-col flex-1">
+                  <p className="text-neutral-600 text-sm mb-8 flex-1">
+                    {promo.desc}
+                  </p>
+
+                  <div className="flex items-center justify-between pt-6 border-t border-neutral-100">
+                    <div className="flex items-center gap-2 text-red-600">
+                      <Clock size={14} />
+                      <span className="text-[10px] font-black uppercase tracking-widest">
+                        {promo.expiry}
+                      </span>
+                    </div>
+
+                    <a
+                      href={waLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 bg-red-50 text-red-600 rounded-xl flex items-center justify-center hover:bg-red-600 hover:text-white transition-all duration-300"
+                      aria-label={`Inquire about ${promo.title} via WhatsApp`}
+                    >
+                      <ArrowRight size={18} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <motion.div
+                {...cardMotion}
+                transition={{ delay: i * 0.06 }}
+                style={{ willChange: 'transform, opacity' }}
+                className="group relative flex flex-col h-full rounded-[2.5rem] overflow-hidden bg-white"
+              >
+                <div className={`relative bg-gradient-to-br ${promo.color} p-8`}>
+                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl hidden md:block" />
+                  <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-black/10 rounded-full blur-xl hidden md:block" />
+                  
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-black px-3 py-1 rounded-lg border border-white/20 tracking-widest">
+                        {promo.tag}
+                      </span>
+                      <Icon size={20} className="text-white/60" />
+                    </div>
+                    
+                    <h3 className="text-white font-black text-xl mb-1">
+                      {promo.title}
+                    </h3>
+
+                    <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-4">
+                      {promo.subtitle}
+                    </p>
+
+                    <div className="text-white text-3xl font-black">
+                      {promo.range}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative h-6 bg-white flex items-center justify-between">
+                  <div className="absolute left-0 w-3 h-6 bg-neutral-50 rounded-r-full" />
+                  <div className="w-full border-t-2 border-dashed border-neutral-100 mx-4" />
+                  <div className="absolute right-0 w-3 h-6 bg-neutral-50 rounded-l-full" />
+                </div>
+
+                <div className="bg-white p-8 flex flex-col flex-1 transition-all duration-500">
+                  <p className="text-neutral-500 text-sm mb-8 flex-1">
+                    {promo.desc}
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-6 border-t border-neutral-50">
+                    <div className="flex items-center gap-2 text-red-600">
+                      <Clock size={14} />
+                      <span className="text-[10px] font-black uppercase tracking-widest">
+                        {promo.expiry}
+                      </span>
+                    </div>
+
+                    <motion.a
+                      href={waLink}
+                      target="_blank"
+                      whileHover={{ x: 3 }}
+                      className="w-10 h-10 bg-red-50 text-red-600 rounded-xl flex items-center justify-center hover:bg-red-600 hover:text-white transition-all duration-300"
+                      aria-label={`Inquire about ${promo.title} via WhatsApp`}
+                    >
+                      <ArrowRight size={18} />
+                    </motion.a>
+                  </div>
+                </div>
+              </motion.div>
+            )
 
             return (
-              <BorderGlow
+              <div
                 key={promo.title}
-                borderRadius={40}
-                glowColor="220 100 60"
-                backgroundColor="#ffffff"
-                glowRadius={100}
-                glowIntensity={100}
-                animated={true}
-                colors={['#1814f5', '#3b82f6']}
                 className="h-full overflow-visible"
               >
-
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="group relative flex flex-col h-full rounded-[2.5rem] overflow-hidden"
-                >
-
-                  {/* TOP */}
-                  <div className={`relative bg-gradient-to-br ${promo.color} p-8`}>
-                    
-                    <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
-                    <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-black/10 rounded-full blur-xl" />
-                    
-                    <div className="relative z-10">
-                      <div className="flex justify-between items-start mb-6">
-                        <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-black px-3 py-1 rounded-lg border border-white/20 tracking-widest">
-                          {promo.tag}
-                        </span>
-                        <Icon size={20} className="text-white/60" />
-                      </div>
-                      
-                      <h3 className="text-white font-black text-xl mb-1">
-                        {promo.title}
-                      </h3>
-
-                      <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-4">
-                        {promo.subtitle}
-                      </p>
-
-                      {/* RANGE ONLY */}
-                      <div className="text-white text-3xl font-black">
-                        {promo.range}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* DIVIDER */}
-                  <div className="relative h-6 bg-white flex items-center justify-between">
-                    <div className="absolute left-0 w-3 h-6 bg-neutral-50 rounded-r-full" />
-                    <div className="w-full border-t-2 border-dashed border-neutral-100 mx-4" />
-                    <div className="absolute right-0 w-3 h-6 bg-neutral-50 rounded-l-full" />
-                  </div>
-
-                  {/* BOTTOM */}
-                  <div className="bg-white p-8 flex flex-col flex-1 transition-all duration-500">
-                    
-                    <p className="text-neutral-500 text-sm mb-8 flex-1">
-                      {promo.desc}
-                    </p>
-                    
-                    <div className="flex items-center justify-between pt-6 border-t border-neutral-50">
-                      
-                      <div className="flex items-center gap-2 text-red-600">
-                        <Clock size={14} />
-                        <span className="text-[10px] font-black uppercase tracking-widest">
-                          {promo.expiry}
-                        </span>
-                      </div>
-
-                      <motion.a 
-                        href={waLink}
-                        target="_blank"
-                        whileHover={{ x: 3 }}
-                        className="w-10 h-10 bg-red-50 text-red-600 rounded-xl flex items-center justify-center hover:bg-red-600 hover:text-white transition-all duration-300"
-                        aria-label={`Inquire about ${promo.title} via WhatsApp`}
-                      >
-                        <ArrowRight size={18} />
-                      </motion.a>
-
-                    </div>
-                  </div>
-
-                </motion.div>
-              </BorderGlow>
+                {isMobile ? (
+                  promoCard
+                ) : (
+                  <BorderGlow
+                    borderRadius={40}
+                    glowColor="220 100 60"
+                    backgroundColor="#ffffff"
+                    glowRadius={100}
+                    glowIntensity={100}
+                    animated
+                    colors={['#1814f5', '#3b82f6']}
+                    className="h-full overflow-visible"
+                  >
+                    {promoCard}
+                  </BorderGlow>
+                )}
+              </div>
             )
           })}
         </div>
 
         {/* Bottom Banner (JANGAN DELETE) */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+        <motion.div
+          {...bannerMotion}
+          style={{ willChange: 'transform, opacity' }}
           className="mt-20 p-1 bg-gradient-to-r from-red-600 via-blue-500 to-red-600 rounded-[3rem] shadow-2xl shadow-red-600/20"
         >
           <div className="bg-white rounded-[2.9rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">

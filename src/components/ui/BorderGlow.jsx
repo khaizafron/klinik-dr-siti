@@ -69,6 +69,10 @@ const BorderGlow = ({
   const [cursorAngle, setCursorAngle] = useState(45);
   const [edgeProximity, setEdgeProximity] = useState(0);
   const [sweepActive, setSweepActive] = useState(false);
+  const isInteractive =
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   const getCenterOfElement = useCallback((el) => {
     const { width, height } = el.getBoundingClientRect();
@@ -144,9 +148,9 @@ const BorderGlow = ({
   return (
     <div
       ref={cardRef}
-      onPointerMove={handlePointerMove}
-      onPointerEnter={() => setIsHovered(true)}
-      onPointerLeave={() => setIsHovered(false)}
+      onPointerMove={isInteractive ? handlePointerMove : undefined}
+      onPointerEnter={isInteractive ? () => setIsHovered(true) : undefined}
+      onPointerLeave={isInteractive ? () => setIsHovered(false) : undefined}
       className={`relative grid isolate border border-white/15 ${className}`}
       style={{
         background: backgroundColor,

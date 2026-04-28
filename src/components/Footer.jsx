@@ -37,12 +37,18 @@ export default function Footer() {
   const waUrl = getWaLink("Hi saya nak tanya");
 
   return (
-    <footer className="relative bg-gradient-to-b from-red-50 via-white to-white pt-24 pb-12 overflow-hidden border-t border-red-100/50">
+    <footer
+      className="relative bg-gradient-to-b from-red-50 via-white to-white pt-20 md:pt-24 pb-12 overflow-hidden border-t border-red-100/50"
+      style={{
+        contentVisibility: 'auto',
+        containIntrinsicSize: '1px 900px',
+      }}
+    >
 
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-200/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-100/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4" />
+        <div className="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] bg-red-200/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4" />
+        <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-100/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
